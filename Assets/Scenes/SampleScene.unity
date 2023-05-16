@@ -1132,11 +1132,11 @@ MonoBehaviour:
   m_FollowOffset: {x: 0, y: 5, z: 15}
   m_XDamping: 1
   m_YDamping: 1
-  m_ZDamping: 1
+  m_ZDamping: 2
   m_AngularDampingMode: 0
-  m_PitchDamping: 0
-  m_YawDamping: 0
-  m_RollDamping: 0
+  m_PitchDamping: 2
+  m_YawDamping: 1
+  m_RollDamping: 3
   m_AngularDamping: 0
 --- !u!1001 &2055595589
 PrefabInstance:
