@@ -317,8 +317,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b1c293ced9de609e7b7942aed6546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 30
-  turnSpeed: 10
+  thrust: 90
+  turnSpeed: 20
 --- !u!1 &149033472
 GameObject:
   m_ObjectHideFlags: 0
@@ -365,7 +365,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
-  hoverForce: 5
+  hoverForce: 8
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -749,7 +749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
-  hoverForce: 5
+  hoverForce: 8
 --- !u!1 &777788674 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c279e27111d8980fd8e79715589672d1,
@@ -853,7 +853,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 782062503}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1080, y: 20, z: 600}
@@ -1042,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
-  hoverForce: 5
+  hoverForce: 10
 --- !u!1 &1585696725
 GameObject:
   m_ObjectHideFlags: 3
