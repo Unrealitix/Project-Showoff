@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 90
   turnSpeed: 20
-  waterDrag: 1
+  underwaterDrag: 0.5
   waterMaterial: {fileID: 13400000, guid: 321fc3f7b0ee2534cbc7c439c39f47e6, type: 2}
 --- !u!1 &149033472
 GameObject:
