@@ -486,6 +486,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
+  heightAdjustSpeed: 2
   hoverForce: 11
 --- !u!1 &330585543
 GameObject:
@@ -986,6 +987,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
+  heightAdjustSpeed: 2
   hoverForce: 11
 --- !u!1 &832575517
 GameObject:
@@ -1232,6 +1234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   magnetLength: 10
   targetHoverHeight: 5
+  heightAdjustSpeed: 2
   hoverForce: 10
 --- !u!1 &1398022042
 GameObject:
