@@ -21,6 +21,11 @@ public class MagLaser : MonoBehaviour
 	/// </summary>
 	private float HoverForceMultiplier => _groundMaterial != null ? _groundMaterial.staticFriction : 1f;
 
+	/// <summary>
+	/// If the MagLaser is attached to the ground.
+	/// </summary>
+	public bool IsAttached => _groundMaterial != null;
+
 	private Rigidbody _shipRigidbody;
 	private Transform _thisTransform;
 

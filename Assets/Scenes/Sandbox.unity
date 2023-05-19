@@ -199,7 +199,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -438,6 +438,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 90
   turnSpeed: 20
+  flightRollSpeed: 0.1
+  flightDuration: 5
   underwaterDrag: 0.5
   waterMaterial: {fileID: 13400000, guid: 321fc3f7b0ee2534cbc7c439c39f47e6, type: 2}
 --- !u!1 &149033472
