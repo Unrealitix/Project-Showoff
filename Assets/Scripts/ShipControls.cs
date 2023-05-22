@@ -1,5 +1,3 @@
-#define ALT_FLIGHT_SCHEME
-
 using System.Linq;
 using UnityEngine;
 
@@ -10,9 +8,15 @@ public class ShipControls : MonoBehaviour
 
 	[SerializeField] private float thrust = 10f;
 	[SerializeField] private float turnSpeed = 10f;
-	[SerializeField] private float flightRollSpeed = 0.1f;
-	[SerializeField] private float flightDuration = 2f;
 	[SerializeField] private float underwaterDrag = 0.5f;
+
+	[Header("Flight")]
+	[SerializeField] private float duration = 2f;
+	[Tooltip("The factor of the Thrust when the duration has run out")] [SerializeField] private float lowestThrustFactor = 0.2f;
+	[SerializeField] private float rollSpeed = 0.1f;
+	[SerializeField] private float pitchSpeed = 10f;
+	[SerializeField] private float maxPitch = 50f;
+	[SerializeField] private float pitchCorrectionSpeed = 1f;
 
 	[Tooltip("To know when to apply the underwater drag")] [SerializeField] private PhysicMaterial waterMaterial;
 
@@ -50,33 +54,63 @@ public class ShipControls : MonoBehaviour
 		_rigidbody.AddForce(-_rigidbody.velocity * friction);
 
 		bool attached = _magLasers.Any(magLaser => magLaser.IsAttached);
+
 		//Input
-		_rigidbody.AddTorque(up * (Input.GetAxis("Horizontal") * turnSpeed)); //always just rotate around UP based on horizontal input
+		float axisHorizontal = Input.GetAxis("Horizontal");
+		float axisVertical = Input.GetAxis("Vertical");
+
+		_rigidbody.AddTorque(up * (axisHorizontal * turnSpeed)); //always just rotate around UP based on horizontal input
 		if (attached)
 		{
-			_flightTimer = flightDuration;
-			_rigidbody.AddForce(forward * (Input.GetAxis("Vertical") * -thrust));
+			_flightTimer = duration;
+			_rigidbody.AddForce(forward * (axisVertical * -thrust));
 		}
 		else
 		{
+			//==Thrust==
 			_flightTimer -= Time.fixedDeltaTime;
 			if (_flightTimer < 0f) _flightTimer = 0f;
 
-			float flightFactor = _flightTimer / flightDuration;
-			Debug.Log(flightFactor);
+			float flightFactor = Mathf.Clamp(_flightTimer / duration, lowestThrustFactor, 1.0f);
+			// Debug.Log("Flight Factor: " + flightFactor);
 
-#if ALT_FLIGHT_SCHEME
 			_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
-			_rigidbody.AddTorque(right * (Input.GetAxis("Vertical") * -turnSpeed)); //Pitch based on input
 
-			_rigidbody.AddTorque(forward * (Mathf.DeltaAngle(t.localEulerAngles.z, 0f) * flightRollSpeed)); //Roll to align UP
-#else
-			_rigidbody.AddForce(forward * (Input.GetAxis("Vertical") * -thrust * flightFactor)); //Throttle based on input
-
+			//==Pitch==
 			Vector3 localEulerAngles = t.localEulerAngles;
-			_rigidbody.AddTorque(forward * (Mathf.DeltaAngle(localEulerAngles.z, 0f) * flightRollSpeed)); //Roll to align UP
-			_rigidbody.AddTorque(right * (Mathf.DeltaAngle(localEulerAngles.x, 0f) * flightRollSpeed)); //Pitch to align UP
-#endif
+			float pitch = Mathf.DeltaAngle(localEulerAngles.x, 0f);
+			float pitchFactor = pitch / maxPitch;
+			float pitchFactor01 = Mathf.Clamp01(1.0f - Mathf.Abs(pitchFactor));
+			if (pitch < 0f)
+			{
+				switch (axisVertical)
+				{
+					case < 0f:
+						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed * pitchFactor01));
+						break;
+					case > 0f:
+						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed));
+						break;
+				}
+			}
+			else
+			{
+				switch (axisVertical)
+				{
+					case < 0f:
+						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed));
+						break;
+					case > 0f:
+						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed * pitchFactor01));
+						break;
+				}
+			}
+
+			_rigidbody.AddTorque(right * (pitchFactor * pitchCorrectionSpeed)); //Center pitch to 0, mostly for cases of overshoot
+
+			//==Roll==
+			float roll = Mathf.DeltaAngle(localEulerAngles.z, 0f);
+			_rigidbody.AddTorque(forward * (roll * rollSpeed)); //Roll to align UP
 		}
 	}
 }
