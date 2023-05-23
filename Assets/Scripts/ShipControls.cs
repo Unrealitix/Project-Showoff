@@ -2,8 +2,9 @@
 
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class ShipControls : MonoBehaviour
+public class ShipControls : MonoBehaviour, Controls.IHoverActions
 {
 	//Only controls and physics forces in this class!
 	//Health and stuff like that should be in a separate class
@@ -20,6 +21,8 @@ public class ShipControls : MonoBehaviour
 	private MagLaser[] _magLasers;
 
 	private float _flightTimer;
+	private Controls _controls;
+	private (float vertical, float horizontal) _direction;
 
 	private void Awake()
 	{
@@ -27,6 +30,13 @@ public class ShipControls : MonoBehaviour
 		_magLasers = GetComponentsInChildren<MagLaser>();
 		if (waterMaterial == null)
 			Debug.LogError(name + " ShipControls: waterMaterial is null!");
+	}
+
+	private void Start()
+	{
+		_controls = new Controls();
+		_controls.Enable();
+		_controls.Hover.SetCallbacks(this);
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -38,8 +48,21 @@ public class ShipControls : MonoBehaviour
 		}
 	}
 
+	public void OnMovement(InputAction.CallbackContext context)
+	{
+		Vector2 direction = context.ReadValue<Vector2>();
+		
+		_direction.vertical = direction.y;
+		_direction.horizontal = direction.x;
+	}
+	
+	public void OnFlight(InputAction.CallbackContext context) {}
+	
+	public void OnButtons(InputAction.CallbackContext context) {}
+
 	private void FixedUpdate()
 	{
+		// Debug.Log($"Current Controller Input: Vertical({_direction.vertical}) | Horizontal({_direction.horizontal})");
 		Transform t = transform;
 		Vector3 forward = t.forward;
 		Vector3 right = t.right;
@@ -51,11 +74,11 @@ public class ShipControls : MonoBehaviour
 
 		bool attached = _magLasers.Any(magLaser => magLaser.IsAttached);
 		//Input
-		_rigidbody.AddTorque(up * (Input.GetAxis("Horizontal") * turnSpeed)); //always just rotate around UP based on horizontal input
+		_rigidbody.AddTorque(up * (_direction.horizontal * turnSpeed)); //always just rotate around UP based on horizontal input
 		if (attached)
 		{
 			_flightTimer = flightDuration;
-			_rigidbody.AddForce(forward * (Input.GetAxis("Vertical") * -thrust));
+			_rigidbody.AddForce(forward * (_direction.vertical * -thrust));
 		}
 		else
 		{
@@ -67,7 +90,7 @@ public class ShipControls : MonoBehaviour
 
 #if ALT_FLIGHT_SCHEME
 			_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
-			_rigidbody.AddTorque(right * (Input.GetAxis("Vertical") * -turnSpeed)); //Pitch based on input
+			_rigidbody.AddTorque(right * (_direction.vertical * -turnSpeed)); //Pitch based on input
 
 			_rigidbody.AddTorque(forward * (Mathf.DeltaAngle(t.localEulerAngles.z, 0f) * flightRollSpeed)); //Roll to align UP
 #else
