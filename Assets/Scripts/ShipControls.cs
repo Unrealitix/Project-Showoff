@@ -3,8 +3,9 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Users;
 
-public class ShipControls : MonoBehaviour, Controls.IHoverActions
+public class ShipControls : MonoBehaviour
 {
 	//Only controls and physics forces in this class!
 	//Health and stuff like that should be in a separate class
@@ -22,6 +23,7 @@ public class ShipControls : MonoBehaviour, Controls.IHoverActions
 
 	private float _flightTimer;
 	private Controls _controls;
+	private InputUser _user;
 	private (float vertical, float horizontal) _direction;
 
 	private void Awake()
@@ -36,7 +38,19 @@ public class ShipControls : MonoBehaviour, Controls.IHoverActions
 	{
 		_controls = new Controls();
 		_controls.Enable();
-		_controls.Hover.SetCallbacks(this);
+
+		_user = InputUser.PerformPairingWithDevice(Gamepad.current);
+		_user.AssociateActionsWithUser(_controls);
+
+		// _controls.Hover.SetCallbacks(this);
+	}
+
+	public void OnMovement(InputValue value)
+	{
+		Vector2 direction = value.Get<Vector2>();
+		
+		_direction.vertical = direction.y;
+		_direction.horizontal = direction.x;
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -48,17 +62,12 @@ public class ShipControls : MonoBehaviour, Controls.IHoverActions
 		}
 	}
 
-	public void OnMovement(InputAction.CallbackContext context)
+	public void OnFlight() {}
+
+	public void OnButtons()
 	{
-		Vector2 direction = context.ReadValue<Vector2>();
 		
-		_direction.vertical = direction.y;
-		_direction.horizontal = direction.x;
 	}
-	
-	public void OnFlight(InputAction.CallbackContext context) {}
-	
-	public void OnButtons(InputAction.CallbackContext context) {}
 
 	private void FixedUpdate()
 	{
@@ -86,7 +95,7 @@ public class ShipControls : MonoBehaviour, Controls.IHoverActions
 			if (_flightTimer < 0f) _flightTimer = 0f;
 
 			float flightFactor = _flightTimer / flightDuration;
-			Debug.Log(flightFactor);
+			// Debug.Log(flightFactor);
 
 #if ALT_FLIGHT_SCHEME
 			_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle

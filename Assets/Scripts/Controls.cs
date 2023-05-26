@@ -168,6 +168,17 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""2D Vector"",
+                    ""id"": ""5ee4ffa6-5649-48e1-92ce-e09ce6b2c2a8"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Movement"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
                     ""id"": ""d27d0a1a-6a2d-4977-858c-043855e15397"",
                     ""path"": ""2DVector"",
                     ""interactions"": """",
