@@ -288,7 +288,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11536831}
   m_LocalRotation: {x: 0.113265954, y: 0.69797623, z: -0.113265954, w: 0.69797623}
-  m_LocalPosition: {x: 109.5, y: 7.3, z: 107}
+  m_LocalPosition: {x: 109.5, y: 9, z: 107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -333,7 +333,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
@@ -490,10 +490,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c76a4c3172736a480ba6febd152636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetLength: 10
+  magnetLength: 15
   targetHoverHeight: 5
   heightAdjustSpeed: 2
-  hoverForce: 11
+  thrustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hoverForce: 50
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -573,7 +597,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   m_LocalRotation: {x: 0.113265954, y: 0.69797623, z: -0.113265954, w: 0.69797623}
-  m_LocalPosition: {x: 109.5, y: 7.3, z: 107}
+  m_LocalPosition: {x: 109.5, y: 9, z: 107}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,10 +1015,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c76a4c3172736a480ba6febd152636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetLength: 10
+  magnetLength: 15
   targetHoverHeight: 5
   heightAdjustSpeed: 2
-  hoverForce: 11
+  thrustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hoverForce: 50
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1238,10 +1286,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4c76a4c3172736a480ba6febd152636, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnetLength: 10
+  magnetLength: 15
   targetHoverHeight: 5
   heightAdjustSpeed: 2
-  hoverForce: 10
+  thrustCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 0
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  hoverForce: 50
 --- !u!1 &1398022042
 GameObject:
   m_ObjectHideFlags: 0

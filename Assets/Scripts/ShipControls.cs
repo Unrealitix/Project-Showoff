@@ -50,7 +50,7 @@ public class ShipControls : MonoBehaviour
 		Vector3 up = t.up;
 
 		//Friction
-		float friction = _magLasers.Average(magLaser => magLaser.Friction);
+		float friction = _magLasers.Average(magLaser => magLaser.GroundFriction);
 		_rigidbody.AddForce(-_rigidbody.velocity * friction);
 
 		bool attached = _magLasers.Any(magLaser => magLaser.IsAttached);
