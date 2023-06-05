@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.2257134, b: 0.30692226, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -287,8 +287,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11536831}
-  m_LocalRotation: {x: -0.036828153, y: 0.9606443, z: -0.1558911, w: -0.22694533}
-  m_LocalPosition: {x: -1179.2874, y: 50, z: -295.58582}
+  m_LocalRotation: {x: 0.15496543, y: 0.97780156, z: -0.13108706, w: -0.052019108}
+  m_LocalPosition: {x: -1183.7491, y: 42.798397, z: -293.8176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -323,7 +323,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 392f84d998b373447bec25dd96f50690,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 392f84d998b373447bec25dd96f50690,
         type: 3}
@@ -437,7 +437,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
@@ -447,7 +447,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
@@ -457,37 +457,37 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.97321093
+      value: 0.98617345
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.027231833
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.22991428
+      value: 0.02652656
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: -0.1612969
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 3.57
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 26.584
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: -18.5
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 7f6075990885485c1b434f008af4f663,
         type: 3}
@@ -550,10 +550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b1c293ced9de609e7b7942aed6546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thrust: 90
-  turnSpeed: 20
+  thrust: 140
+  turnSpeed: 40
   underwaterDrag: 0.5
-  duration: 2
+  duration: 6
   lowestThrustFactor: 0.2
   rollSpeed: 0.1
   pitchSpeed: 10
@@ -686,8 +686,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: -0.036828153, y: 0.9606443, z: -0.1558911, w: -0.22694533}
-  m_LocalPosition: {x: -1179.2874, y: 50, z: -295.58582}
+  m_LocalRotation: {x: 0.15496543, y: 0.97780156, z: -0.13108706, w: -0.052019108}
+  m_LocalPosition: {x: -1183.7491, y: 42.798397, z: -293.8176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -886,7 +886,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 8e6fed0096d759912b4e0746373b4984,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8e6fed0096d759912b4e0746373b4984,
         type: 3}
@@ -1144,7 +1144,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 2025a8e28ef39504694e5518cbef24f8,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 2025a8e28ef39504694e5518cbef24f8,
         type: 3}
@@ -1218,7 +1218,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 1445b3c9aba6a1c4189d903998448655,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 1445b3c9aba6a1c4189d903998448655,
         type: 3}
@@ -1546,7 +1546,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 5c1b2c890cd37fd41a155d35ccbcefe5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5c1b2c890cd37fd41a155d35ccbcefe5,
         type: 3}
@@ -1708,7 +1708,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: a653c1f10bcca2a48ba127b159a25aae,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a653c1f10bcca2a48ba127b159a25aae,
         type: 3}
