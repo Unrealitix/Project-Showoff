@@ -9,6 +9,8 @@ public class ShipControls : MonoBehaviour
 	[SerializeField] private float thrust = 10f;
 	[SerializeField] private float turnSpeed = 10f;
 	[SerializeField] private float underwaterDrag = 0.5f;
+	[SerializeField] private Transform centerOfMass;
+	[SerializeField] private Transform engineForcePosition;
 
 	[Header("Flight")]
 	[SerializeField] private float duration = 2f;
@@ -31,6 +33,8 @@ public class ShipControls : MonoBehaviour
 		_magLasers = GetComponentsInChildren<MagLaser>();
 		if (waterMaterial == null)
 			Debug.LogError(name + " ShipControls: waterMaterial is null!");
+
+		_rigidbody.centerOfMass = centerOfMass.localPosition;
 	}
 
 	private void OnTriggerStay(Collider other)
@@ -63,7 +67,7 @@ public class ShipControls : MonoBehaviour
 		if (attached)
 		{
 			_flightTimer = duration;
-			_rigidbody.AddForce(forward * (axisVertical * -thrust));
+			_rigidbody.AddForceAtPosition(forward * (axisVertical * -thrust), engineForcePosition.position);
 		}
 		else
 		{
@@ -74,7 +78,7 @@ public class ShipControls : MonoBehaviour
 			float flightFactor = Mathf.Clamp(_flightTimer / duration, lowestThrustFactor, 1.0f);
 			// Debug.Log("Flight Factor: " + flightFactor);
 
-			_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
+			_rigidbody.AddForceAtPosition(forward * (-thrust * flightFactor), engineForcePosition.position); //Always full throttle
 
 			//==Pitch==
 			Vector3 localEulerAngles = t.localEulerAngles;
@@ -112,5 +116,13 @@ public class ShipControls : MonoBehaviour
 			float roll = Mathf.DeltaAngle(localEulerAngles.z, 0f);
 			_rigidbody.AddTorque(forward * (roll * rollSpeed)); //Roll to align UP
 		}
+	}
+
+	private void OnDrawGizmosSelected()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawSphere(centerOfMass.position, 0.3f);
+		Gizmos.color = Color.cyan;
+		Gizmos.DrawSphere(engineForcePosition.position, 0.3f);
 	}
 }
