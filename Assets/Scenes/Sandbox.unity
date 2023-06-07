@@ -438,9 +438,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 90
   turnSpeed: 20
-  underwaterDrag: 0.5
   centerOfMass: {fileID: 1212967179}
   engineForcePosition: {fileID: 1726871013}
+  driveDrag: 1
+  underwaterDrag: 2
+  flightDrag: 0.5
   duration: 2
   lowestThrustFactor: 0.2
   rollSpeed: 0.1

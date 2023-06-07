@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using UnityEngine;
 
@@ -8,9 +9,13 @@ public class ShipControls : MonoBehaviour
 
 	[SerializeField] private float thrust = 10f;
 	[SerializeField] private float turnSpeed = 10f;
-	[SerializeField] private float underwaterDrag = 0.5f;
 	[SerializeField] private Transform centerOfMass;
 	[SerializeField] private Transform engineForcePosition;
+
+	[Header("Drag")]
+	[SerializeField] private float driveDrag = 1;
+	[SerializeField] private float underwaterDrag = 2f;
+	[SerializeField] private float flightDrag = 0.5f;
 
 	[Header("Flight")]
 	[SerializeField] private float duration = 2f;
@@ -37,12 +42,20 @@ public class ShipControls : MonoBehaviour
 		_rigidbody.centerOfMass = centerOfMass.localPosition;
 	}
 
-	private void OnTriggerStay(Collider other)
+	private void OnTriggerEnter(Collider other)
 	{
 		//Underwater drag
 		if (other.sharedMaterial == waterMaterial)
 		{
-			_rigidbody.AddForce(-_rigidbody.velocity * underwaterDrag);
+			_rigidbody.drag = underwaterDrag;
+		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.sharedMaterial == waterMaterial)
+		{
+			_rigidbody.drag = driveDrag;
 		}
 	}
 
@@ -68,9 +81,13 @@ public class ShipControls : MonoBehaviour
 		{
 			_flightTimer = duration;
 			_rigidbody.AddForceAtPosition(forward * (axisVertical * -thrust), engineForcePosition.position);
+			if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
+				_rigidbody.drag = driveDrag;
 		}
 		else
 		{
+			_rigidbody.drag = flightDrag;
+
 			//==Thrust==
 			_flightTimer -= Time.fixedDeltaTime;
 			if (_flightTimer < 0f) _flightTimer = 0f;
