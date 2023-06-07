@@ -78,7 +78,7 @@ public class ShipControls : MonoBehaviour
 			float flightFactor = Mathf.Clamp(_flightTimer / duration, lowestThrustFactor, 1.0f);
 			// Debug.Log("Flight Factor: " + flightFactor);
 
-			_rigidbody.AddForceAtPosition(forward * (-thrust * flightFactor), engineForcePosition.position); //Always full throttle
+			_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
 
 			//==Pitch==
 			Vector3 localEulerAngles = t.localEulerAngles;
