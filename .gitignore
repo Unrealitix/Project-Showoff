@@ -177,3 +177,10 @@ fmod_editor.log
 # FMOD 1.10.x (Legacy)
 /Assets/FMODAssets/*
 /Assets/FMODStudioCache.meta
+
+### Blender
+# Ignore blend file backups
+*.blend1
+
+# Ignore exported FBX files
+/Blender/**/*.fbx
