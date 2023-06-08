@@ -1,16 +1,23 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Camera))]
 public class CameraInitializer : MonoBehaviour
 {
-	[SerializeField] private Camera cam;
-	[SerializeField] private GameObject virtualPlayerCam;
+	[SerializeField] private GameObject[] virtualPlayerCams;
+
+	private Camera _thisCamera;
 
 	private void Start()
 	{
+		_thisCamera = GetComponent<Camera>();
+
 		ShipControls[] shipControlsArray = FindObjectsOfType<ShipControls>();
 		int layer = shipControlsArray.Length + 9;
 
-		virtualPlayerCam.layer = layer;
+		foreach (GameObject virtualPlayerCam in virtualPlayerCams)
+		{
+			virtualPlayerCam.layer = layer;
+		}
 
 		int bitMask = (1 << layer)
 		              | (1 << 0)
@@ -20,7 +27,7 @@ public class CameraInitializer : MonoBehaviour
 		              | (1 << 5)
 		              | (1 << 8);
 
-		cam.cullingMask = bitMask;
-		cam.gameObject.layer = layer;
+		_thisCamera.cullingMask = bitMask;
+		_thisCamera.gameObject.layer = layer;
 	}
 }

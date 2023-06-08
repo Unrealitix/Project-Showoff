@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 public class ShipControls : MonoBehaviour
 {
@@ -36,7 +35,6 @@ public class ShipControls : MonoBehaviour
 
 	private float _flightTimer;
 	private Controls _controls;
-	private InputUser _user;
 	private (float vertical, float horizontal) _direction;
 
 	private void Awake()
@@ -46,7 +44,12 @@ public class ShipControls : MonoBehaviour
 		if (waterMaterial == null)
 			Debug.LogError(name + " ShipControls: waterMaterial is null!");
 
+		//Physics
 		_rigidbody.centerOfMass = centerOfMass.localPosition;
+
+		//Controls
+		_controls = new Controls();
+		_controls.Enable();
 
 		//Spawn
 		Transform spawn = GameObject.Find(spawnLocationName).transform;
@@ -59,17 +62,6 @@ public class ShipControls : MonoBehaviour
 
 		_rigidbody.position = spawnPosition;
 		_rigidbody.rotation = spawnRotation;
-	}
-
-	private void Start()
-	{
-		_controls = new Controls();
-		_controls.Enable();
-
-		_user = InputUser.PerformPairingWithDevice(Gamepad.current);
-		_user.AssociateActionsWithUser(_controls);
-
-		// _controls.Hover.SetCallbacks(this);
 	}
 
 	public void OnMovement(InputValue value)
@@ -96,8 +88,6 @@ public class ShipControls : MonoBehaviour
 			_rigidbody.drag = driveDrag;
 		}
 	}
-
-	public void OnFlight() {}
 
 	public void OnButtons()
 	{

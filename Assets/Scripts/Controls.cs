@@ -37,15 +37,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Flight"",
-                    ""type"": ""Value"",
-                    ""id"": ""9eadffed-9c67-4a78-a7d3-931a310fafdc"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""Buttons"",
                     ""type"": ""Button"",
                     ""id"": ""49f9d40d-1473-4747-8202-14c6fdebb89a"",
@@ -58,63 +49,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             ""bindings"": [
                 {
                     ""name"": ""2D Vector"",
-                    ""id"": ""751c4846-6d38-4cd9-b6b5-7f57211ae7ea"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""e03d8c70-589f-42fc-aefd-42245a02167a"",
-                    ""path"": ""<Gamepad>/leftStick/up"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""19202e3f-3858-4a27-a747-9e4e00ea0104"",
-                    ""path"": ""<Gamepad>/leftStick/down"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""1264dc3f-356d-446d-b02e-404480326202"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""8a9a1ff3-622e-48b8-95d7-0b0e366858fe"",
-                    ""path"": ""<Gamepad>/leftStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Movement"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""2D Vector"",
                     ""id"": ""dfc2321f-7e78-46f5-b3c9-c6a3a25638a5"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=1)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -168,8 +104,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": ""2D Vector"",
-                    ""id"": ""5ee4ffa6-5649-48e1-92ce-e09ce6b2c2a8"",
-                    ""path"": ""2DVector"",
+                    ""id"": ""751c4846-6d38-4cd9-b6b5-7f57211ae7ea"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -178,57 +114,46 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""2D Vector"",
-                    ""id"": ""d27d0a1a-6a2d-4977-858c-043855e15397"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Flight"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""up"",
-                    ""id"": ""962f2302-10fc-42c1-afb3-620fa4b8bf6f"",
+                    ""id"": ""e03d8c70-589f-42fc-aefd-42245a02167a"",
                     ""path"": ""<Gamepad>/leftStick/up"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Flight"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
-                    ""id"": ""00df8a1d-1448-408e-a183-7ba230a8ab50"",
+                    ""id"": ""19202e3f-3858-4a27-a747-9e4e00ea0104"",
                     ""path"": ""<Gamepad>/leftStick/down"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Flight"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""left"",
-                    ""id"": ""5f9cb1a5-467d-42f6-a04f-582859eac356"",
+                    ""id"": ""1264dc3f-356d-446d-b02e-404480326202"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Flight"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""right"",
-                    ""id"": ""2b6fa515-4078-46a8-8a54-9f67f83d14c0"",
+                    ""id"": ""8a9a1ff3-622e-48b8-95d7-0b0e366858fe"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
-                    ""action"": ""Flight"",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -238,7 +163,7 @@ public partial class @Controls: IInputActionCollection2, IDisposable
                     ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": ""Switch Pro Controller"",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Buttons"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -248,8 +173,8 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": [
         {
-            ""name"": ""Switch Pro Controller"",
-            ""bindingGroup"": ""Switch Pro Controller"",
+            ""name"": ""Gamepad"",
+            ""bindingGroup"": ""Gamepad"",
             ""devices"": [
                 {
                     ""devicePath"": ""<Gamepad>"",
@@ -274,7 +199,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         // Hover
         m_Hover = asset.FindActionMap("Hover", throwIfNotFound: true);
         m_Hover_Movement = m_Hover.FindAction("Movement", throwIfNotFound: true);
-        m_Hover_Flight = m_Hover.FindAction("Flight", throwIfNotFound: true);
         m_Hover_Buttons = m_Hover.FindAction("Buttons", throwIfNotFound: true);
     }
 
@@ -338,14 +262,12 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Hover;
     private List<IHoverActions> m_HoverActionsCallbackInterfaces = new List<IHoverActions>();
     private readonly InputAction m_Hover_Movement;
-    private readonly InputAction m_Hover_Flight;
     private readonly InputAction m_Hover_Buttons;
     public struct HoverActions
     {
         private @Controls m_Wrapper;
         public HoverActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Hover_Movement;
-        public InputAction @Flight => m_Wrapper.m_Hover_Flight;
         public InputAction @Buttons => m_Wrapper.m_Hover_Buttons;
         public InputActionMap Get() { return m_Wrapper.m_Hover; }
         public void Enable() { Get().Enable(); }
@@ -359,9 +281,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @Flight.started += instance.OnFlight;
-            @Flight.performed += instance.OnFlight;
-            @Flight.canceled += instance.OnFlight;
             @Buttons.started += instance.OnButtons;
             @Buttons.performed += instance.OnButtons;
             @Buttons.canceled += instance.OnButtons;
@@ -372,9 +291,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @Flight.started -= instance.OnFlight;
-            @Flight.performed -= instance.OnFlight;
-            @Flight.canceled -= instance.OnFlight;
             @Buttons.started -= instance.OnButtons;
             @Buttons.performed -= instance.OnButtons;
             @Buttons.canceled -= instance.OnButtons;
@@ -395,13 +311,13 @@ public partial class @Controls: IInputActionCollection2, IDisposable
         }
     }
     public HoverActions @Hover => new HoverActions(this);
-    private int m_SwitchProControllerSchemeIndex = -1;
-    public InputControlScheme SwitchProControllerScheme
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
     {
         get
         {
-            if (m_SwitchProControllerSchemeIndex == -1) m_SwitchProControllerSchemeIndex = asset.FindControlSchemeIndex("Switch Pro Controller");
-            return asset.controlSchemes[m_SwitchProControllerSchemeIndex];
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
     }
     private int m_KeyboardSchemeIndex = -1;
@@ -416,7 +332,6 @@ public partial class @Controls: IInputActionCollection2, IDisposable
     public interface IHoverActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnFlight(InputAction.CallbackContext context);
         void OnButtons(InputAction.CallbackContext context);
     }
 }
