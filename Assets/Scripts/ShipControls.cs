@@ -10,6 +10,8 @@ public class ShipControls : MonoBehaviour
 	//Only controls and physics forces in this class!
 	//Health and stuff like that should be in a separate class
 
+	[SerializeField] private string spawnLocationName = "Input Manager";
+
 	[SerializeField] private float thrust = 10f;
 	[SerializeField] private float turnSpeed = 10f;
 	[SerializeField] private float flightRollSpeed = 0.1f;
@@ -32,6 +34,18 @@ public class ShipControls : MonoBehaviour
 		_magLasers = GetComponentsInChildren<MagLaser>();
 		if (waterMaterial == null)
 			Debug.LogError(name + " ShipControls: waterMaterial is null!");
+
+		//Spawn
+		Transform spawn = GameObject.Find(spawnLocationName).transform;
+		Vector3 spawnPosition = spawn.position;
+		Quaternion spawnRotation = spawn.rotation;
+
+		Transform parent = transform.parent;
+		parent.position = spawnPosition;
+		parent.rotation = spawnRotation;
+
+		_rigidbody.position = spawnPosition;
+		_rigidbody.rotation = spawnRotation;
 	}
 
 	private void Start()
@@ -48,7 +62,7 @@ public class ShipControls : MonoBehaviour
 	public void OnMovement(InputValue value)
 	{
 		Vector2 direction = value.Get<Vector2>();
-		
+
 		_direction.vertical = direction.y;
 		_direction.horizontal = direction.x;
 	}
@@ -66,7 +80,7 @@ public class ShipControls : MonoBehaviour
 
 	public void OnButtons()
 	{
-		
+
 	}
 
 	private void FixedUpdate()
