@@ -168,8 +168,7 @@ MonoBehaviour:
   GenerateAllMipmaps: 1
   OutputMaterial: {fileID: 2100000, guid: dcea4e6aea33201489ec2e5631216214, type: 2}
   DefaultPreset: " <sbspreset pkgurl=\"pkg://Track\" label=\"\" >\n  <presetinput
-    identifier=\"$outputsize\" uid=\"3027622056\" type=\"8\" value=\"10,10\" />\n
-    </sbspreset>\n"
+    identifier=\"$outputsize\" uid=\"3027622056\" type=\"8\" value=\"10,10\" />\n</sbspreset>\n"
   MaterialShader: Universal Render Pipeline/Lit
   RenderTextures: 0
   OutputRemaped: 0
