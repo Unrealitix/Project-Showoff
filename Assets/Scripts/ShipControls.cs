@@ -1,16 +1,24 @@
+using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ShipControls : MonoBehaviour
 {
 	//Only controls and physics forces in this class!
 	//Health and stuff like that should be in a separate class
 
+	[SerializeField] private string spawnLocationName = "Input Manager";
+
 	[SerializeField] private float thrust = 10f;
 	[SerializeField] private float turnSpeed = 10f;
-	[SerializeField] private float underwaterDrag = 0.5f;
 	[SerializeField] private Transform centerOfMass;
 	[SerializeField] private Transform engineForcePosition;
+
+	[Header("Drag")]
+	[SerializeField] private float driveDrag = 1;
+	[SerializeField] private float underwaterDrag = 2f;
+	[SerializeField] private float flightDrag = 0.5f;
 
 	[Header("Flight")]
 	[SerializeField] private float duration = 2f;
@@ -26,6 +34,8 @@ public class ShipControls : MonoBehaviour
 	private MagLaser[] _magLasers;
 
 	private float _flightTimer;
+	private Controls _controls;
+	private (float vertical, float horizontal) _direction;
 
 	private void Awake()
 	{
@@ -34,16 +44,54 @@ public class ShipControls : MonoBehaviour
 		if (waterMaterial == null)
 			Debug.LogError(name + " ShipControls: waterMaterial is null!");
 
+		//Physics
 		_rigidbody.centerOfMass = centerOfMass.localPosition;
+
+		//Controls
+		_controls = new Controls();
+		_controls.Enable();
+
+		//Spawn
+		Transform spawn = GameObject.Find(spawnLocationName).transform;
+		Vector3 spawnPosition = spawn.position;
+		Quaternion spawnRotation = spawn.rotation;
+
+		Transform parent = transform.parent;
+		parent.position = spawnPosition;
+		parent.rotation = spawnRotation;
+
+		_rigidbody.position = spawnPosition;
+		_rigidbody.rotation = spawnRotation;
 	}
 
-	private void OnTriggerStay(Collider other)
+	public void OnMovement(InputValue value)
+	{
+		Vector2 direction = value.Get<Vector2>();
+
+		_direction.vertical = direction.y;
+		_direction.horizontal = direction.x;
+	}
+
+	private void OnTriggerEnter(Collider other)
 	{
 		//Underwater drag
 		if (other.sharedMaterial == waterMaterial)
 		{
-			_rigidbody.AddForce(-_rigidbody.velocity * underwaterDrag);
+			_rigidbody.drag = underwaterDrag;
 		}
+	}
+
+	private void OnTriggerExit(Collider other)
+	{
+		if (other.sharedMaterial == waterMaterial)
+		{
+			_rigidbody.drag = driveDrag;
+		}
+	}
+
+	public void OnButtons()
+	{
+
 	}
 
 	private void FixedUpdate()
@@ -60,17 +108,19 @@ public class ShipControls : MonoBehaviour
 		bool attached = _magLasers.Any(magLaser => magLaser.IsAttached);
 
 		//Input
-		float axisHorizontal = Input.GetAxis("Horizontal");
-		float axisVertical = Input.GetAxis("Vertical");
-
-		_rigidbody.AddTorque(up * (axisHorizontal * turnSpeed)); //always just rotate around UP based on horizontal input
+		// Debug.Log($"Current Controller Input: Vertical({_direction.vertical}) | Horizontal({_direction.horizontal})");
+		_rigidbody.AddTorque(up * (_direction.horizontal * turnSpeed)); //always just rotate around UP based on horizontal input
 		if (attached)
 		{
 			_flightTimer = duration;
-			_rigidbody.AddForceAtPosition(forward * (axisVertical * -thrust), engineForcePosition.position);
+			_rigidbody.AddForceAtPosition(forward * (_direction.vertical * -thrust), engineForcePosition.position);
+			if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
+				_rigidbody.drag = driveDrag;
 		}
 		else
 		{
+			_rigidbody.drag = flightDrag;
+
 			//==Thrust==
 			_flightTimer -= Time.fixedDeltaTime;
 			if (_flightTimer < 0f) _flightTimer = 0f;
@@ -87,25 +137,25 @@ public class ShipControls : MonoBehaviour
 			float pitchFactor01 = Mathf.Clamp01(1.0f - Mathf.Abs(pitchFactor));
 			if (pitch < 0f)
 			{
-				switch (axisVertical)
+				switch (_direction.vertical)
 				{
 					case < 0f:
-						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed * pitchFactor01));
+						_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed * pitchFactor01));
 						break;
 					case > 0f:
-						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed));
+						_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed));
 						break;
 				}
 			}
 			else
 			{
-				switch (axisVertical)
+				switch (_direction.vertical)
 				{
 					case < 0f:
-						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed));
+						_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed));
 						break;
 					case > 0f:
-						_rigidbody.AddTorque(right * (axisVertical * -pitchSpeed * pitchFactor01));
+						_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed * pitchFactor01));
 						break;
 				}
 			}
