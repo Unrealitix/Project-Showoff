@@ -1047,7 +1047,7 @@ MonoBehaviour:
   centerOfMass: {fileID: 8558639395312813860}
   engineForcePosition: {fileID: 8558639394820021194}
   driveDrag: 1
-  underwaterDrag: 2
+  underwaterDrag: 1.5
   flightDrag: 0.5
   duration: 2
   lowestThrustFactor: 0.2
