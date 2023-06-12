@@ -18,6 +18,10 @@ namespace Physics
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
 
+		[Header("Gravity")]
+		[SerializeField] private float gravity = 9.81f;
+		[SerializeField] private float trackGravity = 3.14f;
+
 		[Header("Drag")]
 		[SerializeField] private float driveDrag = 1;
 		[SerializeField] private float underwaterDrag = 2f;
@@ -31,8 +35,6 @@ namespace Physics
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
-		[Tooltip("To know when to apply the underwater drag")] [SerializeField] private PhysicMaterial waterMaterial;
-
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
 
@@ -44,11 +46,10 @@ namespace Physics
 		{
 			_rigidbody = GetComponent<Rigidbody>();
 			_magLasers = GetComponentsInChildren<MagLaser>();
-			if (waterMaterial == null)
-				Debug.LogError(name + " ShipControls: waterMaterial is null!");
 
 			//Physics
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
+			_rigidbody.useGravity = false; //we'll do it ourselves
 
 			//Controls
 			_controls = new Controls();
@@ -78,7 +79,7 @@ namespace Physics
 		private void OnTriggerEnter(Collider other)
 		{
 			//Underwater drag
-			if (other.sharedMaterial == waterMaterial)
+			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = underwaterDrag;
 			}
@@ -86,7 +87,7 @@ namespace Physics
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.sharedMaterial == waterMaterial)
+			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = driveDrag;
 			}
@@ -103,6 +104,11 @@ namespace Physics
 			Vector3 forward = t.forward;
 			Vector3 right = t.right;
 			Vector3 up = t.up;
+
+			//Gravity
+			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);
+			float g = track ? trackGravity : gravity;
+			_rigidbody.AddForce(Vector3.down * g);
 
 			//Friction
 			float friction = _magLasers.Average(magLaser => magLaser.GroundFriction);

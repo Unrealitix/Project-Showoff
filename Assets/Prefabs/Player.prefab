@@ -1010,7 +1010,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
@@ -1046,6 +1046,8 @@ MonoBehaviour:
   turnSpeed: 20
   centerOfMass: {fileID: 8558639395312813860}
   engineForcePosition: {fileID: 8558639394820021194}
+  gravity: 9.81
+  trackGravity: 3.14
   driveDrag: 1
   underwaterDrag: 1.5
   flightDrag: 0.5
@@ -1055,7 +1057,6 @@ MonoBehaviour:
   pitchSpeed: 10
   maxPitch: 50
   pitchCorrectionSpeed: 3
-  waterMaterial: {fileID: 13400000, guid: 321fc3f7b0ee2534cbc7c439c39f47e6, type: 2}
 --- !u!114 &8762844576749775119
 MonoBehaviour:
   m_ObjectHideFlags: 0
