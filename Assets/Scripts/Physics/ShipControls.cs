@@ -81,6 +81,15 @@ namespace Physics
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
+
+			if (_direction.vertical == 0)
+			{
+				BroadcastMessage("OnAcceleration", false);
+
+			} else if (_direction.vertical > 0 )
+			{
+				BroadcastMessage("OnAcceleration", true);
+			}
 		}
 
 		private void OnTriggerEnter(Collider other)

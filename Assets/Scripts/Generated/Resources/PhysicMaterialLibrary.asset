@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3fd5956597cab9dc8683d072d84ec79, type: 3}
+  m_Name: PhysicMaterialLibrary
+  m_EditorClassIdentifier: 
+  propGrass: {fileID: 13400000, guid: df83f1c51af34bc63a3c4d86e8148c61, type: 2}
+  propTrack: {fileID: 13400000, guid: 4f60272a7a5b62370b15013a86bafeff, type: 2}
+  propWater: {fileID: 13400000, guid: 321fc3f7b0ee2534cbc7c439c39f47e6, type: 2}

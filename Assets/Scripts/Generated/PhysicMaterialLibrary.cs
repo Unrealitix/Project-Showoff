@@ -1,16 +1,23 @@
-// This file was automatically generated.
-// Any modifications you do to this file will be overwritten.
+// This file and its accompanying .meta file were automatically generated.
+// Any modifications you do to either of them will be overwritten.
 
-using UnityEditor;
 using UnityEngine;
 
 namespace Generated
 {
-	public static class PhysicMaterialLibrary
+	public class PhysicMaterialLibrary : ScriptableObject
 	{
-		public static PhysicMaterial Grass => AssetDatabase.LoadAssetAtPath<PhysicMaterial>("Assets/PhysicMaterials/Grass.physicMaterial");
-		public static PhysicMaterial Track => AssetDatabase.LoadAssetAtPath<PhysicMaterial>("Assets/PhysicMaterials/Track.physicMaterial");
-		public static PhysicMaterial Water => AssetDatabase.LoadAssetAtPath<PhysicMaterial>("Assets/PhysicMaterials/Water.physicMaterial");
+		private static PhysicMaterialLibrary _instance;
+		private void Awake() => _instance = Resources.Load<PhysicMaterialLibrary>("PhysicMaterialLibrary");
+		private void OnEnable() => Awake();
 
+		public static PhysicMaterial Grass => _instance.propGrass;
+		[SerializeField] private PhysicMaterial propGrass;
+
+		public static PhysicMaterial Track => _instance.propTrack;
+		[SerializeField] private PhysicMaterial propTrack;
+
+		public static PhysicMaterial Water => _instance.propWater;
+		[SerializeField] private PhysicMaterial propWater;
 	}
 }
