@@ -15,6 +15,8 @@ namespace Physics
 
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
+		[Tooltip("You need to manually measure this and fill it in!")] [SerializeField] private float maxSpeed = 10f;
+
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
 
@@ -34,6 +36,8 @@ namespace Physics
 		[SerializeField] private float pitchSpeed = 10f;
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
+
+		public float MaxSpeed => maxSpeed;
 
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
