@@ -11,7 +11,7 @@ namespace Physics
 		//Only controls and physics forces in this class!
 		//Health and stuff like that should be in a separate class
 
-		[SerializeField] private string spawnLocationName = "Input Manager";
+		[SerializeField] private string spawnLocationName;
 
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
@@ -56,16 +56,19 @@ namespace Physics
 			_controls.Enable();
 
 			//Spawn
-			Transform spawn = GameObject.Find(spawnLocationName).transform;
-			Vector3 spawnPosition = spawn.position;
-			Quaternion spawnRotation = spawn.rotation;
+			if (!string.IsNullOrWhiteSpace(spawnLocationName))
+			{
+				Transform spawn = GameObject.Find(spawnLocationName).transform;
+				Vector3 spawnPosition = spawn.position;
+				Quaternion spawnRotation = spawn.rotation;
 
-			Transform parent = transform.parent;
-			parent.position = spawnPosition;
-			parent.rotation = spawnRotation;
+				Transform parent = transform.parent;
+				parent.position = spawnPosition;
+				parent.rotation = spawnRotation;
 
-			_rigidbody.position = spawnPosition;
-			_rigidbody.rotation = spawnRotation;
+				_rigidbody.position = spawnPosition;
+				_rigidbody.rotation = spawnRotation;
+			}
 		}
 
 		public void OnMovement(InputValue value)
