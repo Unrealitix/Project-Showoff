@@ -8,8 +8,11 @@ namespace Generated
 	public class PhysicMaterialLibrary : ScriptableObject
 	{
 		private static PhysicMaterialLibrary _instance;
-		private void Awake() => _instance = Resources.Load<PhysicMaterialLibrary>("PhysicMaterialLibrary");
-		private void OnEnable() => Awake();
+		public static void Init()
+		{
+			if (_instance == null)
+				_instance = Resources.Load<PhysicMaterialLibrary>("PhysicMaterialLibrary");
+		}
 
 		public static PhysicMaterial Grass => _instance.propGrass;
 		[SerializeField] private PhysicMaterial propGrass;

@@ -54,6 +54,7 @@ namespace Physics
 			//Physics
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
 			_rigidbody.useGravity = false; //we'll do it ourselves
+			PhysicMaterialLibrary.Init();
 
 			//Controls
 			_controls = new Controls();

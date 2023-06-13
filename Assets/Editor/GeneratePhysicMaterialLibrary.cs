@@ -21,8 +21,11 @@ namespace Generated
 	public class PhysicMaterialLibrary : ScriptableObject
 	{
 		private static PhysicMaterialLibrary _instance;
-		private void Awake() => _instance = Resources.Load<PhysicMaterialLibrary>(""PhysicMaterialLibrary"");
-		private void OnEnable() => Awake();
+		public static void Init()
+		{
+			if (_instance == null)
+				_instance = Resources.Load<PhysicMaterialLibrary>(""PhysicMaterialLibrary"");
+		}
 ";
 		private const string CODE_LINE_TEMPLATE = @"
 		public static PhysicMaterial {0} => _instance.prop{0};
