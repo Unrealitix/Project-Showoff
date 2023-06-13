@@ -467,6 +467,31 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 845f7d7c33119134392c9db0fb7664df, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 742cc95fc667fa54a9a1c9133820d3ff, type: 3}
+--- !u!1 &625113101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7346405649843131543, guid: 1607c2235b60063d09cd5ea87becde89,
+    type: 3}
+  m_PrefabInstance: {fileID: 180595642}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &625113102
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625113101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e123fd97c6815b6428c4dd54e7cbe917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  musicc:
+    Guid:
+      Data1: -2095980172
+      Data2: 1277533442
+      Data3: -1888090728
+      Data4: 1946581425
+    Path: event:/Demo music
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0

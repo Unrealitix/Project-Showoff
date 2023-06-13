@@ -1,5 +1,9 @@
+using System;
+using System.Linq;
+using Physics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI
 {
@@ -11,16 +15,27 @@ namespace UI
 		private TMP_Text _textComponent;
 		private string _textTemplate;
 
+		private Image _barImage;
+		private float _maxSpeed;
+
 		private void Awake()
 		{
-			_textComponent = GetComponent<TMP_Text>();
+			//Text
+			_textComponent = GetComponentsInChildren<TMP_Text>().First(text => text.name.Contains("speed", StringComparison.OrdinalIgnoreCase));
 			_textTemplate = _textComponent.text;
+
+			//Bar
+			_barImage = GetComponentInChildren<Image>();
+			_maxSpeed = followRigidbody.GetComponent<ShipControls>().MaxSpeed;
 		}
 
 		private void Update()
 		{
-			string speed = (followRigidbody.velocity.magnitude * multiplier).ToString("F1"); //F1 = round to 1 decimal place
-			_textComponent.text = string.Format(_textTemplate, speed);
+			float speed = followRigidbody.velocity.magnitude;
+			string text = (speed * multiplier).ToString("F0"); //F0 = round to 0 decimal places
+			_textComponent.text = string.Format(_textTemplate, text);
+
+			_barImage.fillAmount = speed / _maxSpeed;
 		}
 	}
 }

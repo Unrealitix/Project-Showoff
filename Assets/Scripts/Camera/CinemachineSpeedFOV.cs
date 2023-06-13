@@ -1,4 +1,5 @@
 using Cinemachine;
+using Physics;
 using UnityEngine;
 
 namespace Camera
@@ -41,6 +42,9 @@ namespace Camera
 					Debug.LogError($"CinemachineSpeedFOV: Follow target ({vcam.Follow.name}) must have a Rigidbody component!");
 					return;
 				}
+
+				if (_followRigidbody.TryGetComponent(out ShipControls shipControls))
+					maxSpeed = shipControls.MaxSpeed;
 			}
 
 			if (stage == applyAfter)
