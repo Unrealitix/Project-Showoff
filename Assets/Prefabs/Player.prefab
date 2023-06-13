@@ -260,7 +260,7 @@ MonoBehaviour:
   applyAfter: 1
   minFOV: 50
   maxFOV: 80
-  maxSpeed: 800
+  maxSpeed: 80
   clamp: 1
 --- !u!1 &3869931411249966845
 GameObject:
