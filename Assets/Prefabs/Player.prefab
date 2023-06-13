@@ -791,6 +791,7 @@ GameObject:
   - component: {fileID: 8558639396383628924}
   - component: {fileID: 8762844576749775119}
   - component: {fileID: 1138016291971209892}
+  - component: {fileID: 1699064735461387042}
   m_Layer: 0
   m_Name: ship
   m_TagString: Untagged
@@ -957,6 +958,18 @@ MonoBehaviour:
   m_DefaultActionMap: Hover
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 3869931410392986849}
+--- !u!114 &1699064735461387042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22b927e227aa4d9d9d212ff7e333e326, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2358083238668783912
 PrefabInstance:
   m_ObjectHideFlags: 0
