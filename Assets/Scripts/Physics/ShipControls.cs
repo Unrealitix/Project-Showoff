@@ -11,12 +11,18 @@ namespace Physics
 		//Only controls and physics forces in this class!
 		//Health and stuff like that should be in a separate class
 
-		[SerializeField] private string spawnLocationName = "Input Manager";
+		[SerializeField] private string spawnLocationName;
 
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
+		[Tooltip("You need to manually measure this and fill it in!")] [SerializeField] private float maxSpeed = 10f;
+
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
+
+		[Header("Gravity")]
+		[SerializeField] private float gravity = 9.81f;
+		[SerializeField] private float trackGravity = 3.14f;
 
 		[Header("Drag")]
 		[SerializeField] private float driveDrag = 1;
@@ -31,7 +37,7 @@ namespace Physics
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
-		[Tooltip("To know when to apply the underwater drag")] [SerializeField] private PhysicMaterial waterMaterial;
+		public float MaxSpeed => maxSpeed;
 
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
@@ -44,27 +50,29 @@ namespace Physics
 		{
 			_rigidbody = GetComponent<Rigidbody>();
 			_magLasers = GetComponentsInChildren<MagLaser>();
-			if (waterMaterial == null)
-				Debug.LogError(name + " ShipControls: waterMaterial is null!");
 
 			//Physics
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
+			_rigidbody.useGravity = false; //we'll do it ourselves
 
 			//Controls
 			_controls = new Controls();
 			_controls.Enable();
 
 			//Spawn
-			Transform spawn = GameObject.Find(spawnLocationName).transform;
-			Vector3 spawnPosition = spawn.position;
-			Quaternion spawnRotation = spawn.rotation;
+			if (!string.IsNullOrWhiteSpace(spawnLocationName))
+			{
+				Transform spawn = GameObject.Find(spawnLocationName).transform;
+				Vector3 spawnPosition = spawn.position;
+				Quaternion spawnRotation = spawn.rotation;
 
-			Transform parent = transform.parent;
-			parent.position = spawnPosition;
-			parent.rotation = spawnRotation;
+				Transform parent = transform.parent;
+				parent.position = spawnPosition;
+				parent.rotation = spawnRotation;
 
-			_rigidbody.position = spawnPosition;
-			_rigidbody.rotation = spawnRotation;
+				_rigidbody.position = spawnPosition;
+				_rigidbody.rotation = spawnRotation;
+			}
 		}
 
 		public void OnMovement(InputValue value)
@@ -73,12 +81,21 @@ namespace Physics
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
+
+			if (_direction.vertical == 0)
+			{
+				BroadcastMessage("OnAcceleration", false);
+
+			} else if (_direction.vertical > 0 )
+			{
+				BroadcastMessage("OnAcceleration", true);
+			}
 		}
 
 		private void OnTriggerEnter(Collider other)
 		{
 			//Underwater drag
-			if (other.sharedMaterial == waterMaterial)
+			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = underwaterDrag;
 			}
@@ -86,7 +103,7 @@ namespace Physics
 
 		private void OnTriggerExit(Collider other)
 		{
-			if (other.sharedMaterial == waterMaterial)
+			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = driveDrag;
 			}
@@ -103,6 +120,11 @@ namespace Physics
 			Vector3 forward = t.forward;
 			Vector3 right = t.right;
 			Vector3 up = t.up;
+
+			//Gravity
+			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);
+			float g = track ? trackGravity : gravity;
+			_rigidbody.AddForce(Vector3.down * g);
 
 			//Friction
 			float friction = _magLasers.Average(magLaser => magLaser.GroundFriction);

@@ -1,3 +1,4 @@
+using Generated;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -25,9 +26,14 @@ namespace Physics
 		private float GroundHoverForceMultiplier => _groundMaterial != null ? _groundMaterial.staticFriction : 1f;
 
 		/// <summary>
-		/// If the MagLaser is attached to the ground.
+		/// If the MagLaser is attached to anything.
 		/// </summary>
 		public bool IsAttached => _groundMaterial != null;
+
+		/// <summary>
+		/// If the MagLaser is attached to the track.
+		/// </summary>
+		public bool IsAttachedToTrack => _groundMaterial == PhysicMaterialLibrary.Track;
 
 		private Rigidbody _shipRigidbody;
 		private Transform _thisTransform;
