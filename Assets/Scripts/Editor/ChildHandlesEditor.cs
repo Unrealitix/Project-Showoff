@@ -24,8 +24,13 @@ namespace Editor
 		{
 			foreach (Transform child in _children)
 			{
-				Undo.RecordObject(child, "Moved child");
-				child.position = Handles.PositionHandle(child.position, child.rotation);
+				EditorGUI.BeginChangeCheck();
+				Vector3 newPos = Handles.PositionHandle(child.position, child.rotation);
+				if (EditorGUI.EndChangeCheck())
+				{
+					Undo.RecordObject(child, "Moved child");
+					child.position = newPos;
+				}
 			}
 		}
 	}
