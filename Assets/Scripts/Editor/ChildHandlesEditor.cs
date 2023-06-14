@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using EditorTools;
@@ -12,13 +13,12 @@ namespace Editor
 		private ChildHandles _target;
 		private IEnumerable<Transform> _children;
 
-		private void Awake()
+		private void OnEnable()
 		{
 			_target = (ChildHandles) target;
 			_children = _target.GetComponentsInChildren<Transform>().Where(transform => transform != _target.transform);
 		}
 
-		private void OnValidate() => Awake();
 
 		private void OnSceneGUI()
 		{
