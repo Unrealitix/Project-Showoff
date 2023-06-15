@@ -1,42 +1,74 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
 
 namespace Editor
 {
 	public class ReplaceObjects : EditorWindow
 	{
-		[SerializeField] private GameObject prefab1;
-		[SerializeField] private GameObject prefab2;
-
+		private int _size = 1;
+		public List<GameObject> gameObjectList = new List<GameObject>();
 
 		[MenuItem("CustomTools/Replace Object")]
 		private static void Init()
 		{
 			ReplaceObjects window = (ReplaceObjects)GetWindow(typeof(ReplaceObjects), false, "Replace Object");
 			window.Show();
+			
 		}
-
+		
 		private void OnGUI()
 		{
-			GUILayout.Label("Replace selected object(s) with Prefabs", EditorStyles.boldLabel);
+			//Selection information display
+			GUILayout.Label("Replace selected object(s) with assets", EditorStyles.boldLabel);
 			EditorGUILayout.LabelField("Currently selected object(s): " + Selection.objects.Length);
+			GUILayout.Space(10);
 			
-			prefab1 = (GameObject)EditorGUILayout.ObjectField("Prefab 1", prefab1, typeof(GameObject), false);
-			prefab2 = (GameObject)EditorGUILayout.ObjectField("Prefab 2", prefab2, typeof(GameObject), false);
-
-			if (GUILayout.Button("Replace with Prefab 1"))
-				ReplaceWithPrefab(prefab1);
+			//List display
+			GUILayout.Label("List of replacement assets", EditorStyles.boldLabel);
+			GUILayout.Space(10);
 			
+			_size = Mathf.Max(0,EditorGUILayout.IntField("Amount", gameObjectList.Count));
+			
+			while (_size > gameObjectList.Count)
+			{
+				gameObjectList.Add(null);
+			}
+			
+			while (_size < gameObjectList.Count)
+			{
+				gameObjectList.RemoveAt(gameObjectList.Count -1);
+			}
 
-			if (GUILayout.Button("Replace with Prefab 2"))
-				ReplaceWithPrefab(prefab2);
-
-			if (GUILayout.Button("Replace with random Prefab"))
-				ReplaceWithRandom(prefab1, prefab2);
-
+			//display list items
+			for (var i = 0; i < gameObjectList.Count; i++)
+			{
+				GUILayout.Space(2);
+				EditorGUI.indentLevel++;
+				GUILayout.BeginHorizontal();
+				
+				gameObjectList [i] = EditorGUILayout.ObjectField("Asset " + i,gameObjectList[i], typeof(GameObject), false) 
+					as GameObject;
+				
+				if (GUILayout.Button("Replace", GUILayout.MaxWidth(80)))
+					ReplaceWithPrefab(gameObjectList[i]);
+				
+				GUILayout.EndHorizontal();
+				EditorGUI.indentLevel--;
+				
+			}
+			
+			GUILayout.Space(10);
+			if (gameObjectList.Count == 0)
+				GUI.enabled = false;
+			if (GUILayout.Button("Replace with random asset from list"))
+				ReplaceWithRandom();
+			
 		}
 
-		private void ReplaceWithPrefab(GameObject prefab)
+		private static void ReplaceWithPrefab(GameObject prefab)
 		{
 			var selection = Selection.gameObjects;
 
@@ -71,7 +103,7 @@ namespace Editor
 
 		}
 
-		private void ReplaceWithRandom(GameObject object1, GameObject object2)
+		private void ReplaceWithRandom()
 		{
 			var selection = Selection.gameObjects;
 
@@ -79,10 +111,8 @@ namespace Editor
 			{
 				GameObject selected = selection[i];
 				GameObject newObject;
-				
-				var choice =Random.Range(0,2);
-				GameObject prefab = choice == 0 ? object1 : object2;
-				
+				GameObject prefab = gameObjectList[Random.Range(0, gameObjectList.Count)];
+
 				PrefabAssetType prefabType = PrefabUtility.GetPrefabAssetType(prefab);
 
 				//spawn new object
@@ -105,7 +135,6 @@ namespace Editor
 				newObject.transform.localScale = selected.transform.localScale;
 				newObject.transform.SetSiblingIndex(selected.transform.GetSiblingIndex());
 				Undo.DestroyObjectImmediate(selected);
-				
 
 			}
 		}
