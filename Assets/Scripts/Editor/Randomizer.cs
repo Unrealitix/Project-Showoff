@@ -7,26 +7,28 @@ namespace Editor
 	{
 		private bool _randomX, _randomY, _randomZ;
 
-		[MenuItem("CustomScripts/Randomize")]
+		[MenuItem("CustomTools/Randomize Rotation")]
 		private static void Init()
 		{
-			Randomizer window = (Randomizer)GetWindow(typeof(Randomizer));
+			Randomizer window = (Randomizer)GetWindow(typeof(Randomizer), false, "Randomize Rotation");
 			window.Show();
 		}
 
 		private void OnGUI()
 		{
 			GUILayout.Label("Randomize selected objects", EditorStyles.boldLabel);
+			EditorGUILayout.LabelField("Currently selected objects: " + Selection.objects.Length);
 
 			_randomX = EditorGUILayout.Toggle("Randomize X", _randomX);
 			_randomY = EditorGUILayout.Toggle("Randomize Y", _randomY);
 			_randomZ = EditorGUILayout.Toggle("Randomize Z", _randomZ);
 
-			if (GUILayout.Button("Randomize"))
+			if (GUILayout.Button("Randomize Rotation"))
 			{
-				foreach (GameObject go in Selection.gameObjects)
-					go.transform.rotation = Quaternion.Euler(GetRandomRotations(go.transform.rotation.eulerAngles));
+				foreach (GameObject gameObject in Selection.gameObjects)
+					gameObject.transform.rotation = Quaternion.Euler(GetRandomRotations(gameObject.transform.rotation.eulerAngles));
 			}
+			
 		}
 
 		private Vector3 GetRandomRotations(Vector3 currentRotation)
