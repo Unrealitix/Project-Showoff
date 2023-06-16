@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using Generated;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace Physics
@@ -36,6 +37,8 @@ namespace Physics
 		[SerializeField] private float pitchSpeed = 10f;
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
+
+		public UnityEvent<float> isAccelerating;
 
 		public float MaxSpeed => maxSpeed;
 
@@ -83,14 +86,8 @@ namespace Physics
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
 
-			/* if (_direction.vertical == 0)
-			{
-				BroadcastMessage("OnAcceleration", false);
-
-			} else if (_direction.vertical > 0 )
-			{
-				BroadcastMessage("OnAcceleration", true);
-			} */
+			//TODO: Allow negative numbers for reversing
+			isAccelerating.Invoke(Mathf.Abs(_direction.vertical));
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -112,7 +109,6 @@ namespace Physics
 
 		public void OnButtons()
 		{
-
 		}
 
 		private void FixedUpdate()
