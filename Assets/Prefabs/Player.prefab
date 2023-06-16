@@ -848,7 +848,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 66eb0e7e765b1efa18d4a1800e3a3986, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -929,6 +929,21 @@ MonoBehaviour:
   pitchSpeed: 10
   maxPitch: 50
   pitchCorrectionSpeed: 3
+  isAccelerating:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: OnAcceleration
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1428075719608446233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,25 +988,6 @@ MonoBehaviour:
   m_DefaultActionMap: Hover
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 3869931410392986849}
---- !u!114 &1138016291971209892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8793011084976005938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 037c1fd702156c04c90e39873f8a894c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  engine:
-    Guid:
-      Data1: -69659827
-      Data2: 1332724599
-      Data3: 820808878
-      Data4: -280102544
-    Path: event:/Engine
 --- !u!114 &1699064735461387042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1588,3 +1584,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1138016291971209892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037c1fd702156c04c90e39873f8a894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine:
+    Guid:
+      Data1: -69659827
+      Data2: 1332724599
+      Data3: 820808878
+      Data4: -280102544
+    Path: event:/Engine
