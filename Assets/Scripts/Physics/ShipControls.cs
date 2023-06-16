@@ -15,6 +15,8 @@ namespace Physics
 
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
+		[Tooltip("You need to manually measure this and fill it in!")] [SerializeField] private float maxSpeed = 10f;
+
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
 
@@ -35,6 +37,8 @@ namespace Physics
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
+		public float MaxSpeed => maxSpeed;
+
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
 
@@ -50,6 +54,7 @@ namespace Physics
 			//Physics
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
 			_rigidbody.useGravity = false; //we'll do it ourselves
+			PhysicMaterialLibrary.Init();
 
 			//Controls
 			_controls = new Controls();
@@ -77,6 +82,15 @@ namespace Physics
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
+
+			/* if (_direction.vertical == 0)
+			{
+				BroadcastMessage("OnAcceleration", false);
+
+			} else if (_direction.vertical > 0 )
+			{
+				BroadcastMessage("OnAcceleration", true);
+			} */
 		}
 
 		private void OnTriggerEnter(Collider other)
