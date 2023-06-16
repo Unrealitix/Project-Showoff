@@ -3,8 +3,7 @@ using UnityEngine;
 public class LapCheckpoints : MonoBehaviour
 {
     [HideInInspector] public int nextCpNumber;
-    [HideInInspector] public bool startLap;
-
+    
     private void Awake()
     {
         nextCpNumber = 0;
