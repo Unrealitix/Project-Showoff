@@ -793,6 +793,7 @@ GameObject:
   - component: {fileID: 8762844576749775119}
   - component: {fileID: 1138016291971209892}
   - component: {fileID: 1699064735461387042}
+  - component: {fileID: 1677249087098862797}
   m_Layer: 0
   m_Name: ship
   m_TagString: Untagged
@@ -941,7 +942,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextCpNumber: 0
-  startLap: 0
 --- !u!114 &8762844576749775119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -973,6 +973,25 @@ MonoBehaviour:
   m_DefaultActionMap: Hover
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 3869931410392986849}
+--- !u!114 &1138016291971209892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037c1fd702156c04c90e39873f8a894c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  engine:
+    Guid:
+      Data1: -69659827
+      Data2: 1332724599
+      Data3: 820808878
+      Data4: -280102544
+    Path: event:/Engine
 --- !u!114 &1699064735461387042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +1004,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22b927e227aa4d9d9d212ff7e333e326, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1677249087098862797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab5963aee1452294592f34e26b859879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: {fileID: 5144121421236436161}
+  bestTime: {fileID: 1336563145565448426}
 --- !u!1001 &2358083238668783912
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1408,6 +1441,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2730671773589979361}
     m_Modifications:
+    - target: {fileID: 4000965711942638321, guid: b3f02c5510d962526979c6af4846db04,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5420246456105216038, guid: b3f02c5510d962526979c6af4846db04,
         type: 3}
       propertyPath: m_Name
@@ -1520,28 +1558,33 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b3f02c5510d962526979c6af4846db04, type: 3}
+--- !u!114 &1336563145565448426 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7037842489663501026, guid: b3f02c5510d962526979c6af4846db04,
+    type: 3}
+  m_PrefabInstance: {fileID: 8297633195575581192}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &2915106209315932313 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6580767078809752209, guid: b3f02c5510d962526979c6af4846db04,
     type: 3}
   m_PrefabInstance: {fileID: 8297633195575581192}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1138016291971209892
+--- !u!114 &5144121421236436161 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3766287196685067977, guid: b3f02c5510d962526979c6af4846db04,
+    type: 3}
+  m_PrefabInstance: {fileID: 8297633195575581192}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8793011084976005938}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 037c1fd702156c04c90e39873f8a894c, type: 3}
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engine:
-    Guid:
-      Data1: -69659827
-      Data2: 1332724599
-      Data3: 820808878
-      Data4: -280102544
-    Path: event:/Engine
