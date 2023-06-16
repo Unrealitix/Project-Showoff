@@ -28,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410392986863}
-  m_LocalRotation: {x: -0.0000000013780784, y: 0.9870875, z: -0.16018225, w: -0.000000008492101}
+  m_LocalRotation: {x: -0.0000000013780783, y: 0.9870875, z: -0.16018224, w: -0.000000008492101}
   m_LocalPosition: {x: 0, y: 5, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -198,7 +198,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410678474903}
-  m_LocalRotation: {x: -0.0000000013780784, y: 0.9870875, z: -0.16018225, w: -0.000000008492101}
+  m_LocalRotation: {x: -0.0000000013780783, y: 0.9870875, z: -0.16018224, w: -0.000000008492101}
   m_LocalPosition: {x: 0, y: 5, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -789,6 +789,7 @@ GameObject:
   - component: {fileID: 8558639396383628897}
   - component: {fileID: 8558639396383628925}
   - component: {fileID: 8558639396383628924}
+  - component: {fileID: 1428075719608446233}
   - component: {fileID: 8762844576749775119}
   - component: {fileID: 1138016291971209892}
   - component: {fileID: 1699064735461387042}
@@ -927,6 +928,20 @@ MonoBehaviour:
   pitchSpeed: 10
   maxPitch: 50
   pitchCorrectionSpeed: 3
+--- !u!114 &1428075719608446233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39d9d14136cfbad489f8c9142aa9b2fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextCpNumber: 0
+  startLap: 0
 --- !u!114 &8762844576749775119
 MonoBehaviour:
   m_ObjectHideFlags: 0
