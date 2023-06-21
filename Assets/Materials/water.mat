@@ -48,13 +48,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _MainRotation: 90
-    - _OpposingRotation: 90
-    - _Power: 0.1
+    - _MainRotation: 22.92
+    - _OpposingRotation: 2
+    - _Power: 0.01
     - _QueueControl: 0
     - _QueueOffset: 0
+    - _fresnel: 123.74
     m_Colors:
-    - _Color: {r: 0.078431375, g: 0.3254902, b: 0.26666668, a: 0}
-    - _Direction: {r: 2.16, g: 0.91, b: 0, a: 0}
-    - _OpposingDirection: {r: 1, g: 1, b: 0, a: 0}
+    - _Color: {r: 0.09910998, g: 0.6037736, b: 0.48361558, a: 0}
+    - _Direction: {r: 0, g: 5.11, b: 0, a: 0}
+    - _Line_Color: {r: 0, g: 0.45238823, b: 0.6603774, a: 0}
+    - _OpposingDirection: {r: 3.22, g: 1.16, b: 0, a: 0}
   m_BuildTextureStacks: []
