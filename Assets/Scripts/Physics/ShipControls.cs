@@ -47,7 +47,7 @@ namespace Physics
 
 		private float _flightTimer;
 		private Controls _controls;
-		private (float vertical, float horizontal) _direction;
+		private (float vertical, float horizontal, float acceleration) _direction;
 
 		private void Awake()
 		{
@@ -90,6 +90,16 @@ namespace Physics
 			isAccelerating.Invoke(Mathf.Abs(_direction.vertical));
 		}
 
+		public void OnAccelaration(InputValue value)
+		{
+			_direction.acceleration = value.Get<float>();
+		}
+
+		public void OnDeacceleration(InputValue value)
+		{
+			_direction.acceleration = -value.Get<float>();
+		}
+
 		private void OnTriggerEnter(Collider other)
 		{
 			//Underwater drag
@@ -107,8 +117,9 @@ namespace Physics
 			}
 		}
 
-		public void OnButtons()
+		public void OnButtons(InputValue value)
 		{
+			
 		}
 
 		private void FixedUpdate()
@@ -135,7 +146,7 @@ namespace Physics
 			if (attached)
 			{
 				_flightTimer = duration;
-				_rigidbody.AddForceAtPosition(forward * (_direction.vertical * -thrust), engineForcePosition.position);
+				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -thrust), engineForcePosition.position);
 				if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
 					_rigidbody.drag = driveDrag;
 			}

@@ -46,6 +46,24 @@ namespace Generated
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Accelaration"",
+                    ""type"": ""Value"",
+                    ""id"": ""5ce2f942-eb4e-47d0-849d-b67b060af30e"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Deacceleration"",
+                    ""type"": ""Value"",
+                    ""id"": ""7f6d3410-db2c-42d0-a6c4-9bec98d501c9"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -169,6 +187,50 @@ namespace Generated
                     ""action"": ""Buttons"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb027f05-35dc-4c24-aaf8-7535660f24d1"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Buttons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""485dacb6-9ad4-4157-b400-e25fe1aeb543"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Buttons"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""edc94829-8c8d-43ee-869c-ee403a8ccd98"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Accelaration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97ff0f7b-bc3b-471b-80ad-62de1638c4c3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Deacceleration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -202,6 +264,8 @@ namespace Generated
             m_Hover = asset.FindActionMap("Hover", throwIfNotFound: true);
             m_Hover_Movement = m_Hover.FindAction("Movement", throwIfNotFound: true);
             m_Hover_Buttons = m_Hover.FindAction("Buttons", throwIfNotFound: true);
+            m_Hover_Accelaration = m_Hover.FindAction("Accelaration", throwIfNotFound: true);
+            m_Hover_Deacceleration = m_Hover.FindAction("Deacceleration", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -265,12 +329,16 @@ namespace Generated
         private List<IHoverActions> m_HoverActionsCallbackInterfaces = new List<IHoverActions>();
         private readonly InputAction m_Hover_Movement;
         private readonly InputAction m_Hover_Buttons;
+        private readonly InputAction m_Hover_Accelaration;
+        private readonly InputAction m_Hover_Deacceleration;
         public struct HoverActions
         {
             private @Controls m_Wrapper;
             public HoverActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Movement => m_Wrapper.m_Hover_Movement;
             public InputAction @Buttons => m_Wrapper.m_Hover_Buttons;
+            public InputAction @Accelaration => m_Wrapper.m_Hover_Accelaration;
+            public InputAction @Deacceleration => m_Wrapper.m_Hover_Deacceleration;
             public InputActionMap Get() { return m_Wrapper.m_Hover; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -286,6 +354,12 @@ namespace Generated
                 @Buttons.started += instance.OnButtons;
                 @Buttons.performed += instance.OnButtons;
                 @Buttons.canceled += instance.OnButtons;
+                @Accelaration.started += instance.OnAccelaration;
+                @Accelaration.performed += instance.OnAccelaration;
+                @Accelaration.canceled += instance.OnAccelaration;
+                @Deacceleration.started += instance.OnDeacceleration;
+                @Deacceleration.performed += instance.OnDeacceleration;
+                @Deacceleration.canceled += instance.OnDeacceleration;
             }
 
             private void UnregisterCallbacks(IHoverActions instance)
@@ -296,6 +370,12 @@ namespace Generated
                 @Buttons.started -= instance.OnButtons;
                 @Buttons.performed -= instance.OnButtons;
                 @Buttons.canceled -= instance.OnButtons;
+                @Accelaration.started -= instance.OnAccelaration;
+                @Accelaration.performed -= instance.OnAccelaration;
+                @Accelaration.canceled -= instance.OnAccelaration;
+                @Deacceleration.started -= instance.OnDeacceleration;
+                @Deacceleration.performed -= instance.OnDeacceleration;
+                @Deacceleration.canceled -= instance.OnDeacceleration;
             }
 
             public void RemoveCallbacks(IHoverActions instance)
@@ -335,6 +415,8 @@ namespace Generated
         {
             void OnMovement(InputAction.CallbackContext context);
             void OnButtons(InputAction.CallbackContext context);
+            void OnAccelaration(InputAction.CallbackContext context);
+            void OnDeacceleration(InputAction.CallbackContext context);
         }
     }
 }
