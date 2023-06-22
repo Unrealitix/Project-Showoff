@@ -30,7 +30,7 @@ namespace Generated
             ""id"": ""19a28e0b-c75d-49bb-86d2-cf02a96cd70e"",
             ""actions"": [
                 {
-                    ""name"": ""Movement"",
+                    ""name"": ""Rotation"",
                     ""type"": ""Value"",
                     ""id"": ""df851d02-b690-4c62-8609-72aebe301b35"",
                     ""expectedControlType"": ""Vector2"",
@@ -39,13 +39,40 @@ namespace Generated
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Buttons"",
-                    ""type"": ""Button"",
-                    ""id"": ""49f9d40d-1473-4747-8202-14c6fdebb89a"",
-                    ""expectedControlType"": ""Button"",
+                    ""name"": ""Acceleration"",
+                    ""type"": ""Value"",
+                    ""id"": ""5ce2f942-eb4e-47d0-849d-b67b060af30e"",
+                    ""expectedControlType"": ""Analog"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Deceleration"",
+                    ""type"": ""Value"",
+                    ""id"": ""7f6d3410-db2c-42d0-a6c4-9bec98d501c9"",
+                    ""expectedControlType"": ""Analog"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DashLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""180c0479-fe26-415b-a9c3-5878da8235e6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DashRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""2e79ec7e-a673-4499-b2bb-acbae5870514"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -56,29 +83,29 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""up"",
                     ""id"": ""8d962fd6-39b3-4f15-828b-e5817e7b26de"",
-                    ""path"": ""<Keyboard>/w"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""down"",
                     ""id"": ""d1e4fe93-f49a-43fa-9017-7d33e797df1f"",
-                    ""path"": ""<Keyboard>/s"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -89,7 +116,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -100,7 +127,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -111,7 +138,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -122,7 +149,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -133,7 +160,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -144,7 +171,7 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -155,18 +182,95 @@ namespace Generated
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Movement"",
+                    ""action"": ""Rotation"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": """",
-                    ""id"": ""0843b7d2-a8ef-4742-835e-9cd008592a86"",
-                    ""path"": ""<Gamepad>/buttonEast"",
-                    ""interactions"": """",
+                    ""id"": ""edc94829-8c8d-43ee-869c-ee403a8ccd98"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": ""Hold"",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Buttons"",
+                    ""action"": ""Acceleration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dbac45cc-fafb-4eda-b416-a9e438369a6d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Acceleration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""97ff0f7b-bc3b-471b-80ad-62de1638c4c3"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Deceleration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecb13ba3-005e-475e-8a72-a7054c1a6134"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Deceleration"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bb027f05-35dc-4c24-aaf8-7535660f24d1"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DashLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""92598a55-b5da-491a-bf15-fa3e4c5a8afa"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DashLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""485dacb6-9ad4-4157-b400-e25fe1aeb543"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""DashRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""033adfcd-1296-430e-b837-0e337f386783"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""DashRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -200,8 +304,11 @@ namespace Generated
 }");
             // Hover
             m_Hover = asset.FindActionMap("Hover", throwIfNotFound: true);
-            m_Hover_Movement = m_Hover.FindAction("Movement", throwIfNotFound: true);
-            m_Hover_Buttons = m_Hover.FindAction("Buttons", throwIfNotFound: true);
+            m_Hover_Rotation = m_Hover.FindAction("Rotation", throwIfNotFound: true);
+            m_Hover_Acceleration = m_Hover.FindAction("Acceleration", throwIfNotFound: true);
+            m_Hover_Deceleration = m_Hover.FindAction("Deceleration", throwIfNotFound: true);
+            m_Hover_DashLeft = m_Hover.FindAction("DashLeft", throwIfNotFound: true);
+            m_Hover_DashRight = m_Hover.FindAction("DashRight", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -263,14 +370,20 @@ namespace Generated
         // Hover
         private readonly InputActionMap m_Hover;
         private List<IHoverActions> m_HoverActionsCallbackInterfaces = new List<IHoverActions>();
-        private readonly InputAction m_Hover_Movement;
-        private readonly InputAction m_Hover_Buttons;
+        private readonly InputAction m_Hover_Rotation;
+        private readonly InputAction m_Hover_Acceleration;
+        private readonly InputAction m_Hover_Deceleration;
+        private readonly InputAction m_Hover_DashLeft;
+        private readonly InputAction m_Hover_DashRight;
         public struct HoverActions
         {
             private @Controls m_Wrapper;
             public HoverActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Movement => m_Wrapper.m_Hover_Movement;
-            public InputAction @Buttons => m_Wrapper.m_Hover_Buttons;
+            public InputAction @Rotation => m_Wrapper.m_Hover_Rotation;
+            public InputAction @Acceleration => m_Wrapper.m_Hover_Acceleration;
+            public InputAction @Deceleration => m_Wrapper.m_Hover_Deceleration;
+            public InputAction @DashLeft => m_Wrapper.m_Hover_DashLeft;
+            public InputAction @DashRight => m_Wrapper.m_Hover_DashRight;
             public InputActionMap Get() { return m_Wrapper.m_Hover; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -280,22 +393,40 @@ namespace Generated
             {
                 if (instance == null || m_Wrapper.m_HoverActionsCallbackInterfaces.Contains(instance)) return;
                 m_Wrapper.m_HoverActionsCallbackInterfaces.Add(instance);
-                @Movement.started += instance.OnMovement;
-                @Movement.performed += instance.OnMovement;
-                @Movement.canceled += instance.OnMovement;
-                @Buttons.started += instance.OnButtons;
-                @Buttons.performed += instance.OnButtons;
-                @Buttons.canceled += instance.OnButtons;
+                @Rotation.started += instance.OnRotation;
+                @Rotation.performed += instance.OnRotation;
+                @Rotation.canceled += instance.OnRotation;
+                @Acceleration.started += instance.OnAcceleration;
+                @Acceleration.performed += instance.OnAcceleration;
+                @Acceleration.canceled += instance.OnAcceleration;
+                @Deceleration.started += instance.OnDeceleration;
+                @Deceleration.performed += instance.OnDeceleration;
+                @Deceleration.canceled += instance.OnDeceleration;
+                @DashLeft.started += instance.OnDashLeft;
+                @DashLeft.performed += instance.OnDashLeft;
+                @DashLeft.canceled += instance.OnDashLeft;
+                @DashRight.started += instance.OnDashRight;
+                @DashRight.performed += instance.OnDashRight;
+                @DashRight.canceled += instance.OnDashRight;
             }
 
             private void UnregisterCallbacks(IHoverActions instance)
             {
-                @Movement.started -= instance.OnMovement;
-                @Movement.performed -= instance.OnMovement;
-                @Movement.canceled -= instance.OnMovement;
-                @Buttons.started -= instance.OnButtons;
-                @Buttons.performed -= instance.OnButtons;
-                @Buttons.canceled -= instance.OnButtons;
+                @Rotation.started -= instance.OnRotation;
+                @Rotation.performed -= instance.OnRotation;
+                @Rotation.canceled -= instance.OnRotation;
+                @Acceleration.started -= instance.OnAcceleration;
+                @Acceleration.performed -= instance.OnAcceleration;
+                @Acceleration.canceled -= instance.OnAcceleration;
+                @Deceleration.started -= instance.OnDeceleration;
+                @Deceleration.performed -= instance.OnDeceleration;
+                @Deceleration.canceled -= instance.OnDeceleration;
+                @DashLeft.started -= instance.OnDashLeft;
+                @DashLeft.performed -= instance.OnDashLeft;
+                @DashLeft.canceled -= instance.OnDashLeft;
+                @DashRight.started -= instance.OnDashRight;
+                @DashRight.performed -= instance.OnDashRight;
+                @DashRight.canceled -= instance.OnDashRight;
             }
 
             public void RemoveCallbacks(IHoverActions instance)
@@ -333,8 +464,11 @@ namespace Generated
         }
         public interface IHoverActions
         {
-            void OnMovement(InputAction.CallbackContext context);
-            void OnButtons(InputAction.CallbackContext context);
+            void OnRotation(InputAction.CallbackContext context);
+            void OnAcceleration(InputAction.CallbackContext context);
+            void OnDeceleration(InputAction.CallbackContext context);
+            void OnDashLeft(InputAction.CallbackContext context);
+            void OnDashRight(InputAction.CallbackContext context);
         }
     }
 }

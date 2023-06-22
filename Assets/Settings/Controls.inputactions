@@ -6,7 +6,7 @@
             "id": "19a28e0b-c75d-49bb-86d2-cf02a96cd70e",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Rotation",
                     "type": "Value",
                     "id": "df851d02-b690-4c62-8609-72aebe301b35",
                     "expectedControlType": "Vector2",
@@ -15,13 +15,40 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Buttons",
-                    "type": "Button",
-                    "id": "49f9d40d-1473-4747-8202-14c6fdebb89a",
-                    "expectedControlType": "Button",
+                    "name": "Acceleration",
+                    "type": "Value",
+                    "id": "5ce2f942-eb4e-47d0-849d-b67b060af30e",
+                    "expectedControlType": "Analog",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Deceleration",
+                    "type": "Value",
+                    "id": "7f6d3410-db2c-42d0-a6c4-9bec98d501c9",
+                    "expectedControlType": "Analog",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "DashLeft",
+                    "type": "Button",
+                    "id": "180c0479-fe26-415b-a9c3-5878da8235e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DashRight",
+                    "type": "Button",
+                    "id": "2e79ec7e-a673-4499-b2bb-acbae5870514",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -32,29 +59,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
                     "id": "8d962fd6-39b3-4f15-828b-e5817e7b26de",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
                     "id": "d1e4fe93-f49a-43fa-9017-7d33e797df1f",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +92,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -76,7 +103,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -87,7 +114,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -98,7 +125,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -109,7 +136,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -120,7 +147,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -131,18 +158,95 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "0843b7d2-a8ef-4742-835e-9cd008592a86",
-                    "path": "<Gamepad>/buttonEast",
-                    "interactions": "",
+                    "id": "edc94829-8c8d-43ee-869c-ee403a8ccd98",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "Hold",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Buttons",
+                    "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbac45cc-fafb-4eda-b416-a9e438369a6d",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Acceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "97ff0f7b-bc3b-471b-80ad-62de1638c4c3",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Deceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ecb13ba3-005e-475e-8a72-a7054c1a6134",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Deceleration",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bb027f05-35dc-4c24-aaf8-7535660f24d1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92598a55-b5da-491a-bf15-fa3e4c5a8afa",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "485dacb6-9ad4-4157-b400-e25fe1aeb543",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "033adfcd-1296-430e-b837-0e337f386783",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DashRight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -47,7 +47,7 @@ namespace Physics
 
 		private float _flightTimer;
 		private Controls _controls;
-		private (float vertical, float horizontal) _direction;
+		private (float vertical, float horizontal, float acceleration) _direction;
 
 		private void Awake()
 		{
@@ -77,17 +77,38 @@ namespace Physics
 				_rigidbody.position = spawnPosition;
 				_rigidbody.rotation = spawnRotation;
 			}
+
+			isAccelerating.AddListener(arg0 => Debug.Log("thrust: " + arg0));
 		}
 
-		public void OnMovement(InputValue value)
+		public void OnRotation(InputValue value)
 		{
 			Vector2 direction = value.Get<Vector2>();
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
+		}
 
-			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_direction.vertical));
+		public void OnAcceleration(InputValue value)
+		{
+			Debug.Log("eepy");
+
+			_direction.acceleration = value.Get<float>();
+		}
+
+		public void OnDeceleration(InputValue value)
+		{
+			_direction.acceleration = -value.Get<float>();
+		}
+
+		public void OnDashLeft()
+		{
+			Debug.Log("Dash left");
+		}
+
+		public void OnDashRight()
+		{
+			Debug.Log("Dash right");
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -107,8 +128,10 @@ namespace Physics
 			}
 		}
 
-		public void OnButtons()
+		private void Update()
 		{
+			//TODO: Allow negative numbers for reversing
+			isAccelerating.Invoke(Mathf.Abs(_direction.acceleration));
 		}
 
 		private void FixedUpdate()
@@ -135,7 +158,7 @@ namespace Physics
 			if (attached)
 			{
 				_flightTimer = duration;
-				_rigidbody.AddForceAtPosition(forward * (_direction.vertical * -thrust), engineForcePosition.position);
+				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -thrust), engineForcePosition.position);
 				if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
 					_rigidbody.drag = driveDrag;
 			}
