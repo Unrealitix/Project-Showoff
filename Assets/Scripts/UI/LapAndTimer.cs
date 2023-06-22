@@ -5,7 +5,7 @@ using System.IO;
 
 namespace UI
 {
-	public class LapTimer : MonoBehaviour
+	public class LapAndTimer : MonoBehaviour
 	{
 		//Objects for the Time and Best/Total time
 		[SerializeField] private TMP_Text timer;
@@ -18,19 +18,19 @@ namespace UI
 		//Lap related variables
 		private int _currentLap;
 		[SerializeField] private int maxNumLaps = 2;
-		
+
 		//Time related variables
 		private float _lapTime;
 		private float _bestTime;
 		private float _totalTime;
-		
-		private LapCheckpoints _lapCp;
-		
+
+		private CheckpointTracker _lapCp;
+
 		private bool _startLap;
 
 		private void Awake()
 		{
-			_lapCp = GetComponent<LapCheckpoints>();
+			_lapCp = GetComponent<CheckpointTracker>();
 			maxLaps.text = maxNumLaps.ToString();
 		}
 
@@ -50,17 +50,17 @@ namespace UI
 				currentLap.text = _currentLap.ToString();
 				_startLap = true;
 				if (_lapCp.nextCpNumber != 0) return;
-				
+
 				_currentLap++;
 				_totalTime += _lapTime;
 				bestTime.text = ShowTimer(_totalTime);
-				
+
 				if (_lapTime < _bestTime || _bestTime == 0)
 				{
 					_bestTime = _lapTime;
 					//bestTime.text = ShowTimer(_bestTime);
 				}
-				
+
 				if (_currentLap > maxNumLaps)
 				{
 					File.AppendAllText(Application.dataPath + "/totalTime.txt", ShowTimer(_totalTime) + "\n");

@@ -1155,22 +1155,22 @@ PrefabInstance:
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.9427514
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.33349633
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
@@ -1180,7 +1180,7 @@ PrefabInstance:
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: -118.149
+      value: 38.962
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
@@ -15990,7 +15990,7 @@ GameObject:
   - component: {fileID: 2081814918}
   - component: {fileID: 2081814919}
   m_Layer: 0
-  m_Name: LapCheckpoints
+  m_Name: Checkpoint Manager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
