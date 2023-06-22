@@ -1,14 +1,25 @@
+using TMPro;
 using UnityEngine;
 
 namespace Checkpoints
 {
-	public class LapCheckpoints : MonoBehaviour
+	public class CheckpointTracker : MonoBehaviour
 	{
 		[HideInInspector] public int nextCpNumber;
+		[SerializeField] private TMP_Text wrongWay;
 
 		private void Awake()
 		{
 			nextCpNumber = 0;
+		}
+
+		private void Update()
+		{
+			Transform t = transform;
+			Vector3 nextPos = CheckpointManager.Instance.cpList[nextCpNumber].transform.position;
+			Vector3 nextDir = nextPos - t.position;
+			float dot = Vector3.Dot(t.forward, nextDir);
+			wrongWay.gameObject.SetActive(dot > 0);
 		}
 
 		private void PassedThroughCp(Checkpoint checkpoint)
