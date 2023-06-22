@@ -39,8 +39,8 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Colour: {r: 11.984314, g: 0.1882353, b: 2.572549, a: 1}
-    - _EdgeColour: {r: 2.6701574, g: 0, b: 1.3717438, a: 1}
+    - _Colour: {r: 2.9960785, g: 0.047058824, b: 0.6431373, a: 1}
+    - _EdgeColour: {r: 1.4980392, g: 0, b: 0.7764706, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3429314391336509154
 MonoBehaviour:

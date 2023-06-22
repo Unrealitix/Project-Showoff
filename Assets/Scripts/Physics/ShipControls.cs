@@ -77,27 +77,38 @@ namespace Physics
 				_rigidbody.position = spawnPosition;
 				_rigidbody.rotation = spawnRotation;
 			}
+
+			isAccelerating.AddListener(arg0 => Debug.Log("thrust: " + arg0));
 		}
 
-		public void OnMovement(InputValue value)
+		public void OnRotation(InputValue value)
 		{
 			Vector2 direction = value.Get<Vector2>();
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
-
-			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_direction.vertical));
 		}
 
-		public void OnAccelaration(InputValue value)
+		public void OnAcceleration(InputValue value)
 		{
+			Debug.Log("eepy");
+
 			_direction.acceleration = value.Get<float>();
 		}
 
-		public void OnDeacceleration(InputValue value)
+		public void OnDeceleration(InputValue value)
 		{
 			_direction.acceleration = -value.Get<float>();
+		}
+
+		public void OnDashLeft()
+		{
+			Debug.Log("Dash left");
+		}
+
+		public void OnDashRight()
+		{
+			Debug.Log("Dash right");
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -117,9 +128,10 @@ namespace Physics
 			}
 		}
 
-		public void OnButtons(InputValue value)
+		private void Update()
 		{
-			
+			//TODO: Allow negative numbers for reversing
+			isAccelerating.Invoke(Mathf.Abs(_direction.acceleration));
 		}
 
 		private void FixedUpdate()
