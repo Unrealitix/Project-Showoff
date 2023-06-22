@@ -7,7 +7,7 @@ namespace Checkpoints
 	{
 		public static CheckpointManager Instance { get; private set; }
 
-		public List<Checkpoint> cpList;
+		[HideInInspector] public List<Checkpoint> cpList;
 
 		private void Awake()
 		{
