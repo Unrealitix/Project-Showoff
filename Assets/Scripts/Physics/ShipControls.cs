@@ -21,6 +21,11 @@ namespace Physics
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
 
+		[Header("Boost")]
+		[SerializeField] private float boostThrust = 20f;
+		[SerializeField] private float boostDuration = 1f;
+
+
 		[Header("Gravity")]
 		[SerializeField] private float gravity = 9.81f;
 		[SerializeField] private float trackGravity = 3.14f;
@@ -45,9 +50,10 @@ namespace Physics
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
 
+		private float _currentThrust;
 		private float _flightTimer;
 		private Controls _controls;
-		private (float vertical, float horizontal) _direction;
+		private (float vertical, float horizontal, float acceleration) _direction;
 
 		private void Awake()
 		{
@@ -55,6 +61,7 @@ namespace Physics
 			_magLasers = GetComponentsInChildren<MagLaser>();
 
 			//Physics
+			_currentThrust = thrust;
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
 			_rigidbody.useGravity = false; //we'll do it ourselves
 			PhysicMaterialLibrary.Init();
@@ -79,15 +86,32 @@ namespace Physics
 			}
 		}
 
-		public void OnMovement(InputValue value)
+		public void OnRotation(InputValue value)
 		{
 			Vector2 direction = value.Get<Vector2>();
 
 			_direction.vertical = direction.y;
 			_direction.horizontal = direction.x;
+		}
 
-			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_direction.vertical));
+		public void OnAcceleration(InputValue value)
+		{
+			_direction.acceleration = value.Get<float>();
+		}
+
+		public void OnDeceleration(InputValue value)
+		{
+			_direction.acceleration = -value.Get<float>();
+		}
+
+		public void OnDashLeft()
+		{
+			Debug.Log("Dash left");
+		}
+
+		public void OnDashRight()
+		{
+			Debug.Log("Dash right");
 		}
 
 		private void OnTriggerEnter(Collider other)
@@ -96,6 +120,11 @@ namespace Physics
 			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = underwaterDrag;
+			}
+
+			if (other.TryGetComponent(out Boost boost))
+			{
+				_currentThrust = boostThrust;
 			}
 		}
 
@@ -107,8 +136,10 @@ namespace Physics
 			}
 		}
 
-		public void OnButtons()
+		private void Update()
 		{
+			//TODO: Allow negative numbers for reversing
+			isAccelerating.Invoke(Mathf.Abs(_direction.acceleration));
 		}
 
 		private void FixedUpdate()
@@ -117,6 +148,10 @@ namespace Physics
 			Vector3 forward = t.forward;
 			Vector3 right = t.right;
 			Vector3 up = t.up;
+
+			//Boost
+			_currentThrust = Mathf.Lerp(_currentThrust, thrust, Time.fixedDeltaTime);
+			Debug.Log("c thrust" + _currentThrust);
 
 			//Gravity
 			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);
@@ -135,7 +170,7 @@ namespace Physics
 			if (attached)
 			{
 				_flightTimer = duration;
-				_rigidbody.AddForceAtPosition(forward * (_direction.vertical * -thrust), engineForcePosition.position);
+				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -_currentThrust), engineForcePosition.position);
 				if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
 					_rigidbody.drag = driveDrag;
 			}
@@ -150,7 +185,7 @@ namespace Physics
 				float flightFactor = Mathf.Clamp(_flightTimer / duration, lowestThrustFactor, 1.0f);
 				// Debug.Log("Flight Factor: " + flightFactor);
 
-				_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
+				_rigidbody.AddForce(forward * (-_currentThrust * flightFactor)); //Always full throttle
 
 				//==Pitch==
 				Vector3 localEulerAngles = t.localEulerAngles;
