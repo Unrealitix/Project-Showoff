@@ -1063,11 +1063,9 @@ MonoBehaviour:
   trackGravity: 3.14
   driveDrag: 1
   underwaterDrag: 1.5
-  flightDrag: 0.5
-  duration: 2
-  lowestThrustFactor: 0.2
-  rollSpeed: 0.1
-  pitchSpeed: 10
+  flightDrag: 0.7
+  rollSpeed: 0.15
+  pitchSpeed: 20
   maxPitch: 50
   pitchCorrectionSpeed: 3
   isAccelerating:
