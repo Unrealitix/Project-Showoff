@@ -39,19 +39,10 @@ namespace Generated
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Acceleration"",
+                    ""name"": ""Thrust"",
                     ""type"": ""Value"",
-                    ""id"": ""5ce2f942-eb4e-47d0-849d-b67b060af30e"",
-                    ""expectedControlType"": ""Analog"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Deceleration"",
-                    ""type"": ""Value"",
-                    ""id"": ""7f6d3410-db2c-42d0-a6c4-9bec98d501c9"",
-                    ""expectedControlType"": ""Analog"",
+                    ""id"": ""882a3689-2a32-4663-9300-b8f81450b4a7"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -77,7 +68,7 @@ namespace Generated
             ],
             ""bindings"": [
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""2D Vector Keyboard"",
                     ""id"": ""dfc2321f-7e78-46f5-b3c9-c6a3a25638a5"",
                     ""path"": ""2DVector(mode=1)"",
                     ""interactions"": """",
@@ -132,7 +123,7 @@ namespace Generated
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""2D Vector"",
+                    ""name"": ""2D Vector Gamepad"",
                     ""id"": ""751c4846-6d38-4cd9-b6b5-7f57211ae7ea"",
                     ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
@@ -188,50 +179,6 @@ namespace Generated
                 },
                 {
                     ""name"": """",
-                    ""id"": ""edc94829-8c8d-43ee-869c-ee403a8ccd98"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Acceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""dbac45cc-fafb-4eda-b416-a9e438369a6d"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Acceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""97ff0f7b-bc3b-471b-80ad-62de1638c4c3"",
-                    ""path"": ""<Gamepad>/leftTrigger"",
-                    ""interactions"": ""Hold"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Deceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ecb13ba3-005e-475e-8a72-a7054c1a6134"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Deceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""bb027f05-35dc-4c24-aaf8-7535660f24d1"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": ""Press"",
@@ -273,6 +220,72 @@ namespace Generated
                     ""action"": ""DashRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis Keyboard"",
+                    ""id"": ""3cfa648b-ff9c-46b9-b49d-d17914771a0d"",
+                    ""path"": ""1DAxis(whichSideWins=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""b570930b-4072-4225-a9ff-923a0862095f"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""70cf48b1-db06-419d-b954-283086b3bf40"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis Gamepad"",
+                    ""id"": ""c6327227-a9a6-401e-84d7-8fdcacaee028"",
+                    ""path"": ""1DAxis(whichSideWins=1)"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""46a7354f-0081-4c12-a0f2-cb419afd9989"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""904e127a-b90e-4be1-83fe-3e72eb16c026"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Thrust"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -305,8 +318,7 @@ namespace Generated
             // Hover
             m_Hover = asset.FindActionMap("Hover", throwIfNotFound: true);
             m_Hover_Rotation = m_Hover.FindAction("Rotation", throwIfNotFound: true);
-            m_Hover_Acceleration = m_Hover.FindAction("Acceleration", throwIfNotFound: true);
-            m_Hover_Deceleration = m_Hover.FindAction("Deceleration", throwIfNotFound: true);
+            m_Hover_Thrust = m_Hover.FindAction("Thrust", throwIfNotFound: true);
             m_Hover_DashLeft = m_Hover.FindAction("DashLeft", throwIfNotFound: true);
             m_Hover_DashRight = m_Hover.FindAction("DashRight", throwIfNotFound: true);
         }
@@ -371,8 +383,7 @@ namespace Generated
         private readonly InputActionMap m_Hover;
         private List<IHoverActions> m_HoverActionsCallbackInterfaces = new List<IHoverActions>();
         private readonly InputAction m_Hover_Rotation;
-        private readonly InputAction m_Hover_Acceleration;
-        private readonly InputAction m_Hover_Deceleration;
+        private readonly InputAction m_Hover_Thrust;
         private readonly InputAction m_Hover_DashLeft;
         private readonly InputAction m_Hover_DashRight;
         public struct HoverActions
@@ -380,8 +391,7 @@ namespace Generated
             private @Controls m_Wrapper;
             public HoverActions(@Controls wrapper) { m_Wrapper = wrapper; }
             public InputAction @Rotation => m_Wrapper.m_Hover_Rotation;
-            public InputAction @Acceleration => m_Wrapper.m_Hover_Acceleration;
-            public InputAction @Deceleration => m_Wrapper.m_Hover_Deceleration;
+            public InputAction @Thrust => m_Wrapper.m_Hover_Thrust;
             public InputAction @DashLeft => m_Wrapper.m_Hover_DashLeft;
             public InputAction @DashRight => m_Wrapper.m_Hover_DashRight;
             public InputActionMap Get() { return m_Wrapper.m_Hover; }
@@ -396,12 +406,9 @@ namespace Generated
                 @Rotation.started += instance.OnRotation;
                 @Rotation.performed += instance.OnRotation;
                 @Rotation.canceled += instance.OnRotation;
-                @Acceleration.started += instance.OnAcceleration;
-                @Acceleration.performed += instance.OnAcceleration;
-                @Acceleration.canceled += instance.OnAcceleration;
-                @Deceleration.started += instance.OnDeceleration;
-                @Deceleration.performed += instance.OnDeceleration;
-                @Deceleration.canceled += instance.OnDeceleration;
+                @Thrust.started += instance.OnThrust;
+                @Thrust.performed += instance.OnThrust;
+                @Thrust.canceled += instance.OnThrust;
                 @DashLeft.started += instance.OnDashLeft;
                 @DashLeft.performed += instance.OnDashLeft;
                 @DashLeft.canceled += instance.OnDashLeft;
@@ -415,12 +422,9 @@ namespace Generated
                 @Rotation.started -= instance.OnRotation;
                 @Rotation.performed -= instance.OnRotation;
                 @Rotation.canceled -= instance.OnRotation;
-                @Acceleration.started -= instance.OnAcceleration;
-                @Acceleration.performed -= instance.OnAcceleration;
-                @Acceleration.canceled -= instance.OnAcceleration;
-                @Deceleration.started -= instance.OnDeceleration;
-                @Deceleration.performed -= instance.OnDeceleration;
-                @Deceleration.canceled -= instance.OnDeceleration;
+                @Thrust.started -= instance.OnThrust;
+                @Thrust.performed -= instance.OnThrust;
+                @Thrust.canceled -= instance.OnThrust;
                 @DashLeft.started -= instance.OnDashLeft;
                 @DashLeft.performed -= instance.OnDashLeft;
                 @DashLeft.canceled -= instance.OnDashLeft;
@@ -465,8 +469,7 @@ namespace Generated
         public interface IHoverActions
         {
             void OnRotation(InputAction.CallbackContext context);
-            void OnAcceleration(InputAction.CallbackContext context);
-            void OnDeceleration(InputAction.CallbackContext context);
+            void OnThrust(InputAction.CallbackContext context);
             void OnDashLeft(InputAction.CallbackContext context);
             void OnDashRight(InputAction.CallbackContext context);
         }

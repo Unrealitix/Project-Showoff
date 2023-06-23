@@ -98,14 +98,9 @@ namespace Physics
 			_direction.horizontal = direction.x;
 		}
 
-		public void OnAcceleration(InputValue value)
+		public void OnThrust(InputValue value)
 		{
 			_direction.acceleration = value.Get<float>();
-		}
-
-		public void OnDeceleration(InputValue value)
-		{
-			_direction.acceleration = -value.Get<float>();
 		}
 
 		public void OnDashLeft()
