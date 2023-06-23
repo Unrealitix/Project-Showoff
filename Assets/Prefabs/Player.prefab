@@ -589,7 +589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5310738105192480695}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.75, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1082,6 +1082,60 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  enterWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2914301653256314587}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Pause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3146551658487625150}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  exitWater:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2914301653256314587}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 3146551658487625150}
+        m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8762844576749775119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1355,6 +1409,29 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8164142469406095752}
     m_Modifications:
+    - target: {fileID: 2266031604636498986, guid: eebfb1bea66fd684c8b4f4656843f242,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2266031604636498986, guid: eebfb1bea66fd684c8b4f4656843f242,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[0].sprite
+      value: 
+      objectReference: {fileID: 1901062800, guid: f4ccb46e1638d7940958bd02bbd60061,
+        type: 3}
+    - target: {fileID: 2266031604636498986, guid: eebfb1bea66fd684c8b4f4656843f242,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[1].sprite
+      value: 
+      objectReference: {fileID: 544341395, guid: f4ccb46e1638d7940958bd02bbd60061,
+        type: 3}
+    - target: {fileID: 2266031604636498986, guid: eebfb1bea66fd684c8b4f4656843f242,
+        type: 3}
+      propertyPath: UVModule.sprites.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 1506853845, guid: f4ccb46e1638d7940958bd02bbd60061,
+        type: 3}
     - target: {fileID: 2266031604636498987, guid: eebfb1bea66fd684c8b4f4656843f242,
         type: 3}
       propertyPath: m_RootOrder
@@ -1373,7 +1450,7 @@ PrefabInstance:
     - target: {fileID: 2266031604636498987, guid: eebfb1bea66fd684c8b4f4656843f242,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 6.4
+      value: 4.3
       objectReference: {fileID: 0}
     - target: {fileID: 2266031604636498987, guid: eebfb1bea66fd684c8b4f4656843f242,
         type: 3}
@@ -1415,11 +1492,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThrusterParticles
       objectReference: {fileID: 0}
+    - target: {fileID: 2266031604636498988, guid: eebfb1bea66fd684c8b4f4656843f242,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eebfb1bea66fd684c8b4f4656843f242, type: 3}
 --- !u!4 &2914301653256314586 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2266031604636498987, guid: eebfb1bea66fd684c8b4f4656843f242,
+    type: 3}
+  m_PrefabInstance: {fileID: 3964049844251108081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &2914301653256314587 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2266031604636498986, guid: eebfb1bea66fd684c8b4f4656843f242,
     type: 3}
   m_PrefabInstance: {fileID: 3964049844251108081}
   m_PrefabAsset: {fileID: 0}
@@ -1492,6 +1580,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ede2ef1c5b97c7428d1d5e27978669c, type: 3}
+--- !u!198 &3146551658487625150 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 2077459761938221302, guid: 8ede2ef1c5b97c7428d1d5e27978669c,
+    type: 3}
+  m_PrefabInstance: {fileID: 3998724410976304456}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3146551658487625151 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2077459761938221303, guid: 8ede2ef1c5b97c7428d1d5e27978669c,
