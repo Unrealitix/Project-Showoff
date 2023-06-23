@@ -21,6 +21,11 @@ namespace Physics
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
 
+		[Header("Boost")]
+		[SerializeField] private float boostThrust = 20f;
+		[SerializeField] private float boostDuration = 1f;
+
+
 		[Header("Gravity")]
 		[SerializeField] private float gravity = 9.81f;
 		[SerializeField] private float trackGravity = 3.14f;
@@ -45,6 +50,7 @@ namespace Physics
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
 
+		private float _currentThrust;
 		private float _flightTimer;
 		private Controls _controls;
 		private (float vertical, float horizontal, float acceleration) _direction;
@@ -55,6 +61,7 @@ namespace Physics
 			_magLasers = GetComponentsInChildren<MagLaser>();
 
 			//Physics
+			_currentThrust = thrust;
 			_rigidbody.centerOfMass = centerOfMass.localPosition;
 			_rigidbody.useGravity = false; //we'll do it ourselves
 			PhysicMaterialLibrary.Init();
@@ -77,8 +84,6 @@ namespace Physics
 				_rigidbody.position = spawnPosition;
 				_rigidbody.rotation = spawnRotation;
 			}
-
-			isAccelerating.AddListener(arg0 => Debug.Log("thrust: " + arg0));
 		}
 
 		public void OnRotation(InputValue value)
@@ -91,8 +96,6 @@ namespace Physics
 
 		public void OnAcceleration(InputValue value)
 		{
-			Debug.Log("eepy");
-
 			_direction.acceleration = value.Get<float>();
 		}
 
@@ -118,6 +121,11 @@ namespace Physics
 			{
 				_rigidbody.drag = underwaterDrag;
 			}
+
+			if (other.TryGetComponent(out Boost boost))
+			{
+				_currentThrust = boostThrust;
+			}
 		}
 
 		private void OnTriggerExit(Collider other)
@@ -141,6 +149,10 @@ namespace Physics
 			Vector3 right = t.right;
 			Vector3 up = t.up;
 
+			//Boost
+			_currentThrust = Mathf.Lerp(_currentThrust, thrust, Time.fixedDeltaTime);
+			Debug.Log("c thrust" + _currentThrust);
+
 			//Gravity
 			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);
 			float g = track ? trackGravity : gravity;
@@ -158,7 +170,7 @@ namespace Physics
 			if (attached)
 			{
 				_flightTimer = duration;
-				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -thrust), engineForcePosition.position);
+				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -_currentThrust), engineForcePosition.position);
 				if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
 					_rigidbody.drag = driveDrag;
 			}
@@ -173,7 +185,7 @@ namespace Physics
 				float flightFactor = Mathf.Clamp(_flightTimer / duration, lowestThrustFactor, 1.0f);
 				// Debug.Log("Flight Factor: " + flightFactor);
 
-				_rigidbody.AddForce(forward * (-thrust * flightFactor)); //Always full throttle
+				_rigidbody.AddForce(forward * (-_currentThrust * flightFactor)); //Always full throttle
 
 				//==Pitch==
 				Vector3 localEulerAngles = t.localEulerAngles;
