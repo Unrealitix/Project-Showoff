@@ -44,6 +44,8 @@ namespace Physics
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
 		public UnityEvent<float> isAccelerating;
+		public UnityEvent enterWater;
+		public UnityEvent exitWater;
 
 		public float MaxSpeed => maxSpeed;
 
@@ -86,6 +88,11 @@ namespace Physics
 			}
 		}
 
+		private void Start()
+		{
+			exitWater.Invoke();
+		}
+
 		public void OnRotation(InputValue value)
 		{
 			Vector2 direction = value.Get<Vector2>();
@@ -120,6 +127,7 @@ namespace Physics
 			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = underwaterDrag;
+				enterWater.Invoke();
 			}
 
 			if (other.TryGetComponent(out Boost boost))
@@ -133,6 +141,7 @@ namespace Physics
 			if (other.sharedMaterial == PhysicMaterialLibrary.Water)
 			{
 				_rigidbody.drag = driveDrag;
+				exitWater.Invoke();
 			}
 		}
 
