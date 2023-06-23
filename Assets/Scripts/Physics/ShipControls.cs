@@ -1,5 +1,7 @@
 using System;
+using System.Collections;
 using System.Linq;
+using Checkpoints;
 using Generated;
 using UnityEngine;
 using UnityEngine.Events;
@@ -53,7 +55,7 @@ namespace Physics
 		private float _currentThrust;
 		private float _flightTimer;
 		private Controls _controls;
-		private (float vertical, float horizontal, float acceleration) _direction;
+		private (float vertical, float horizontal, float acceleration) _controllerInput;
 
 		private void Awake()
 		{
@@ -86,22 +88,45 @@ namespace Physics
 			}
 		}
 
+		public void Respawn(Checkpoint at)
+		{
+			Transform target = at.transform;
+			Vector3 spawnPosition = target.position;
+			Quaternion spawnRotation = target.rotation;
+
+			Transform shipTransform = transform;
+			shipTransform.position = spawnPosition;
+			shipTransform.rotation = spawnRotation;
+
+			_rigidbody.position = spawnPosition;
+			_rigidbody.rotation = spawnRotation;
+			_rigidbody.velocity = Vector3.zero;
+			_rigidbody.angularVelocity = Vector3.zero;
+
+			foreach (MagLaser magLaser in _magLasers)
+			{
+				magLaser.Reset();
+			}
+
+			_currentThrust = 0;
+		}
+
 		public void OnRotation(InputValue value)
 		{
 			Vector2 direction = value.Get<Vector2>();
 
-			_direction.vertical = direction.y;
-			_direction.horizontal = direction.x;
+			_controllerInput.vertical = direction.y;
+			_controllerInput.horizontal = direction.x;
 		}
 
 		public void OnAcceleration(InputValue value)
 		{
-			_direction.acceleration = value.Get<float>();
+			_controllerInput.acceleration = value.Get<float>();
 		}
 
 		public void OnDeceleration(InputValue value)
 		{
-			_direction.acceleration = -value.Get<float>();
+			_controllerInput.acceleration = -value.Get<float>();
 		}
 
 		public void OnDashLeft()
@@ -139,7 +164,7 @@ namespace Physics
 		private void Update()
 		{
 			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_direction.acceleration));
+			isAccelerating.Invoke(Mathf.Abs(_controllerInput.acceleration));
 		}
 
 		private void FixedUpdate()
@@ -151,7 +176,6 @@ namespace Physics
 
 			//Boost
 			_currentThrust = Mathf.Lerp(_currentThrust, thrust, Time.fixedDeltaTime);
-			Debug.Log("c thrust" + _currentThrust);
 
 			//Gravity
 			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);
@@ -166,11 +190,11 @@ namespace Physics
 
 			//Input
 			// Debug.Log($"Current Controller Input: Vertical({_direction.vertical}) | Horizontal({_direction.horizontal})");
-			_rigidbody.AddTorque(up * (_direction.horizontal * turnSpeed)); //always just rotate around UP based on horizontal input
+			_rigidbody.AddTorque(up * (_controllerInput.horizontal * turnSpeed)); //always just rotate around UP based on horizontal input
 			if (attached)
 			{
 				_flightTimer = duration;
-				_rigidbody.AddForceAtPosition(forward * (_direction.acceleration * -_currentThrust), engineForcePosition.position);
+				_rigidbody.AddForceAtPosition(forward * (_controllerInput.acceleration * -_currentThrust), engineForcePosition.position);
 				if (Math.Abs(_rigidbody.drag - underwaterDrag) > 0.01f) //Don't overwrite underwater drag
 					_rigidbody.drag = driveDrag;
 			}
@@ -194,25 +218,25 @@ namespace Physics
 				float pitchFactor01 = Mathf.Clamp01(1.0f - Mathf.Abs(pitchFactor));
 				if (pitch < 0f)
 				{
-					switch (_direction.vertical)
+					switch (_controllerInput.vertical)
 					{
 						case < 0f:
-							_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed * pitchFactor01));
+							_rigidbody.AddTorque(right * (_controllerInput.vertical * -pitchSpeed * pitchFactor01));
 							break;
 						case > 0f:
-							_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed));
+							_rigidbody.AddTorque(right * (_controllerInput.vertical * -pitchSpeed));
 							break;
 					}
 				}
 				else
 				{
-					switch (_direction.vertical)
+					switch (_controllerInput.vertical)
 					{
 						case < 0f:
-							_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed));
+							_rigidbody.AddTorque(right * (_controllerInput.vertical * -pitchSpeed));
 							break;
 						case > 0f:
-							_rigidbody.AddTorque(right * (_direction.vertical * -pitchSpeed * pitchFactor01));
+							_rigidbody.AddTorque(right * (_controllerInput.vertical * -pitchSpeed * pitchFactor01));
 							break;
 					}
 				}
