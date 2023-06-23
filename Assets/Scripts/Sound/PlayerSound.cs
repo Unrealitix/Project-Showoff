@@ -15,7 +15,7 @@ namespace Sound
 			_engine.start();
 		}
 
-		public void OnAcceleration(float acceleration)
+		public void Acceleration(float acceleration)
 		{
 			_engine.setParameterByName("acceleration", acceleration);
 		}
