@@ -1,4 +1,6 @@
+using Physics;
 using TMPro;
+using Track;
 using UnityEngine;
 
 namespace Checkpoints
@@ -26,14 +28,7 @@ namespace Checkpoints
 		{
 			if (CheckpointManager.Instance.cpList.IndexOf(checkpoint) == nextCpNumber)
 			{
-				Debug.Log("Correct");
 				nextCpNumber = (nextCpNumber + 1) % CheckpointManager.Instance.cpList.Count;
-				Debug.Log(nextCpNumber);
-			}
-			else
-			{
-				Debug.Log("Wrong");
-				Debug.Log(nextCpNumber);
 			}
 		}
 
@@ -42,6 +37,13 @@ namespace Checkpoints
 			if (other.TryGetComponent(out Checkpoint checkpoint))
 			{
 				PassedThroughCp(checkpoint);
+			}
+			else if (other.TryGetComponent(out KillZone killZone))
+			{
+				ShipControls ship = GetComponent<ShipControls>();
+				Checkpoint cp = CheckpointManager.Instance.cpList[nextCpNumber - 1];
+				Debug.Log(cp.name);
+				ship.Respawn(cp);
 			}
 		}
 	}

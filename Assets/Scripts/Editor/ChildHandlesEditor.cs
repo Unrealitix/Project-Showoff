@@ -18,9 +18,9 @@ namespace Editor
 			_children = _target.GetComponentsInChildren<Transform>().Where(transform => transform != _target.transform);
 		}
 
-
 		private void OnSceneGUI()
 		{
+			if (!_target.isEnabled) return;
 			foreach (Transform child in _children)
 			{
 				EditorGUI.BeginChangeCheck();

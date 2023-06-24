@@ -8,19 +8,24 @@ namespace Camera
 	[ExecuteAlways]
 	public class CinemachineSpeedFOV : CinemachineExtension
 	{
-		private const float MIN = 1f;
-		private const float MAX = 179f;
+		private const float MIN_FOV = 1f;
+		private const float MAX_FOV = 179f;
+
+		private const float MIN_DISTANCE = 0f;
+		private const float MAX_DISTANCE = 50f;
 
 		[Tooltip("When to apply the offset")] [SerializeField] private CinemachineCore.Stage applyAfter = CinemachineCore.Stage.Aim;
-		[Range(MIN, MAX)] [Tooltip("Lower limit for the FOV that this behaviour will generate.")] [SerializeField] private float minFOV = 60f;
-		[Range(MIN, MAX)] [Tooltip("Upper limit for the FOV that this behaviour will generate.")] [SerializeField] private float maxFOV = 90f;
+		[Range(MIN_FOV, MAX_FOV)] [Tooltip("FOV at zero speed.")] [SerializeField] private float minFOV = 60f;
+		[Range(MIN_FOV, MAX_FOV)] [Tooltip("FOV at max speed.")] [SerializeField] private float maxFOV = 90f;
+		[Range(MIN_DISTANCE, MAX_DISTANCE)] [Tooltip("Camera distance at zero speed.")] [SerializeField] private float minDist = 15f;
+		[Range(MIN_DISTANCE, MAX_DISTANCE)] [Tooltip("Camera distance at max speed.")] [SerializeField] private float maxDist = 5f;
 		[Tooltip("Speed of the target at which the max FOV will be reached")] [SerializeField] private float maxSpeed = 80f;
 		[Tooltip("If the FOV should be clamped between the min and max, or if it should be allowed to go further")] [SerializeField] private bool clamp;
 
 		private void OnValidate()
 		{
-			minFOV = Mathf.Clamp(minFOV, MIN, MAX);
-			maxFOV = Mathf.Clamp(maxFOV, minFOV, MAX);
+			minFOV = Mathf.Clamp(minFOV, MIN_FOV, MAX_FOV);
+			maxFOV = Mathf.Clamp(maxFOV, minFOV, MAX_FOV);
 		}
 
 		private Rigidbody _followRigidbody;
@@ -49,7 +54,11 @@ namespace Camera
 
 			if (stage == applyAfter)
 			{
-				state.Lens.FieldOfView = Mathf.Clamp(Mathf.Lerp(minFOV, maxFOV, _followRigidbody.velocity.magnitude / maxSpeed), minFOV, clamp ? maxFOV : MAX);
+				state.Lens.FieldOfView = Mathf.Clamp(Mathf.LerpUnclamped(minFOV, maxFOV, _followRigidbody.velocity.magnitude / maxSpeed), minFOV, clamp ? maxFOV : MAX_FOV);
+
+				float dir = -Mathf.Sign(Vector3.Dot(_followRigidbody.velocity, _followRigidbody.transform.forward));
+				float dist = Mathf.Clamp(Mathf.LerpUnclamped(minDist, maxDist, _followRigidbody.velocity.magnitude / maxSpeed), minDist, clamp ? maxDist : MAX_DISTANCE);
+				state.PositionCorrection = transform.forward * dir * dist;
 			}
 		}
 	}
