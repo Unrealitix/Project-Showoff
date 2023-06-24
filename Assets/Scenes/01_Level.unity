@@ -414,7 +414,7 @@ PrefabInstance:
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7346405649011299045, guid: 1607c2235b60063d09cd5ea87becde89,
         type: 3}
@@ -1892,6 +1892,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -207.62769
       objectReference: {fileID: 0}
@@ -1908,22 +1918,22 @@ PrefabInstance:
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.42554024
+      value: -0.42555857
       objectReference: {fileID: 0}
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.0043918155
+      value: 0.0018873948
       objectReference: {fileID: 0}
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.9048551
+      value: -0.9049075
       objectReference: {fileID: 0}
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.011553608
+      value: -0.006228245
       objectReference: {fileID: 0}
     - target: {fileID: 5618500342576393280, guid: fdb4760b6e541114d8584e41a5552512,
         type: 3}
@@ -1944,6 +1954,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Checkpoint (Start)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618500342576393341, guid: fdb4760b6e541114d8584e41a5552512,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5618500342576393342, guid: fdb4760b6e541114d8584e41a5552512,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fdb4760b6e541114d8584e41a5552512, type: 3}

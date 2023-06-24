@@ -64,6 +64,15 @@ namespace Generated
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetButton"",
+                    ""type"": ""Button"",
+                    ""id"": ""fe78c53a-1619-4d4f-b0a5-41513c7af827"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -286,6 +295,28 @@ namespace Generated
                     ""action"": ""Thrust"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d02bc4bb-1cef-4bd5-b316-4f0734507f7f"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""ResetButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b2d6f469-464a-4c03-bdc4-5cab7559476a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": ""Hold"",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard"",
+                    ""action"": ""ResetButton"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -321,6 +352,7 @@ namespace Generated
             m_Hover_Thrust = m_Hover.FindAction("Thrust", throwIfNotFound: true);
             m_Hover_DashLeft = m_Hover.FindAction("DashLeft", throwIfNotFound: true);
             m_Hover_DashRight = m_Hover.FindAction("DashRight", throwIfNotFound: true);
+            m_Hover_ResetButton = m_Hover.FindAction("ResetButton", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -386,6 +418,7 @@ namespace Generated
         private readonly InputAction m_Hover_Thrust;
         private readonly InputAction m_Hover_DashLeft;
         private readonly InputAction m_Hover_DashRight;
+        private readonly InputAction m_Hover_ResetButton;
         public struct HoverActions
         {
             private @Controls m_Wrapper;
@@ -394,6 +427,7 @@ namespace Generated
             public InputAction @Thrust => m_Wrapper.m_Hover_Thrust;
             public InputAction @DashLeft => m_Wrapper.m_Hover_DashLeft;
             public InputAction @DashRight => m_Wrapper.m_Hover_DashRight;
+            public InputAction @ResetButton => m_Wrapper.m_Hover_ResetButton;
             public InputActionMap Get() { return m_Wrapper.m_Hover; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -415,6 +449,9 @@ namespace Generated
                 @DashRight.started += instance.OnDashRight;
                 @DashRight.performed += instance.OnDashRight;
                 @DashRight.canceled += instance.OnDashRight;
+                @ResetButton.started += instance.OnResetButton;
+                @ResetButton.performed += instance.OnResetButton;
+                @ResetButton.canceled += instance.OnResetButton;
             }
 
             private void UnregisterCallbacks(IHoverActions instance)
@@ -431,6 +468,9 @@ namespace Generated
                 @DashRight.started -= instance.OnDashRight;
                 @DashRight.performed -= instance.OnDashRight;
                 @DashRight.canceled -= instance.OnDashRight;
+                @ResetButton.started -= instance.OnResetButton;
+                @ResetButton.performed -= instance.OnResetButton;
+                @ResetButton.canceled -= instance.OnResetButton;
             }
 
             public void RemoveCallbacks(IHoverActions instance)
@@ -472,6 +512,7 @@ namespace Generated
             void OnThrust(InputAction.CallbackContext context);
             void OnDashLeft(InputAction.CallbackContext context);
             void OnDashRight(InputAction.CallbackContext context);
+            void OnResetButton(InputAction.CallbackContext context);
         }
     }
 }
