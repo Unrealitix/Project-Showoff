@@ -2,7 +2,18 @@ using UnityEngine;
 
 namespace Track
 {
-    public class KillZone : MonoBehaviour
-    {
-    }
+	[ExecuteInEditMode]
+	[RequireComponent(typeof(MeshRenderer), typeof(Collider))]
+	public class KillZone : MonoBehaviour
+	{
+		[SerializeField] private Material editorMaterial;
+		[SerializeField] private Material gameMaterial;
+
+		private void Awake()
+		{
+			GetComponent<MeshRenderer>().material = Application.isPlaying ? gameMaterial : editorMaterial;
+			GetComponent<Collider>().isTrigger = true;
+			gameObject.layer = LayerMask.GetMask("Ignore Raycast");
+		}
+	}
 }

@@ -934,6 +934,7 @@ GameObject:
   - component: {fileID: 1677249087098862797}
   - component: {fileID: 1138016291971209892}
   - component: {fileID: 7584532505485591251}
+  - component: {fileID: 8804051119104188135}
   m_Layer: 0
   m_Name: ship
   m_TagString: Untagged
@@ -1250,6 +1251,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isEnabled: 0
+--- !u!114 &8804051119104188135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 562ff7e0bf58c4f7f8b0090d65ccf684, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killPlaneMaterial: {fileID: 2100000, guid: 3c7952386bd08cd44a89bfd66a50d476, type: 2}
 --- !u!1001 &131564550836501968
 PrefabInstance:
   m_ObjectHideFlags: 0
