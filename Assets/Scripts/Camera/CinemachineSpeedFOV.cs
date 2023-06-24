@@ -55,7 +55,10 @@ namespace Camera
 			if (stage == applyAfter)
 			{
 				state.Lens.FieldOfView = Mathf.Clamp(Mathf.LerpUnclamped(minFOV, maxFOV, _followRigidbody.velocity.magnitude / maxSpeed), minFOV, clamp ? maxFOV : MAX_FOV);
-				state.PositionCorrection = transform.forward * Mathf.Clamp(Mathf.LerpUnclamped(minDist, maxDist, _followRigidbody.velocity.magnitude / maxSpeed), minDist, clamp ? maxDist : MAX_DISTANCE);
+
+				float dir = -Mathf.Sign(Vector3.Dot(_followRigidbody.velocity, _followRigidbody.transform.forward));
+				float dist = Mathf.Clamp(Mathf.LerpUnclamped(minDist, maxDist, _followRigidbody.velocity.magnitude / maxSpeed), minDist, clamp ? maxDist : MAX_DISTANCE);
+				state.PositionCorrection = transform.forward * dir * dist;
 			}
 		}
 	}
