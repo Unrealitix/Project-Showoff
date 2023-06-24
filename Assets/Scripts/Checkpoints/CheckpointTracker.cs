@@ -26,14 +26,7 @@ namespace Checkpoints
 		{
 			if (CheckpointManager.Instance.cpList.IndexOf(checkpoint) == nextCpNumber)
 			{
-				Debug.Log("Correct");
 				nextCpNumber = (nextCpNumber + 1) % CheckpointManager.Instance.cpList.Count;
-				Debug.Log(nextCpNumber);
-			}
-			else
-			{
-				Debug.Log("Wrong");
-				Debug.Log(nextCpNumber);
 			}
 		}
 
