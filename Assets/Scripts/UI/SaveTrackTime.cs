@@ -21,7 +21,7 @@ namespace UI
       public void SaveScore()
       {
          if (_inputField.text.Length != 3) return;
-         _playerTime = _inputField.text + "/" + _lapAndTimer.ShowTimer(_lapAndTimer.totalTime) + "/";
+         _playerTime = _inputField.text + "," + _lapAndTimer.ShowTimer(_lapAndTimer.totalTime) + ",";
          File.AppendAllText(Application.dataPath + "/totalTime.txt", _playerTime + "\n");
          Debug.Log("YA");
       }
