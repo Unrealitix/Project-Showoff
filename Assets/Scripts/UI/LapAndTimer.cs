@@ -1,7 +1,6 @@
 using Checkpoints;
 using TMPro;
 using UnityEngine;
-using System.IO;
 
 namespace UI
 {
@@ -22,7 +21,7 @@ namespace UI
 		//Time related variables
 		private float _lapTime;
 		private float _bestTime;
-		private float _totalTime;
+		public float totalTime;
 
 		private CheckpointTracker _lapCp;
 
@@ -49,30 +48,33 @@ namespace UI
 			{
 				currentLap.text = _currentLap.ToString();
 				_startLap = true;
+				
 				if (_lapCp.nextCpNumber != 0) return;
 
-				_currentLap++;
-				_totalTime += _lapTime;
-				bestTime.text = ShowTimer(_totalTime);
+				if (_currentLap == maxNumLaps)
+				{
+					//Disable ship controls and enable the text input field on the winner
+				}
+				else
+				{
+					_currentLap++;
+				}
+				
+				totalTime += _lapTime;
+				bestTime.text = ShowTimer(totalTime);
 
 				if (_lapTime < _bestTime || _bestTime == 0)
 				{
 					_bestTime = _lapTime;
-					//bestTime.text = ShowTimer(_bestTime);
 				}
-
-				if (_currentLap > maxNumLaps)
-				{
-					File.AppendAllText(Application.dataPath + "/totalTime.txt", ShowTimer(_totalTime) + "\n");
-				}
-
+				
 				_startLap = false;
 				_lapTime = 0;
 			}
 		}
 
 		//Method for converting the time in float in racing time (Minutes:Seconds:Fraction)
-		private string ShowTimer(float time)
+		public string ShowTimer(float time)
 		{
 			int intTime = (int) time;
 			int seconds = intTime % 60;
