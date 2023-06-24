@@ -1,19 +1,35 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
+using TMPro;
 using UnityEngine;
-using UnityEngine.IO;
 
 public class BestTimesTable : MonoBehaviour
 {
-    private String _allText;
-    private String[] _separateText;
+    [SerializeField] private TMP_Text[] names;
+    [SerializeField] private TMP_Text[] times;
+    
     private void Awake()
     {
-        _allText = File.ReadAllText(Application.dataPath + "/totalTime.txt");
-        _separateText = _allText.Split(char.Parse(","));
-        foreach (string text in _separateText)
+        int switcher = 0;
+        List<string> nameAndTimeTexts = new List<string>();
+        string allText = File.ReadAllText(Application.dataPath + "/totalTime.txt");
+        string[] separateText = allText.Split(char.Parse("\n"),StringSplitOptions.RemoveEmptyEntries);
+        
+        foreach (string registry in separateText)
         {
-            Debug.Log(text);
+            string[] nameAndTime = registry.Split(char.Parse(","),StringSplitOptions.RemoveEmptyEntries);
+            foreach (string text in nameAndTime)
+            {
+                nameAndTimeTexts.Add(text);
+            }
+        }
+
+        for (int i = 0; i < nameAndTimeTexts.Count; i+=2)
+        {
+            names[switcher].text = nameAndTimeTexts[i];
+            times[switcher].text = nameAndTimeTexts[i + 1];
+            switcher++;
         }
     }
 }
