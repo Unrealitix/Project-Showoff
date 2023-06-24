@@ -1,6 +1,7 @@
 using Checkpoints;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace UI
 {
@@ -17,6 +18,8 @@ namespace UI
 		//Lap related variables
 		private int _currentLap;
 		[SerializeField] private int maxNumLaps = 2;
+
+		public UnityEvent onFinish;
 
 		//Time related variables
 		private float _lapTime;
@@ -44,22 +47,22 @@ namespace UI
 
 		public void OnTriggerEnter(Collider other)
 		{
-			if (other.TryGetComponent(out Checkpoint checkpoint))
+			if (other.TryGetComponent(out Checkpoint _))
 			{
 				currentLap.text = _currentLap.ToString();
 				_startLap = true;
-				
+
 				if (_lapCp.nextCpNumber != 0) return;
 
 				if (_currentLap == maxNumLaps)
 				{
-					//Disable ship controls and enable the text input field on the winner
+					onFinish.Invoke(); //TODO: Bind actions: Disable ship controls and enable the text input field on the winner
 				}
 				else
 				{
 					_currentLap++;
 				}
-				
+
 				totalTime += _lapTime;
 				bestTime.text = ShowTimer(totalTime);
 
@@ -67,7 +70,7 @@ namespace UI
 				{
 					_bestTime = _lapTime;
 				}
-				
+
 				_startLap = false;
 				_lapTime = 0;
 			}
