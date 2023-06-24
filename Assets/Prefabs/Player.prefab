@@ -1247,6 +1247,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: inp_HighscoreTag
       objectReference: {fileID: 0}
+    - target: {fileID: 187799146255504007, guid: 66345b55db0498ea7bc71c24f710b89d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6066093721677426884, guid: 66345b55db0498ea7bc71c24f710b89d,
+        type: 3}
+      propertyPath: lapAndTimer
+      value: 
+      objectReference: {fileID: 1677249087098862797}
     - target: {fileID: 7731172488858122636, guid: 66345b55db0498ea7bc71c24f710b89d,
         type: 3}
       propertyPath: m_Pivot.x
