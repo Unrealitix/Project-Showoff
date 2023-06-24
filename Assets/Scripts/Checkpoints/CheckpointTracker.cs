@@ -22,15 +22,6 @@ namespace Checkpoints
 			Vector3 nextDir = nextPos - t.position;
 			float dot = Vector3.Dot(t.forward, nextDir);
 			wrongWay.gameObject.SetActive(dot > 0);
-			
-			//For testing purposes
-			// if (Input.GetKeyDown(KeyCode.R))
-			// {
-			// 	ShipControls ship = GetComponent<ShipControls>();
-			// 	Checkpoint cp = CheckpointManager.Instance.cpList[nextCpNumber - 1];
-			// 	Debug.Log(cp.name);
-			// 	ship.Respawn(cp);
-			// }
 		}
 
 		private void PassedThroughCp(Checkpoint checkpoint)

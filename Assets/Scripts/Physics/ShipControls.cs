@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Linq;
 using Checkpoints;
 using Generated;
@@ -145,6 +144,15 @@ namespace Physics
 		public void OnDashRight()
 		{
 			Debug.Log("Dash right");
+		}
+
+		public void OnResetButton(InputValue value)
+		{
+			CheckpointTracker cpT = GetComponent<CheckpointTracker>();
+			if (value.isPressed)
+			{
+				Respawn(CheckpointManager.Instance.cpList[cpT.nextCpNumber - 1]);
+			}
 		}
 
 		private void OnTriggerEnter(Collider other)
