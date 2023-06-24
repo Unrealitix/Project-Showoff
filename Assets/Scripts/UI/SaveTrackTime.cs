@@ -1,29 +1,27 @@
-using System;
 using TMPro;
 using UnityEngine;
 using System.IO;
 
 namespace UI
 {
-   public class SaveTrackTime : MonoBehaviour
-   {
-      private LapAndTimer _lapAndTimer;
-      private TMP_InputField _inputField;
-      private String _playerTime;
+	public class SaveTrackTime : MonoBehaviour
+	{
+		[SerializeField] private LapAndTimer lapAndTimer;
+		private TMP_InputField _inputField;
+		private string _playerTime;
 
-      private void Awake()
-      {
-         GameObject ship = GameObject.Find("ship");
-         _lapAndTimer = ship.GetComponent<LapAndTimer>();
-         _inputField = GetComponent<TMP_InputField>();
-      }
+		private void Awake()
+		{
+			_inputField = GetComponent<TMP_InputField>();
+			_inputField.onValueChanged.AddListener(text => { _inputField.text = text.ToUpper(); });
+			_inputField.onEndEdit.AddListener(SaveScore);
+		}
 
-      public void SaveScore()
-      {
-         if (_inputField.text.Length != 3) return;
-         _playerTime = _inputField.text + "," + _lapAndTimer.ShowTimer(_lapAndTimer.totalTime) + ",";
-         File.AppendAllText(Application.dataPath + "/totalTime.txt", _playerTime + "\n");
-         Debug.Log("YA");
-      }
-   }
+		private void SaveScore(string text)
+		{
+			if (text.Length != 3) return;
+			_playerTime = text + "," + lapAndTimer.totalTime;
+			File.AppendAllText(Application.dataPath + "/totalTime.txt", _playerTime + "\n");
+		}
+	}
 }

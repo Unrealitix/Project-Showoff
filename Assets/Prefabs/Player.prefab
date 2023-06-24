@@ -165,7 +165,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410392986863}
   m_LocalRotation: {x: -0, y: 0.9925076, z: -0.122183256, w: 1e-45}
-  m_LocalPosition: {x: 0, y: 5, z: 20}
+  m_LocalPosition: {x: -8e-45, y: 5.727607, z: 22.910427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -789,25 +789,13 @@ MonoBehaviour:
   m_LineType: 0
   m_HideMobileInput: 0
   m_HideSoftKeyboard: 0
-  m_CharacterValidation: 6
+  m_CharacterValidation: 0
   m_RegexValue: '[A-Z]'
   m_GlobalPointSize: 80
   m_CharacterLimit: 3
   m_OnEndEdit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 95702859299459848}
-        m_TargetAssemblyTypeName: UI.SaveTrackTime, Assembly-CSharp
-        m_MethodName: SaveScore
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -825,19 +813,7 @@ MonoBehaviour:
       m_Calls: []
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 95702859299459848}
-        m_TargetAssemblyTypeName: UI.SaveTrackTime, Assembly-CSharp
-        m_MethodName: Testing
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   m_OnTouchScreenKeyboardStatusChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -868,6 +844,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f26b9f213dd137408598f30f9f21ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lapAndTimer: {fileID: 1677249087098862797}
 --- !u!1 &6503383256219438195
 GameObject:
   m_ObjectHideFlags: 0
