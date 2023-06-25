@@ -122,6 +122,7 @@ namespace Physics
 
 			countdown.text = "Go!";
 			Unfreeze();
+			GetComponent<LapAndTimer>().startLap = true;
 			yield return new WaitForSeconds(1f);
 			countdown.gameObject.SetActive(false);
 		}
