@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 4021a20b7c9fe5f74811f5d914e72c55
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bruno Ace SC
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 09cc48fa25cc551e9b0be77c46bdb9f5, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
