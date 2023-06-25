@@ -69,7 +69,7 @@ MonoBehaviour:
   m_text: Wrong Way!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 93acc98e97ff2794c8b3fa55d2681443, type: 2}
-  m_sharedMaterial: {fileID: -8829455149389688223, guid: 93acc98e97ff2794c8b3fa55d2681443,
+  m_sharedMaterial: {fileID: -7602113386485742864, guid: 93acc98e97ff2794c8b3fa55d2681443,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67b1c293ced9de609e7b7942aed6546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnLocationName: Input Manager
+  spawnLocationName: 
   thrust: 140
   turnSpeed: 40
   maxSpeed: 140
