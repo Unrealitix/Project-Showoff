@@ -17,6 +17,7 @@ namespace UI
 			_inputField = GetComponent<TMP_InputField>();
 			_inputField.onValueChanged.AddListener(text => { _inputField.text = text.ToUpper(); });
 			_inputField.onEndEdit.AddListener(SaveScore);
+			_inputField.Select();
 		}
 
 		private void SaveScore(string text)

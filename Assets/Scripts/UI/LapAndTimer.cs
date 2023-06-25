@@ -28,7 +28,7 @@ namespace UI
 
 		private CheckpointTracker _lapCp;
 
-		private bool _startLap;
+		[HideInInspector]public bool startLap;
 
 		private void Awake()
 		{
@@ -38,7 +38,7 @@ namespace UI
 
 		private void Update()
 		{
-			if (_startLap)
+			if (startLap)
 			{
 				_lapTime += Time.deltaTime;
 				timer.text = ShowTimer(_lapTime);
@@ -49,30 +49,36 @@ namespace UI
 		{
 			if (other.TryGetComponent(out Checkpoint _))
 			{
-				currentLap.text = _currentLap.ToString();
-				_startLap = true;
+				startLap = true;
 
-				if (_lapCp.nextCpNumber != 0) return;
+				if (_lapCp.nextCpNumber != 1) return;
+				
+				if (_currentLap != 0)
+				{
+					totalTime += _lapTime;
+					bestTime.text = ShowTimer(totalTime);
 
+					if (_lapTime < _bestTime || _bestTime == 0)
+					{
+						_bestTime = _lapTime;
+					}
+
+					startLap = false;
+					_lapTime = 0;
+					startLap = true;
+				}
+				
 				if (_currentLap == maxNumLaps)
 				{
-					onFinish.Invoke(); //TODO: Bind actions: Disable ship controls and enable the text input field on the winner
+					onFinish.Invoke();
+					startLap = false;
 				}
 				else
 				{
 					_currentLap++;
 				}
 
-				totalTime += _lapTime;
-				bestTime.text = ShowTimer(totalTime);
-
-				if (_lapTime < _bestTime || _bestTime == 0)
-				{
-					_bestTime = _lapTime;
-				}
-
-				_startLap = false;
-				_lapTime = 0;
+				currentLap.text = _currentLap.ToString();
 			}
 		}
 

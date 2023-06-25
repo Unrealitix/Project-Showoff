@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
 using System.Linq;
 using Checkpoints;
 using Generated;
+using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -18,6 +21,10 @@ namespace Physics
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
 		[Tooltip("You need to manually measure this and fill it in!")] [SerializeField] private float maxSpeed = 10f;
+
+		[Header("Countdown")]
+		[SerializeField] private int countdownSeconds = 5;
+		[SerializeField] private TMP_Text countdown;
 
 		[SerializeField] private Transform centerOfMass;
 		[SerializeField] private Transform engineForcePosition;
@@ -73,11 +80,14 @@ namespace Physics
 			//Spawn
 			if (!string.IsNullOrWhiteSpace(spawnLocationName))
 			{
-				Spawn(GameObject.Find(spawnLocationName).transform);
+				Spawn(GameObject.Find(spawnLocationName).transform, null);
 			}
+
+			//Finish
+			GetComponent<LapAndTimer>().onFinish.AddListener(OnFinish);
 		}
 
-		public void Spawn(Transform spawn)
+		public void Spawn(Transform spawn, UnityEvent onStart)
 		{
 			Vector3 spawnPosition = spawn.position;
 			Quaternion spawnRotation = spawn.rotation;
@@ -89,6 +99,42 @@ namespace Physics
 			_rigidbody = GetComponent<Rigidbody>();
 			_rigidbody.position = spawnPosition;
 			_rigidbody.rotation = spawnRotation;
+
+			if (onStart != null)
+			{
+				Freeze();
+				onStart.AddListener(StartCountdown);
+			}
+		}
+
+		private void StartCountdown()
+		{
+			StartCoroutine(RunCountdown());
+		}
+
+		private IEnumerator RunCountdown()
+		{
+			for (int i = countdownSeconds; i >= 1; i--)
+			{
+				countdown.text = $"{i:D}";
+				yield return new WaitForSeconds(1f);
+			}
+
+			countdown.text = "Go!";
+			Unfreeze();
+			GetComponent<LapAndTimer>().startLap = true;
+			yield return new WaitForSeconds(1f);
+			countdown.gameObject.SetActive(false);
+		}
+
+		private void Freeze()
+		{
+			_rigidbody.constraints = RigidbodyConstraints.FreezeAll;
+		}
+
+		private void Unfreeze()
+		{
+			_rigidbody.constraints = RigidbodyConstraints.None;
 		}
 
 		public void Respawn(Checkpoint at)
@@ -112,6 +158,12 @@ namespace Physics
 			}
 
 			_currentThrust = 0;
+		}
+
+		private void OnFinish()
+		{
+			_controls.Disable();
+			GetComponent<PlayerInput>().DeactivateInput();
 		}
 
 		private void Start()
