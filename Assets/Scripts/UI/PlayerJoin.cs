@@ -2,6 +2,7 @@ using System.Collections;
 using Physics;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 namespace UI
@@ -22,6 +23,9 @@ namespace UI
 
 		[SerializeField] private Transform player1Spawn;
 		[SerializeField] private Transform player2Spawn;
+
+		public UnityEvent onStart;
+		private Coroutine _countdownCoroutine;
 
 		private PlayerInputManager _playerInputManager;
 
@@ -46,13 +50,13 @@ namespace UI
 			{
 				case 0:
 					player1.text = string.Format(_player1Template, "Connected");
-					obj.GetComponent<ShipControls>().Spawn(player1Spawn);
-					StartCoroutine(Countdown());
+					obj.GetComponent<ShipControls>().Spawn(player1Spawn, onStart);
+					_countdownCoroutine = StartCoroutine(Countdown());
 					break;
 				case 1:
 					player2.text = string.Format(_player2Template, "Connected");
-					obj.GetComponent<ShipControls>().Spawn(player2Spawn);
-					StopCoroutine(Countdown());
+					obj.GetComponent<ShipControls>().Spawn(player2Spawn, onStart);
+					StopCoroutine(_countdownCoroutine);
 					StartGame();
 					break;
 			}
@@ -76,6 +80,7 @@ namespace UI
 		{
 			menuCamera.gameObject.SetActive(false);
 			_playerInputManager.DisableJoining();
+			onStart.Invoke();
 		}
 	}
 }
