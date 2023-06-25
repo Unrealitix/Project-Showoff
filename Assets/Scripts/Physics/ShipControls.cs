@@ -4,6 +4,7 @@ using System.Linq;
 using Checkpoints;
 using Generated;
 using TMPro;
+using Track;
 using UI;
 using UnityEngine;
 using UnityEngine.Events;
@@ -137,18 +138,21 @@ namespace Physics
 			_rigidbody.constraints = RigidbodyConstraints.None;
 		}
 
-		public void Respawn(Checkpoint at)
+		private void Respawn()
 		{
-			Transform target = at.transform;
-			Vector3 spawnPosition = target.position;
-			Quaternion spawnRotation = target.rotation;
+			int nextCpNumber = GetComponent<CheckpointTracker>().nextCpNumber;
+			int cpIndex = (nextCpNumber - 1 + CheckpointManager.Instance.cpList.Count) % CheckpointManager.Instance.cpList.Count;
+			Transform at = CheckpointManager.Instance.cpList[cpIndex].transform;
+
+			Vector3 spawnPosition = at.position;
+			Quaternion spawnRotation = at.rotation;
 
 			Transform shipTransform = transform;
 			shipTransform.position = spawnPosition;
-			shipTransform.rotation = spawnRotation;
+			shipTransform.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
 
 			_rigidbody.position = spawnPosition;
-			_rigidbody.rotation = spawnRotation;
+			_rigidbody.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
 			_rigidbody.velocity = Vector3.zero;
 			_rigidbody.angularVelocity = Vector3.zero;
 
@@ -196,10 +200,9 @@ namespace Physics
 
 		public void OnResetButton(InputValue value)
 		{
-			CheckpointTracker cpT = GetComponent<CheckpointTracker>();
 			if (value.isPressed)
 			{
-				Respawn(CheckpointManager.Instance.cpList[cpT.nextCpNumber - 1]);
+				Respawn();
 			}
 		}
 
@@ -215,6 +218,11 @@ namespace Physics
 			if (other.TryGetComponent(out Boost _))
 			{
 				_currentThrust = boostThrust;
+			}
+
+			if (other.TryGetComponent(out KillZone _))
+			{
+				Respawn();
 			}
 		}
 

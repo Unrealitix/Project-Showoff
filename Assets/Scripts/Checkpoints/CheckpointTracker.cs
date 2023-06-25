@@ -69,13 +69,6 @@ namespace Checkpoints
 			{
 				PassedThroughCp(checkpoint);
 			}
-			else if (other.TryGetComponent(out KillZone _))
-			{
-				ShipControls ship = GetComponent<ShipControls>();
-				Checkpoint cp = CheckpointManager.Instance.cpList[nextCpNumber - 1];
-				Debug.Log(cp.name);
-				ship.Respawn(cp);
-			}
 		}
 	}
 }
