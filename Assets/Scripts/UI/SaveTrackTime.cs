@@ -1,3 +1,4 @@
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using System.IO;
@@ -21,7 +22,7 @@ namespace UI
 		private void SaveScore(string text)
 		{
 			if (text.Length != 3) return;
-			_playerTime = text + "," + lapAndTimer.totalTime;
+			_playerTime = text + "," + lapAndTimer.totalTime.ToString(CultureInfo.InvariantCulture.NumberFormat);
 			File.AppendAllText(Application.dataPath + "/totalTime.txt", _playerTime + "\n");
 			RestartGame();
 		}

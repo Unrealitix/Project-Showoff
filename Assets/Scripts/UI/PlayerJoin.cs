@@ -8,8 +8,6 @@ namespace UI
 {
 	public class PlayerJoin : MonoBehaviour
 	{
-		[SerializeField] private UnityEngine.Camera menuCamera;
-
 		[SerializeField] private TMP_Text player1;
 		private string _player1Template;
 		[SerializeField] private TMP_Text player2;
@@ -74,7 +72,12 @@ namespace UI
 
 		private void StartGame()
 		{
-			menuCamera.gameObject.SetActive(false);
+			//disable main menu
+			Canvas canvas = GetComponent<Canvas>();
+			canvas.enabled = false;
+			canvas.worldCamera.gameObject.SetActive(false);
+
+			//prevent new players from joining
 			_playerInputManager.DisableJoining();
 		}
 	}
