@@ -22,7 +22,7 @@ namespace UI
 		public UnityEvent onFinish;
 
 		//Time related variables
-		private static float _lapTime;
+		private float _lapTime;
 		private float _bestTime;
 		public float totalTime;
 
