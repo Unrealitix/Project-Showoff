@@ -52,9 +52,9 @@ namespace UI
 			{
 				startLap = true;
 
-				if (_lapCp.nextCpNumber != 1) return;
-				if (_prevCheckpoint == _lapCp.nextCpNumber) return;
-				
+				if (_lapCp.NextCpNumber != 1) return;
+				if (_prevCheckpoint == _lapCp.NextCpNumber) return;
+
 				if (_currentLap != 0)
 				{
 					totalTime += _lapTime;
@@ -69,7 +69,7 @@ namespace UI
 					_lapTime = 0;
 					startLap = true;
 				}
-				
+
 				if (_currentLap == maxNumLaps)
 				{
 					onFinish.Invoke();
@@ -83,7 +83,7 @@ namespace UI
 				currentLap.text = _currentLap.ToString();
 			}
 
-			_prevCheckpoint = _lapCp.nextCpNumber;
+			_prevCheckpoint = _lapCp.NextCpNumber;
 		}
 
 		//Method for converting the time in float in racing time (Minutes:Seconds.Fraction)

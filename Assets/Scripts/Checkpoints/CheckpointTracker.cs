@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using Physics;
 using TMPro;
-using Track;
 using UnityEngine;
 
 namespace Checkpoints
@@ -10,7 +8,9 @@ namespace Checkpoints
 	{
 		private static List<CheckpointTracker> _players;
 
-		[HideInInspector] public int nextCpNumber;
+		public int NextCpNumber { get; private set; }
+		public bool HasPassedThroughACheckpoint => _checkpointAccumulator > 0;
+
 		[SerializeField] private TMP_Text wrongWay;
 
 		//Objects for the laps UI
@@ -22,7 +22,7 @@ namespace Checkpoints
 
 		private void Awake()
 		{
-			nextCpNumber = 0;
+			NextCpNumber = 0;
 			_players ??= new List<CheckpointTracker>();
 			_players.Add(this);
 		}
@@ -31,7 +31,7 @@ namespace Checkpoints
 		{
 			Transform t = transform;
 			Vector3 position = t.position;
-			Vector3 nextPos = CheckpointManager.Instance.cpList[nextCpNumber].transform.position;
+			Vector3 nextPos = CheckpointManager.Instance.cpList[NextCpNumber].transform.position;
 			Vector3 nextDir = nextPos - position;
 
 			// Wrong Way UI
@@ -56,10 +56,10 @@ namespace Checkpoints
 
 		private void PassedThroughCp(Checkpoint checkpoint)
 		{
-			if (CheckpointManager.Instance.cpList.IndexOf(checkpoint) == nextCpNumber)
+			if (CheckpointManager.Instance.cpList.IndexOf(checkpoint) == NextCpNumber)
 			{
 				_checkpointAccumulator++;
-				nextCpNumber = (nextCpNumber + 1) % CheckpointManager.Instance.cpList.Count;
+				NextCpNumber = (NextCpNumber + 1) % CheckpointManager.Instance.cpList.Count;
 			}
 		}
 

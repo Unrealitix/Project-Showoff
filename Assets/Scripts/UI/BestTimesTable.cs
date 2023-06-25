@@ -12,7 +12,7 @@ namespace UI
     {
         [SerializeField] private TMP_Text[] names;
         [SerializeField] private TMP_Text[] times;
-    
+
         private void Awake()
         {
             int switcher = 0;
@@ -27,11 +27,11 @@ namespace UI
                 {
                     if (!(float.Parse(nameAndTimeTexts[j], CultureInfo.InvariantCulture.NumberFormat) <
                           float.Parse(nameAndTimeTexts[i], CultureInfo.InvariantCulture.NumberFormat))) continue;
-                    (nameAndTimeTexts[i], nameAndTimeTexts[j]) = (nameAndTimeTexts[j], nameAndTimeTexts[i]); 
+                    (nameAndTimeTexts[i], nameAndTimeTexts[j]) = (nameAndTimeTexts[j], nameAndTimeTexts[i]);
                     (nameAndTimeTexts[i-1], nameAndTimeTexts[j-1]) = (nameAndTimeTexts[j-1], nameAndTimeTexts[i-1]);
                 }
             }
-        
+
             for (int i = 0; i < (names.Length + times.Length); i+=2)
             {
                 names[switcher].text = nameAndTimeTexts[i];
