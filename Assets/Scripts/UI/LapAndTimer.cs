@@ -22,7 +22,7 @@ namespace UI
 		public UnityEvent onFinish;
 
 		//Time related variables
-		private float _lapTime;
+		private static float _lapTime;
 		private float _bestTime;
 		public float totalTime;
 
@@ -77,7 +77,7 @@ namespace UI
 		}
 
 		//Method for converting the time in float in racing time (Minutes:Seconds:Fraction)
-		public string ShowTimer(float time)
+		public static string ShowTimer(float time)
 		{
 			int intTime = (int) time;
 			int seconds = intTime % 60;
