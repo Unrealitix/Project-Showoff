@@ -4,6 +4,7 @@ using System.Linq;
 using Checkpoints;
 using Generated;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -81,6 +82,9 @@ namespace Physics
 			{
 				Spawn(GameObject.Find(spawnLocationName).transform, null);
 			}
+
+			//Finish
+			GetComponent<LapAndTimer>().onFinish.AddListener(OnFinish);
 		}
 
 		public void Spawn(Transform spawn, UnityEvent onStart)
@@ -153,6 +157,12 @@ namespace Physics
 			}
 
 			_currentThrust = 0;
+		}
+
+		private void OnFinish()
+		{
+			_controls.Disable();
+			GetComponent<PlayerInput>().DeactivateInput();
 		}
 
 		private void Start()
