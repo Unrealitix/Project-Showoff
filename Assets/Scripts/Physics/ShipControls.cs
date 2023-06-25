@@ -73,19 +73,23 @@ namespace Physics
 			//Spawn
 			if (!string.IsNullOrWhiteSpace(spawnLocationName))
 			{
-				Transform spawn = GameObject.Find(spawnLocationName).transform;
-				Vector3 spawnPosition = spawn.position;
-				Quaternion spawnRotation = spawn.rotation;
-
-				Transform parent = transform.parent;
-				parent.position = spawnPosition;
-				parent.rotation = spawnRotation;
-
-				_rigidbody.position = spawnPosition;
-				_rigidbody.rotation = spawnRotation;
+				Spawn(GameObject.Find(spawnLocationName).transform);
 			}
 		}
 
+		public void Spawn(Transform spawn)
+		{
+			Vector3 spawnPosition = spawn.position;
+			Quaternion spawnRotation = spawn.rotation;
+
+			Transform parent = transform.parent;
+			parent.position = spawnPosition;
+			parent.rotation = spawnRotation;
+
+			_rigidbody = GetComponent<Rigidbody>();
+			_rigidbody.position = spawnPosition;
+			_rigidbody.rotation = spawnRotation;
+		}
 
 		public void Respawn(Checkpoint at)
 		{
@@ -108,8 +112,8 @@ namespace Physics
 			}
 
 			_currentThrust = 0;
-    }
-    
+		}
+
 		private void Start()
 		{
 			exitWater.Invoke();
@@ -127,7 +131,7 @@ namespace Physics
 		{
 			_controllerInput.acceleration = value.Get<float>();
 		}
-		
+
 		public void OnDashLeft()
 		{
 			Debug.Log("Dash left");
