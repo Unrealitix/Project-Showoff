@@ -65,6 +65,8 @@ namespace Physics
 		private Rigidbody _rigidbody;
 		private MagLaser[] _magLasers;
 
+		private Transform _spawnLocation;
+
 		private float _currentThrust;
 		private Controls _controls;
 		private (float vertical, float horizontal, float acceleration) _controllerInput;
@@ -104,8 +106,10 @@ namespace Physics
 
 		public void Spawn(Transform spawn, UnityEvent onStart)
 		{
-			Vector3 spawnPosition = spawn.position;
-			Quaternion spawnRotation = spawn.rotation;
+			_spawnLocation = spawn;
+
+			Vector3 spawnPosition = _spawnLocation.position;
+			Quaternion spawnRotation = _spawnLocation.rotation;
 
 			Transform parent = transform.parent;
 			parent.position = spawnPosition;
@@ -154,19 +158,32 @@ namespace Physics
 
 		private void Respawn()
 		{
-			int nextCpNumber = GetComponent<CheckpointTracker>().nextCpNumber;
-			int cpIndex = (nextCpNumber - 1 + CheckpointManager.Instance.cpList.Count) % CheckpointManager.Instance.cpList.Count;
-			Transform at = CheckpointManager.Instance.cpList[cpIndex].transform;
+			if (_rigidbody.constraints == RigidbodyConstraints.FreezeAll) return;
 
-			Vector3 spawnPosition = at.position;
-			Quaternion spawnRotation = at.rotation;
+			CheckpointTracker checkpointTracker = GetComponent<CheckpointTracker>();
+
+			Transform location;
+			Quaternion spawnRotation;
+			if (checkpointTracker.HasPassedThroughACheckpoint)
+			{
+				int cpIndex = (checkpointTracker.NextCpNumber - 1 + CheckpointManager.Instance.cpList.Count) % CheckpointManager.Instance.cpList.Count;
+				location = CheckpointManager.Instance.cpList[cpIndex].transform;
+				spawnRotation = location.rotation * Quaternion.Euler(0, -90, 0);
+			}
+			else
+			{
+				location = _spawnLocation;
+				spawnRotation = location.rotation;
+			}
+
+			Vector3 spawnPosition = location.position;
 
 			Transform shipTransform = transform;
 			shipTransform.position = spawnPosition;
-			shipTransform.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
+			shipTransform.rotation = spawnRotation;
 
 			_rigidbody.position = spawnPosition;
-			_rigidbody.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
+			_rigidbody.rotation = spawnRotation;
 			_rigidbody.velocity = Vector3.zero;
 			_rigidbody.angularVelocity = Vector3.zero;
 
