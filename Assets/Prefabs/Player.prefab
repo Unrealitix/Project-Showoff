@@ -1207,8 +1207,8 @@ MonoBehaviour:
   underwaterDrag: 1.5
   flightDrag: 0.7
   rollSpeed: 0.15
-  pitchSpeed: 20
-  maxPitch: 50
+  pitchSpeed: 30
+  maxPitch: 70
   pitchCorrectionSpeed: 3
   isAccelerating:
     m_PersistentCalls:

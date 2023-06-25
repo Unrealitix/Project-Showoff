@@ -33,7 +33,7 @@ namespace UI
 		private void Awake()
 		{
 			_lapCp = GetComponent<CheckpointTracker>();
-			maxLaps.text = maxNumLaps.ToString();
+			maxLaps.text = $"/{maxNumLaps}";
 		}
 
 		private void Update()
@@ -76,13 +76,13 @@ namespace UI
 			}
 		}
 
-		//Method for converting the time in float in racing time (Minutes:Seconds:Fraction)
-		public string ShowTimer(float time)
+		//Method for converting the time in float in racing time (Minutes:Seconds.Fraction)
+		public static string ShowTimer(float time)
 		{
 			int intTime = (int) time;
 			int seconds = intTime % 60;
 			int minutes = intTime / 60;
-			float fraction = _lapTime * 1000 % 1000;
+			float fraction = time * 1000 % 1000;
 			string timeText = $"{minutes:00}:{seconds:00}.{fraction:000}";
 			return timeText;
 		}
