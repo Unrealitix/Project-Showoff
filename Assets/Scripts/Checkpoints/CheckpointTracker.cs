@@ -41,7 +41,7 @@ namespace Checkpoints
 			else if (other.TryGetComponent(out KillZone killZone))
 			{
 				ShipControls ship = GetComponent<ShipControls>();
-				Checkpoint cp = CheckpointManager.Instance.cpList[nextCpNumber - 1];
+				Checkpoint cp = CheckpointManager.Instance.cpList[(nextCpNumber - 1 + CheckpointManager.Instance.cpList.Count) % CheckpointManager.Instance.cpList.Count];
 				Debug.Log(cp.name);
 				ship.Respawn(cp);
 			}

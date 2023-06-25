@@ -1358,6 +1358,7 @@ MonoBehaviour:
           m_BoolArgument: 1
         m_CallState: 2
   totalTime: 0
+  startLap: 0
 --- !u!114 &1138016291971209892
 MonoBehaviour:
   m_ObjectHideFlags: 0

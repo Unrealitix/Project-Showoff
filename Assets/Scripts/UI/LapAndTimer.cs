@@ -25,6 +25,7 @@ namespace UI
 		private float _lapTime;
 		private float _bestTime;
 		public float totalTime;
+		private int _prevCheckpoint;
 
 		private CheckpointTracker _lapCp;
 
@@ -52,6 +53,7 @@ namespace UI
 				startLap = true;
 
 				if (_lapCp.nextCpNumber != 1) return;
+				if (_prevCheckpoint == _lapCp.nextCpNumber) return;
 				
 				if (_currentLap != 0)
 				{
@@ -80,6 +82,8 @@ namespace UI
 
 				currentLap.text = _currentLap.ToString();
 			}
+
+			_prevCheckpoint = _lapCp.nextCpNumber;
 		}
 
 		//Method for converting the time in float in racing time (Minutes:Seconds.Fraction)

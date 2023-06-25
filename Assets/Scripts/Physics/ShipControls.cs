@@ -145,10 +145,10 @@ namespace Physics
 
 			Transform shipTransform = transform;
 			shipTransform.position = spawnPosition;
-			shipTransform.rotation = spawnRotation;
+			shipTransform.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
 
 			_rigidbody.position = spawnPosition;
-			_rigidbody.rotation = spawnRotation;
+			_rigidbody.rotation = spawnRotation * Quaternion.Euler(0,-90,0);
 			_rigidbody.velocity = Vector3.zero;
 			_rigidbody.angularVelocity = Vector3.zero;
 
@@ -199,7 +199,8 @@ namespace Physics
 			CheckpointTracker cpT = GetComponent<CheckpointTracker>();
 			if (value.isPressed)
 			{
-				Respawn(CheckpointManager.Instance.cpList[cpT.nextCpNumber - 1]);
+				Respawn(CheckpointManager.Instance.cpList[(cpT.nextCpNumber - 1 + CheckpointManager.Instance.cpList.Count)
+					% CheckpointManager.Instance.cpList.Count]);
 			}
 		}
 
