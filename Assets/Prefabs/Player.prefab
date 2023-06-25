@@ -1193,6 +1193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnLocationName: 
+  cinemachineVirtualCamera: {fileID: 3869931410678474984}
   thrust: 140
   turnSpeed: 40
   maxSpeed: 140

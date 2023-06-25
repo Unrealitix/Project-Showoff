@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Linq;
 using Checkpoints;
+using Cinemachine;
 using Generated;
 using TMPro;
 using Track;
@@ -18,6 +19,7 @@ namespace Physics
 		//Health and stuff like that should be in a separate class
 
 		[SerializeField] private string spawnLocationName;
+		[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
 		[SerializeField] private float thrust = 10f;
 		[SerializeField] private float turnSpeed = 10f;
@@ -174,6 +176,7 @@ namespace Physics
 			}
 
 			_currentThrust = 0;
+			cinemachineVirtualCamera.PreviousStateIsValid = false;
 		}
 
 		private void OnFinish()
