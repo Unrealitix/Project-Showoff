@@ -56,7 +56,8 @@ namespace Camera
 			{
 				state.Lens.FieldOfView = Mathf.Clamp(Mathf.LerpUnclamped(minFOV, maxFOV, _followRigidbody.velocity.magnitude / maxSpeed), minFOV, clamp ? maxFOV : MAX_FOV);
 
-				float dir = -Mathf.Sign(Vector3.Dot(_followRigidbody.velocity, _followRigidbody.transform.forward));
+				float dot = Vector3.Dot(_followRigidbody.velocity, _followRigidbody.transform.forward);
+				float dir = dot >= maxSpeed/5f ? -1f : 1f;
 				float dist = Mathf.Clamp(Mathf.LerpUnclamped(minDist, maxDist, _followRigidbody.velocity.magnitude / maxSpeed), minDist, clamp ? maxDist : MAX_DISTANCE);
 				state.PositionCorrection = transform.forward * dir * dist;
 			}
