@@ -56,7 +56,7 @@ namespace UI
 
 				if (_currentLap == maxNumLaps)
 				{
-					onFinish.Invoke(); //TODO: Bind actions: Disable ship controls and enable the text input field on the winner
+					onFinish.Invoke();
 				}
 				else
 				{
