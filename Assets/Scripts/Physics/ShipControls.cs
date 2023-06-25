@@ -31,8 +31,12 @@ namespace Physics
 
 		[Header("Boost")]
 		[SerializeField] private float boostThrust = 20f;
-		[SerializeField] private float boostDuration = 1f;
+		[SerializeField] private float boostDurationSeconds = 1f;
 
+		[Header("Dash")]
+		[SerializeField] private float dashForce = 20f;
+		[SerializeField] private float dashCooldownSeconds = 2f;
+		[SerializeField] private float dashDurationSeconds = 1f;
 
 		[Header("Gravity")]
 		[SerializeField] private float gravity = 9.81f;
@@ -61,6 +65,14 @@ namespace Physics
 		private float _currentThrust;
 		private Controls _controls;
 		private (float vertical, float horizontal, float acceleration) _controllerInput;
+
+		private Vector3 _dashThrust;
+		private float _dashLastUsed = -1f;
+
+		private void OnValidate()
+		{
+			dashDurationSeconds = Mathf.Clamp(dashDurationSeconds, 0, dashCooldownSeconds);
+		}
 
 		private void Awake()
 		{
@@ -186,12 +198,20 @@ namespace Physics
 
 		public void OnDashLeft()
 		{
-			Debug.Log("Dash left");
+			Dash(transform.right);
 		}
 
 		public void OnDashRight()
 		{
-			Debug.Log("Dash right");
+			Dash(-transform.right);
+		}
+
+		private void Dash(Vector3 dir)
+		{
+			if (Time.time - _dashLastUsed < dashCooldownSeconds) return;
+
+			_dashThrust = dir * dashForce;
+			_dashLastUsed = Time.time;
 		}
 
 		public void OnResetButton(InputValue value)
@@ -241,7 +261,11 @@ namespace Physics
 			Vector3 up = t.up;
 
 			//Boost
-			_currentThrust = Mathf.Lerp(_currentThrust, thrust, Time.fixedDeltaTime / boostDuration);
+			_currentThrust = Mathf.Lerp(_currentThrust, thrust, Time.fixedDeltaTime / boostDurationSeconds);
+
+			//Dash
+			_rigidbody.AddForce(_dashThrust * Mathf.Clamp01(_rigidbody.velocity.magnitude / maxSpeed));
+			_dashThrust = Vector3.Lerp(_dashThrust, Vector3.zero, Time.fixedDeltaTime / dashDurationSeconds);
 
 			//Gravity
 			bool track = _magLasers.Any(magLaser => magLaser.IsAttachedToTrack);

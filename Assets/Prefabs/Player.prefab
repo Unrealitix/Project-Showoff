@@ -1201,7 +1201,10 @@ MonoBehaviour:
   centerOfMass: {fileID: 8558639395312813860}
   engineForcePosition: {fileID: 8558639394820021194}
   boostThrust: 500
-  boostDuration: 1
+  boostDurationSeconds: 1
+  dashForce: 300
+  dashCooldownSeconds: 2
+  dashDurationSeconds: 0.3
   gravity: 9.81
   trackGravity: 3.14
   driveDrag: 1
