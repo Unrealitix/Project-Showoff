@@ -34,13 +34,13 @@ namespace Checkpoints
 			if (cpList == null) return;
 
 			//Draw line between checkpoints
-			for (int i = 0; i < cpList.Count-1; i++)
+			for (int i = 0; i < cpList.Count; i++)
 			{
 				Checkpoint cp = cpList[i];
 				if (cp == null) continue;
 
 				Vector3 currentPos = cp.transform.position;
-				Vector3 nextPos = cpList[i + 1].transform.position;
+				Vector3 nextPos = cpList[(i + 1) % cpList.Count].transform.position;
 				Gizmos.color = Color.green;
 				Gizmos.DrawLine(currentPos, nextPos);
 			}
