@@ -1201,7 +1201,7 @@ MonoBehaviour:
   countdown: {fileID: 4024822490782387317}
   centerOfMass: {fileID: 8558639395312813860}
   engineForcePosition: {fileID: 8558639394820021194}
-  boostThrust: 500
+  boostThrust: 300
   boostDurationSeconds: 1
   dashForce: 300
   dashCooldownSeconds: 2
