@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Physics
@@ -6,19 +5,18 @@ namespace Physics
 	[RequireComponent(typeof(Collider))]
 	public class Boost : MonoBehaviour
 	{
-		private ParticleSystem ps;
+		private ParticleSystem _ps;
 
 		private void Awake()
 		{
 			GetComponent<Collider>().isTrigger = true;
 			gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
-			ps = GetComponent<ParticleSystem>();
+			_ps = GetComponent<ParticleSystem>();
 		}
 
-		private void OnTriggerEnter()
+		private void OnTriggerEnter(Collider other)
 		{
-			ps.Play();
+			_ps.Play();
 		}
-
 	}
 }
