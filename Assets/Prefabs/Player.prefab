@@ -1384,6 +1384,20 @@ MonoBehaviour:
       Data3: 820808878
       Data4: -280102544
     Path: event:/Engine
+  boost:
+    Guid:
+      Data1: 2138539307
+      Data2: 1149071704
+      Data3: 1746573973
+      Data4: -712286874
+    Path: event:/Boost
+  checkpoint:
+    Guid:
+      Data1: 433255316
+      Data2: 1109438334
+      Data3: 1360259238
+      Data4: 1759663938
+    Path: event:/Checkpoint
 --- !u!114 &7584532505485591251
 MonoBehaviour:
   m_ObjectHideFlags: 0

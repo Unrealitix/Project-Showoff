@@ -277,8 +277,7 @@ namespace Physics
 
 		private void Update()
 		{
-			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_controllerInput.acceleration));
+			isAccelerating.Invoke(_controllerInput.acceleration);
 		}
 
 		private void FixedUpdate()
