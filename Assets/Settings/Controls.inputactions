@@ -6,7 +6,7 @@
             "id": "19a28e0b-c75d-49bb-86d2-cf02a96cd70e",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "Rotation",
                     "type": "Value",
                     "id": "df851d02-b690-4c62-8609-72aebe301b35",
                     "expectedControlType": "Vector2",
@@ -15,46 +15,91 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Buttons",
-                    "type": "Button",
-                    "id": "49f9d40d-1473-4747-8202-14c6fdebb89a",
-                    "expectedControlType": "Button",
+                    "name": "Thrust",
+                    "type": "Value",
+                    "id": "882a3689-2a32-4663-9300-b8f81450b4a7",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "DashLeft",
+                    "type": "Button",
+                    "id": "180c0479-fe26-415b-a9c3-5878da8235e6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "DashRight",
+                    "type": "Button",
+                    "id": "2e79ec7e-a673-4499-b2bb-acbae5870514",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ResetButton",
+                    "type": "Button",
+                    "id": "fe78c53a-1619-4d4f-b0a5-41513c7af827",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoToControls",
+                    "type": "Button",
+                    "id": "ec706bb8-71ad-4a5d-90f7-05801dc5e11e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GoBackFromControls",
+                    "type": "Button",
+                    "id": "a2fb04b0-fa1a-4a4f-91d7-1a7f6aa83bee",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
+                    "name": "2D Vector Keyboard",
                     "id": "dfc2321f-7e78-46f5-b3c9-c6a3a25638a5",
                     "path": "2DVector(mode=1)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "up",
                     "id": "8d962fd6-39b3-4f15-828b-e5817e7b26de",
-                    "path": "<Keyboard>/w",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "down",
                     "id": "d1e4fe93-f49a-43fa-9017-7d33e797df1f",
-                    "path": "<Keyboard>/s",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -65,7 +110,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -76,18 +121,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "2D Vector",
+                    "name": "2D Vector Gamepad",
                     "id": "751c4846-6d38-4cd9-b6b5-7f57211ae7ea",
                     "path": "2DVector(mode=2)",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -98,7 +143,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -109,7 +154,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -120,7 +165,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -131,18 +176,183 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Movement",
+                    "action": "Rotation",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "",
-                    "id": "0843b7d2-a8ef-4742-835e-9cd008592a86",
-                    "path": "<Gamepad>/buttonEast",
+                    "id": "bb027f05-35dc-4c24-aaf8-7535660f24d1",
+                    "path": "<Gamepad>/leftShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "92598a55-b5da-491a-bf15-fa3e4c5a8afa",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DashLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "485dacb6-9ad4-4157-b400-e25fe1aeb543",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "DashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "033adfcd-1296-430e-b837-0e337f386783",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "DashRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "1D Axis Keyboard",
+                    "id": "3cfa648b-ff9c-46b9-b49d-d17914771a0d",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thrust",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "b570930b-4072-4225-a9ff-923a0862095f",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "70cf48b1-db06-419d-b954-283086b3bf40",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis Gamepad",
+                    "id": "c6327227-a9a6-401e-84d7-8fdcacaee028",
+                    "path": "1DAxis(whichSideWins=1)",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Thrust",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "46a7354f-0081-4c12-a0f2-cb419afd9989",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Buttons",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "904e127a-b90e-4be1-83fe-3e72eb16c026",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Thrust",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "d02bc4bb-1cef-4bd5-b316-4f0734507f7f",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ResetButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b2d6f469-464a-4c03-bdc4-5cab7559476a",
+                    "path": "<Keyboard>/r",
+                    "interactions": "Hold",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "ResetButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0509615a-f204-4622-9f0b-a14c0e3a7c43",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GoToControls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ee51f091-8736-4016-b504-85359d2ad66f",
+                    "path": "<Gamepad>/start",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GoToControls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "510b4ee6-166d-4d57-acaf-664e8615a300",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "GoBackFromControls",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bfb7abe8-c515-45e6-bdd4-e47f7cbd5e40",
+                    "path": "<Gamepad>/start",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "GoBackFromControls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
