@@ -74,5 +74,10 @@ namespace Checkpoints
 				PassedThroughCp(checkpoint);
 			}
 		}
+
+		private void OnDestroy()
+		{
+			_players.Remove(this);
+		}
 	}
 }
