@@ -196,7 +196,7 @@ namespace Physics
 			cinemachineVirtualCamera.PreviousStateIsValid = false;
 		}
 
-		private void OnFinish()
+		private void OnFinish(float _)
 		{
 			_controls.Disable();
 			GetComponent<PlayerInput>().DeactivateInput();

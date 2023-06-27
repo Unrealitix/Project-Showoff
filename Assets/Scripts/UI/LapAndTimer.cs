@@ -19,7 +19,7 @@ namespace UI
 		private int _currentLap;
 		[SerializeField] private int maxNumLaps = 2;
 
-		public UnityEvent onFinish;
+		public UnityEvent<float> onFinish;
 
 		//Time related variables
 		private float _lapTime;
@@ -72,7 +72,7 @@ namespace UI
 
 				if (_currentLap == maxNumLaps)
 				{
-					onFinish.Invoke();
+					onFinish.Invoke(totalTime);
 					startLap = false;
 				}
 				else
