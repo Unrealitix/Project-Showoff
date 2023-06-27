@@ -1072,6 +1072,7 @@ GameObject:
   - component: {fileID: 1138016291971209892}
   - component: {fileID: 7584532505485591251}
   - component: {fileID: 8804051119104188135}
+  - component: {fileID: 4855474589659882194}
   m_Layer: 0
   m_Name: ship
   m_TagString: Untagged
@@ -1327,7 +1328,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d9d14136cfbad489f8c9142aa9b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextCpNumber: 0
   wrongWay: {fileID: 7796068309930449819}
   currentPos: {fileID: 636653003957976576}
   maxPos: {fileID: 772294409165682226}
@@ -1410,6 +1410,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killPlaneMaterial: {fileID: 2100000, guid: 3c7952386bd08cd44a89bfd66a50d476, type: 2}
+--- !u!114 &4855474589659882194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b42c29991c94d4dba0a79abff9eb616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player2Mesh: {fileID: -1206599922346436940, guid: 5e6773109a6fdca4ca95c5b7ea935116,
+    type: 3}
 --- !u!1001 &131564550836501968
 PrefabInstance:
   m_ObjectHideFlags: 0
