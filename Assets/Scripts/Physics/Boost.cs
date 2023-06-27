@@ -7,11 +7,11 @@ namespace Physics
 	public class Boost : MonoBehaviour
 	{
 		private ParticleSystem ps;
-		
+
 		private void Awake()
 		{
 			GetComponent<Collider>().isTrigger = true;
-			gameObject.layer = LayerMask.GetMask("Ignore Raycast");
+			gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 			ps = GetComponent<ParticleSystem>();
 		}
 
@@ -19,6 +19,6 @@ namespace Physics
 		{
 			ps.Play();
 		}
-		
+
 	}
 }
