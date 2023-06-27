@@ -4490,7 +4490,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1698860371}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Boosts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
