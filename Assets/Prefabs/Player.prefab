@@ -772,7 +772,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410392986863}
   m_LocalRotation: {x: 0, y: 0.9925076, z: -0.122183256, w: -1e-45}
-  m_LocalPosition: {x: -8e-45, y: 4.272393, z: 17.089573}
+  m_LocalPosition: {x: 8e-45, y: 4.272393, z: 17.089573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1869,6 +1869,7 @@ GameObject:
   - component: {fileID: 1138016291971209892}
   - component: {fileID: 7584532505485591251}
   - component: {fileID: 8804051119104188135}
+  - component: {fileID: 4855474589659882194}
   m_Layer: 0
   m_Name: ship
   m_TagString: Untagged
@@ -2027,6 +2028,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hitBoost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dashed:
+    m_PersistentCalls:
+      m_Calls: []
+  respawnedByKillPlane:
+    m_PersistentCalls:
+      m_Calls: []
+  respawnedManually:
+    m_PersistentCalls:
+      m_Calls: []
   enterWater:
     m_PersistentCalls:
       m_Calls:
@@ -2125,6 +2150,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wrongWay: {fileID: 7796068309930449819}
+  hitCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Checkpoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentPos: {fileID: 636653003957976576}
   maxPos: {fileID: 772294409165682226}
 --- !u!114 &1677249087098862797
@@ -2168,6 +2208,20 @@ MonoBehaviour:
       Data3: 820808878
       Data4: -280102544
     Path: event:/Engine
+  boost:
+    Guid:
+      Data1: 2138539307
+      Data2: 1149071704
+      Data3: 1746573973
+      Data4: -712286874
+    Path: event:/Boost
+  checkpoint:
+    Guid:
+      Data1: 433255316
+      Data2: 1109438334
+      Data3: 1360259238
+      Data4: 1759663938
+    Path: event:/Checkpoint
 --- !u!114 &7584532505485591251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2194,6 +2248,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   killPlaneMaterial: {fileID: 2100000, guid: 3c7952386bd08cd44a89bfd66a50d476, type: 2}
+--- !u!114 &4855474589659882194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8793011084976005938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b42c29991c94d4dba0a79abff9eb616, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player2Mesh: {fileID: -1206599922346436940, guid: 7f1eb3d6977742f499ffa02706db2bc5,
+    type: 3}
+  player2TurnSpeedMultiplier: 1.2
 --- !u!1001 &2358083238668783912
 PrefabInstance:
   m_ObjectHideFlags: 0
