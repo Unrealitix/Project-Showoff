@@ -57,6 +57,10 @@ namespace Physics
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
 		public UnityEvent<float> isAccelerating;
+		public UnityEvent hitBoost;
+		public UnityEvent dashed;
+		public UnityEvent respawnedByKillPlane;
+		public UnityEvent respawnedManually;
 		public UnityEvent enterWater;
 		public UnityEvent exitWater;
 
@@ -236,6 +240,7 @@ namespace Physics
 
 			_dashThrust = dir * dashForce;
 			_dashLastUsed = Time.time;
+			dashed.Invoke();
 		}
 
 		public void OnResetButton(InputValue value)
@@ -243,6 +248,7 @@ namespace Physics
 			if (value.isPressed)
 			{
 				Respawn();
+				respawnedManually.Invoke();
 			}
 		}
 
@@ -258,11 +264,13 @@ namespace Physics
 			if (other.TryGetComponent(out Boost _))
 			{
 				_currentThrust = boostThrust;
+				hitBoost.Invoke();
 			}
 
 			if (other.TryGetComponent(out KillZone _))
 			{
 				Respawn();
+				respawnedByKillPlane.Invoke();
 			}
 		}
 
@@ -277,8 +285,7 @@ namespace Physics
 
 		private void Update()
 		{
-			//TODO: Allow negative numbers for reversing
-			isAccelerating.Invoke(Mathf.Abs(_controllerInput.acceleration));
+			isAccelerating.Invoke(_controllerInput.acceleration);
 		}
 
 		private void FixedUpdate()
