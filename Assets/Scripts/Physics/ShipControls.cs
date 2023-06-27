@@ -22,7 +22,7 @@ namespace Physics
 		[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
 
 		[SerializeField] private float thrust = 10f;
-		[SerializeField] private float turnSpeed = 10f;
+		[SerializeField] internal float turnSpeed = 10f;
 		[Tooltip("You need to manually measure this and fill it in!")] [SerializeField] private float maxSpeed = 10f;
 
 		[Header("Countdown")]
