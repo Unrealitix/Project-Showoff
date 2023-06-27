@@ -8,6 +8,7 @@ namespace Physics
 		private void Awake()
 		{
 			GetComponent<Collider>().isTrigger = true;
+			gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 		}
 	}
 }
