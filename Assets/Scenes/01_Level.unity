@@ -990,7 +990,7 @@ PrefabInstance:
     - target: {fileID: 6010307159363236828, guid: 42581aa10d07dc24590f768038409464,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6010307159363236828, guid: 42581aa10d07dc24590f768038409464,
         type: 3}
@@ -5232,7 +5232,7 @@ PrefabInstance:
     - target: {fileID: 7786864083753245200, guid: d80e4e03693a49246870ca1ac1cb1adc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7786864083753245200, guid: d80e4e03693a49246870ca1ac1cb1adc,
         type: 3}
@@ -5288,6 +5288,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: KillPlanes
+      objectReference: {fileID: 0}
+    - target: {fileID: 7786864083753245207, guid: d80e4e03693a49246870ca1ac1cb1adc,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7786864083799594398, guid: d80e4e03693a49246870ca1ac1cb1adc,
         type: 3}

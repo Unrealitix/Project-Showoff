@@ -20,6 +20,8 @@ namespace Checkpoints
 		[SerializeField] private TMP_Text currentPos;
 		[SerializeField] private TMP_Text maxPos;
 
+		public int Place => _players.IndexOf(this) + 1;
+
 		private int _checkpointAccumulator;
 		private float _distanceToNext;
 
@@ -52,7 +54,7 @@ namespace Checkpoints
 					if (initialCheck != 0) return initialCheck;
 					return a._distanceToNext.CompareTo(b._distanceToNext);
 				});
-				currentPos.text = $"{_players.IndexOf(this) + 1}";
+				currentPos.text = $"{Place}";
 			}
 			maxPos.text = $"/{_players.Count}";
 		}
