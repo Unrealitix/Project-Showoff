@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 
-namespace UI.Editor
+namespace UI.Menu.Editor
 {
     /// <summary>
     /// This script makes sure only one view is ever active in the inspector.

@@ -1,7 +1,7 @@
 ﻿using UnityEditor;
 using UnityEngine;
 
-namespace UI.Editor
+namespace UI.Menu.Editor
 {
 	/// <summary>
 	/// Simple editor script to make sure only the selected child of a parent is active
