@@ -301,7 +301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410392986863}
   m_LocalRotation: {x: -0, y: 0.9925076, z: -0.122183256, w: 1e-45}
-  m_LocalPosition: {x: -8e-45, y: 5.727607, z: 22.910427}
+  m_LocalPosition: {x: 8e-45, y: 4.272393, z: 17.089573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1230,6 +1230,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  hitBoost:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Boost
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dashed:
+    m_PersistentCalls:
+      m_Calls: []
+  respawnedByKillPlane:
+    m_PersistentCalls:
+      m_Calls: []
+  respawnedManually:
+    m_PersistentCalls:
+      m_Calls: []
   enterWater:
     m_PersistentCalls:
       m_Calls:
@@ -1327,8 +1351,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39d9d14136cfbad489f8c9142aa9b2fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextCpNumber: 0
   wrongWay: {fileID: 7796068309930449819}
+  hitCheckpoint:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Checkpoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   currentPos: {fileID: 636653003957976576}
   maxPos: {fileID: 772294409165682226}
 --- !u!114 &1677249087098862797

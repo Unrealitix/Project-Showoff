@@ -9,7 +9,7 @@ namespace Sound
 		[SerializeField] private EventReference engine;
 		[SerializeField] private EventReference boost;
 		[SerializeField] private EventReference checkpoint;
-		
+
 		private EventInstance _engine;
 		private EventInstance _boost;
 		private EventInstance _checkpoint;
@@ -25,6 +25,16 @@ namespace Sound
 		public void Acceleration(float acceleration)
 		{
 			_engine.setParameterByName("acceleration", (acceleration + 1) / 2 );
+		}
+
+		public void Boost()
+		{
+			_boost.start();
+		}
+
+		public void Checkpoint()
+		{
+			_checkpoint.start();
 		}
 	}
 }
