@@ -13,7 +13,7 @@ namespace Track
 		{
 			GetComponent<MeshRenderer>().material = Application.isPlaying ? gameMaterial : editorMaterial;
 			GetComponent<Collider>().isTrigger = true;
-			gameObject.layer = LayerMask.GetMask("Ignore Raycast");
+			gameObject.layer = LayerMask.NameToLayer("Ignore Raycast");
 		}
 	}
 }
