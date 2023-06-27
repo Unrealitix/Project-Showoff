@@ -1,21 +1,23 @@
 using TMPro;
-using UI;
 using UnityEngine;
 
-public class EndScreen : MonoBehaviour
+namespace UI
 {
-	[SerializeField] private LapAndTimer lapAndTimer;
-	[SerializeField] private TMP_Text timerText;
-
-	private void Awake()
+	public class EndScreen : MonoBehaviour
 	{
-		lapAndTimer.onFinish.AddListener(ShowEndScreen);
-		gameObject.SetActive(false);
-	}
+		[SerializeField] private LapAndTimer lapAndTimer;
+		[SerializeField] private TMP_Text timerText;
 
-	private void ShowEndScreen(float totalTime)
-	{
-		timerText.text = LapAndTimer.ShowTimer(totalTime);
-		gameObject.SetActive(true);
+		private void Awake()
+		{
+			lapAndTimer.onFinish.AddListener(ShowEndScreen);
+			gameObject.SetActive(false);
+		}
+
+		private void ShowEndScreen(float totalTime)
+		{
+			timerText.text = LapAndTimer.ShowTimer(totalTime);
+			gameObject.SetActive(true);
+		}
 	}
 }
