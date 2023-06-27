@@ -19,4 +19,9 @@ public class ShipChanger : MonoBehaviour
 			GetComponent<ShipControls>().turnSpeed *= player2TurnSpeedMultiplier;
 		}
 	}
+
+	private void OnDestroy()
+	{
+		_player--;
+	}
 }

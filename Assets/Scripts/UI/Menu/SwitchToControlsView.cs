@@ -1,7 +1,7 @@
 using Generated;
 using static UnityEngine.InputSystem.InputAction;
 
-namespace UI
+namespace UI.Menu
 {
 	public class SwitchToControlsView : EventViewNavigation
 	{

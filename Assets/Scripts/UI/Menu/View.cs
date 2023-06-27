@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace UI
+namespace UI.Menu
 {
     /// <summary>
     /// The idea of any View subclass is that it wraps all (well most anyway) details of the underlying components

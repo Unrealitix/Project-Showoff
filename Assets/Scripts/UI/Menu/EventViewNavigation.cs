@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace UI
+namespace UI.Menu
 {
 	[RequireComponent(typeof(View))]
 	public class EventViewNavigation : MonoBehaviour
