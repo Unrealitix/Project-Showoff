@@ -1424,6 +1424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2Mesh: {fileID: -1206599922346436940, guid: 7f1eb3d6977742f499ffa02706db2bc5,
     type: 3}
+  player2TurnSpeedMultiplier: 1.2
 --- !u!1001 &131564550836501968
 PrefabInstance:
   m_ObjectHideFlags: 0
