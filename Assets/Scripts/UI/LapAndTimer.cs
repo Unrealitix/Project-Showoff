@@ -10,6 +10,7 @@ namespace UI
 		//Objects for the Time and Best/Total time
 		[SerializeField] private TMP_Text timer;
 		[SerializeField] private TMP_Text bestTime;
+		private string _timerTemplate;
 
 		//Objects for the laps UI
 		[SerializeField] private TMP_Text currentLap;
@@ -35,6 +36,9 @@ namespace UI
 		{
 			_lapCp = GetComponent<CheckpointTracker>();
 			maxLaps.text = $"/{maxNumLaps}";
+			_timerTemplate = timer.text;
+			timer.text = string.Format(_timerTemplate, ShowTimer(0));
+
 		}
 
 		private void Update()
@@ -42,7 +46,7 @@ namespace UI
 			if (startLap)
 			{
 				_lapTime += Time.deltaTime;
-				timer.text = ShowTimer(_lapTime);
+				timer.text = string.Format(_timerTemplate, ShowTimer(_lapTime));
 			}
 		}
 
