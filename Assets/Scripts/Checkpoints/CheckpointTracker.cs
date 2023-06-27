@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Checkpoints
 {
@@ -12,6 +13,8 @@ namespace Checkpoints
 		public bool HasPassedThroughACheckpoint => _checkpointAccumulator > 0;
 
 		[SerializeField] private TMP_Text wrongWay;
+
+		public UnityEvent hitCheckpoint;
 
 		//Objects for the laps UI
 		[SerializeField] private TMP_Text currentPos;
@@ -60,6 +63,7 @@ namespace Checkpoints
 			{
 				_checkpointAccumulator++;
 				NextCpNumber = (NextCpNumber + 1) % CheckpointManager.Instance.cpList.Count;
+				hitCheckpoint.Invoke();
 			}
 		}
 

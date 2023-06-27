@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.02.00">
+	<object class="AudioFile" id="{2deb53e3-3787-486c-a74d-7fcbf3f3f656}">
+		<property name="assetPath">
+			<value>Boosting_sound_finished.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>44.0999985</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>3</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{b19efc1a-3507-4e59-b966-f355a3696b27}</destination>
+		</relationship>
+	</object>
+</objects>
