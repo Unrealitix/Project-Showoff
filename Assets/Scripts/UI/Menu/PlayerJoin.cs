@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-namespace UI
+namespace UI.Menu
 {
 	public class PlayerJoin : MonoBehaviour
 	{

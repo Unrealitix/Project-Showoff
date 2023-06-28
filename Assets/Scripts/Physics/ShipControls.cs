@@ -4,9 +4,10 @@ using System.Linq;
 using Checkpoints;
 using Cinemachine;
 using Generated;
+using NaughtyAttributes;
 using TMPro;
 using Track;
-using UI;
+using UI.PerPlayer;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -17,6 +18,8 @@ namespace Physics
 	{
 		//Only controls and physics forces in this class!
 		//Health and stuff like that should be in a separate class
+
+		private const string EVENT_FOLDOUT_NAME = "Events";
 
 		[SerializeField] private string spawnLocationName;
 		[SerializeField] private CinemachineVirtualCamera cinemachineVirtualCamera;
@@ -56,13 +59,15 @@ namespace Physics
 		[SerializeField] private float maxPitch = 50f;
 		[SerializeField] private float pitchCorrectionSpeed = 1f;
 
-		public UnityEvent<float> isAccelerating;
-		public UnityEvent hitBoost;
-		public UnityEvent dashed;
-		public UnityEvent respawnedByKillPlane;
-		public UnityEvent respawnedManually;
-		public UnityEvent enterWater;
-		public UnityEvent exitWater;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent<float> isAccelerating;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent<bool> isFlying;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent hitBoost;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent dashed;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent dashRecharged;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent respawnedByKillPlane;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent respawnedManually;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent enterWater;
+		[Foldout(EVENT_FOLDOUT_NAME)] public UnityEvent exitWater;
 
 		public float MaxSpeed => maxSpeed;
 
@@ -193,7 +198,7 @@ namespace Physics
 
 			foreach (MagLaser magLaser in _magLasers)
 			{
-				magLaser.Reset();
+				magLaser.ResetMagLaser();
 			}
 
 			_currentThrust = 0;
@@ -204,11 +209,6 @@ namespace Physics
 		{
 			_controls.Disable();
 			GetComponent<PlayerInput>().DeactivateInput();
-		}
-
-		private void Start()
-		{
-			exitWater.Invoke();
 		}
 
 		public void OnRotation(InputValue value)
@@ -241,6 +241,13 @@ namespace Physics
 			_dashThrust = dir * dashForce;
 			_dashLastUsed = Time.time;
 			dashed.Invoke();
+			StartCoroutine(DashRecharge());
+		}
+
+		private IEnumerator DashRecharge()
+		{
+			yield return new WaitForSeconds(dashCooldownSeconds);
+			dashRecharged.Invoke();
 		}
 
 		public void OnResetButton(InputValue value)
@@ -312,6 +319,7 @@ namespace Physics
 			_rigidbody.AddForce(-_rigidbody.velocity * friction);
 
 			bool attached = _magLasers.Any(magLaser => magLaser.IsAttached);
+			isFlying.Invoke(!attached);
 
 			//Input
 			_rigidbody.AddTorque(up * (_controllerInput.horizontal * turnSpeed)); //always just rotate around UP based on horizontal input

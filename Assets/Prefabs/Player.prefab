@@ -771,8 +771,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410392986863}
-  m_LocalRotation: {x: 0.0000000021023319, y: 0.9925076, z: -0.12218327, w: 0.000000017077465}
-  m_LocalPosition: {x: -0.00000010015585, y: 4.272393, z: 17.089573}
+  m_LocalRotation: {x: -0, y: 0.9925076, z: -0.122183256, w: 1e-45}
+  m_LocalPosition: {x: 8e-45, y: 4.272393, z: 17.089573}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -941,7 +941,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3869931410678474903}
-  m_LocalRotation: {x: 0.0000000021023319, y: 0.9925076, z: -0.12218327, w: 0.000000017077465}
+  m_LocalRotation: {x: -0, y: 0.9925076, z: -0.122183256, w: 1e-45}
   m_LocalPosition: {x: 0, y: 5, z: 20}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2107,6 +2107,21 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  isFlying:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Flying
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   hitBoost:
     m_PersistentCalls:
       m_Calls:
@@ -2124,13 +2139,64 @@ MonoBehaviour:
         m_CallState: 2
   dashed:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Dash
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  dashRecharged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: DashRecharged
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   respawnedByKillPlane:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: RespawnByKillPlane
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   respawnedManually:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: RespawnManually
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enterWater:
     m_PersistentCalls:
       m_Calls:
@@ -2158,6 +2224,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: EnterWater
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   exitWater:
     m_PersistentCalls:
       m_Calls:
@@ -2176,6 +2254,18 @@ MonoBehaviour:
       - m_Target: {fileID: 3146551658487625150}
         m_TargetAssemblyTypeName: UnityEngine.ParticleSystem, UnityEngine
         m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: ExitWater
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2265,7 +2355,19 @@ MonoBehaviour:
   maxNumLaps: 2
   onFinish:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1138016291971209892}
+        m_TargetAssemblyTypeName: Sound.PlayerSound, Assembly-CSharp
+        m_MethodName: Finish
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   totalTime: 0
   startLap: 0
 --- !u!114 &1138016291971209892
@@ -2647,6 +2749,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WaterParticles
+      objectReference: {fileID: 0}
+    - target: {fileID: 2077459761938221302, guid: 8ede2ef1c5b97c7428d1d5e27978669c,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2077459761938221303, guid: 8ede2ef1c5b97c7428d1d5e27978669c,
         type: 3}

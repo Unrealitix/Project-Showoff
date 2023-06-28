@@ -3102,6 +3102,41 @@ PrefabInstance:
       propertyPath: player2Spawn
       value: 
       objectReference: {fileID: 146182193}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 524944723}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Countdown
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Sound.BackgroundMusic, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3021172381618128100, guid: 111b8ec31d0e812a38ceee4d615a58dc,
+        type: 3}
+      propertyPath: onStart.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3083617423193091595, guid: 111b8ec31d0e812a38ceee4d615a58dc,
         type: 3}
       propertyPath: m_Name
