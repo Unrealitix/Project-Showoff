@@ -15,8 +15,8 @@ public class ShipChanger : MonoBehaviour
 		if (_player == 2)
 		{
 			GetComponent<MeshFilter>().sharedMesh = player2Mesh;
-			GetComponent<MeshCollider>().sharedMesh = player2Mesh;
-			GetComponent<ShipControls>().turnSpeed *= player2TurnSpeedMultiplier;
+			// GetComponent<MeshCollider>().sharedMesh = player2Mesh;
+			// GetComponent<ShipControls>().turnSpeed *= player2TurnSpeedMultiplier;
 		}
 	}
 
