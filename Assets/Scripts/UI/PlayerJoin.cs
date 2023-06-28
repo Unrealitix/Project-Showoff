@@ -36,8 +36,8 @@ namespace UI
 			_player2Template = player2.text;
 			_countdownTemplate = countdown.text;
 
-			player1.text = string.Format(_player1Template, "Press 🅁/Ⓐ to start");
-			player2.text = string.Format(_player2Template, "Press 🅁/Ⓐ to join");
+			player1.text = string.Format(_player1Template, "Press Ⓐ to start");
+			player2.text = string.Format(_player2Template, "Press Ⓐ to join");
 			countdown.gameObject.SetActive(false);
 		}
 
