@@ -7,7 +7,7 @@ public class ShipChanger : MonoBehaviour
 	private static int _player;
 
 	[SerializeField] private Mesh player2Mesh;
-	[SerializeField] private float player2TurnSpeedMultiplier = 1.25f;
+	// [SerializeField] private float player2TurnSpeedMultiplier = 1.25f;
 
 	private void Awake()
 	{
