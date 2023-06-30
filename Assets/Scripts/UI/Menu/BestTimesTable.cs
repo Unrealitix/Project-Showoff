@@ -4,9 +4,10 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using TMPro;
+using UI.PerPlayer;
 using UnityEngine;
 
-namespace UI
+namespace UI.Menu
 {
     public class BestTimesTable : MonoBehaviour
     {

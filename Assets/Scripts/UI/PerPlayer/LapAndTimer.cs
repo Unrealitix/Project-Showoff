@@ -1,9 +1,10 @@
 using Checkpoints;
+using Sound;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace UI
+namespace UI.PerPlayer
 {
 	public class LapAndTimer : MonoBehaviour
 	{
@@ -30,7 +31,7 @@ namespace UI
 
 		private CheckpointTracker _lapCp;
 
-		[HideInInspector]public bool startLap;
+		[HideInInspector] public bool startLap;
 
 		private void Awake()
 		{
@@ -38,7 +39,6 @@ namespace UI
 			maxLaps.text = $"/{maxNumLaps}";
 			_timerTemplate = timer.text;
 			timer.text = string.Format(_timerTemplate, ShowTimer(0));
-
 		}
 
 		private void Update()
@@ -77,11 +77,13 @@ namespace UI
 				if (_currentLap == maxNumLaps)
 				{
 					onFinish.Invoke(totalTime);
+					BackgroundMusic.Instance.ResetRaceProgress();
 					startLap = false;
 				}
 				else
 				{
 					_currentLap++;
+					BackgroundMusic.Instance.RaceProgressUpdate(_currentLap, maxNumLaps);
 				}
 
 				currentLap.text = _currentLap.ToString();

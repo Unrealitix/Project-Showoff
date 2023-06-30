@@ -51,10 +51,10 @@ namespace Physics
 				Debug.LogError("MagLaser must be a child of a Ship!");
 
 			_shipRigidbody = transform.parent.GetComponent<Rigidbody>();
-			Reset();
+			ResetMagLaser();
 		}
 
-		public void Reset()
+		public void ResetMagLaser()
 		{
 			_currentHoverHeight = targetHoverHeight;
 		}

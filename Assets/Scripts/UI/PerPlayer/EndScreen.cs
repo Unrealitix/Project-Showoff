@@ -2,7 +2,7 @@ using Checkpoints;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.PerPlayer
 {
 	public class EndScreen : MonoBehaviour
 	{

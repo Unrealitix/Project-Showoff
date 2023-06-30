@@ -1,10 +1,11 @@
 using System.Globalization;
+using System.IO;
+using Sound;
 using TMPro;
 using UnityEngine;
-using System.IO;
 using UnityEngine.SceneManagement;
 
-namespace UI
+namespace UI.PerPlayer
 {
 	public class SaveTrackTime : MonoBehaviour
 	{
@@ -30,6 +31,7 @@ namespace UI
 
 		private static void RestartGame()
 		{
+			BackgroundMusic.Instance.BackToMenu();
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 		}
 	}
