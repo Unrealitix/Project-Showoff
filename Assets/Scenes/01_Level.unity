@@ -1033,6 +1033,13 @@ MonoBehaviour:
       Data3: -1888090728
       Data4: 1946581425
     Path: event:/Demo music
+  countdown:
+    Guid:
+      Data1: -7328610
+      Data2: 1268295422
+      Data3: 1580509576
+      Data4: 1801647211
+    Path: event:/Start
 --- !u!1001 &537669845
 PrefabInstance:
   m_ObjectHideFlags: 0
