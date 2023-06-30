@@ -75,18 +75,9 @@ namespace Generated
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""GoToControls"",
+                    ""name"": ""SeeControls"",
                     ""type"": ""Button"",
                     ""id"": ""ec706bb8-71ad-4a5d-90f7-05801dc5e11e"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""GoBackFromControls"",
-                    ""type"": ""Button"",
-                    ""id"": ""a2fb04b0-fa1a-4a4f-91d7-1a7f6aa83bee"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -340,10 +331,10 @@ namespace Generated
                     ""name"": """",
                     ""id"": ""0509615a-f204-4622-9f0b-a14c0e3a7c43"",
                     ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard"",
-                    ""action"": ""GoToControls"",
+                    ""action"": ""SeeControls"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -351,32 +342,10 @@ namespace Generated
                     ""name"": """",
                     ""id"": ""ee51f091-8736-4016-b504-85359d2ad66f"",
                     ""path"": ""<Gamepad>/start"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""GoToControls"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""510b4ee6-166d-4d57-acaf-664e8615a300"",
-                    ""path"": ""<Keyboard>/space"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard"",
-                    ""action"": ""GoBackFromControls"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""bfb7abe8-c515-45e6-bdd4-e47f7cbd5e40"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": ""Press(behavior=1)"",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""GoBackFromControls"",
+                    ""action"": ""SeeControls"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -415,8 +384,7 @@ namespace Generated
             m_Hover_DashLeft = m_Hover.FindAction("DashLeft", throwIfNotFound: true);
             m_Hover_DashRight = m_Hover.FindAction("DashRight", throwIfNotFound: true);
             m_Hover_ResetButton = m_Hover.FindAction("ResetButton", throwIfNotFound: true);
-            m_Hover_GoToControls = m_Hover.FindAction("GoToControls", throwIfNotFound: true);
-            m_Hover_GoBackFromControls = m_Hover.FindAction("GoBackFromControls", throwIfNotFound: true);
+            m_Hover_SeeControls = m_Hover.FindAction("SeeControls", throwIfNotFound: true);
         }
 
         public void Dispose()
@@ -483,8 +451,7 @@ namespace Generated
         private readonly InputAction m_Hover_DashLeft;
         private readonly InputAction m_Hover_DashRight;
         private readonly InputAction m_Hover_ResetButton;
-        private readonly InputAction m_Hover_GoToControls;
-        private readonly InputAction m_Hover_GoBackFromControls;
+        private readonly InputAction m_Hover_SeeControls;
         public struct HoverActions
         {
             private @Controls m_Wrapper;
@@ -494,8 +461,7 @@ namespace Generated
             public InputAction @DashLeft => m_Wrapper.m_Hover_DashLeft;
             public InputAction @DashRight => m_Wrapper.m_Hover_DashRight;
             public InputAction @ResetButton => m_Wrapper.m_Hover_ResetButton;
-            public InputAction @GoToControls => m_Wrapper.m_Hover_GoToControls;
-            public InputAction @GoBackFromControls => m_Wrapper.m_Hover_GoBackFromControls;
+            public InputAction @SeeControls => m_Wrapper.m_Hover_SeeControls;
             public InputActionMap Get() { return m_Wrapper.m_Hover; }
             public void Enable() { Get().Enable(); }
             public void Disable() { Get().Disable(); }
@@ -520,12 +486,9 @@ namespace Generated
                 @ResetButton.started += instance.OnResetButton;
                 @ResetButton.performed += instance.OnResetButton;
                 @ResetButton.canceled += instance.OnResetButton;
-                @GoToControls.started += instance.OnGoToControls;
-                @GoToControls.performed += instance.OnGoToControls;
-                @GoToControls.canceled += instance.OnGoToControls;
-                @GoBackFromControls.started += instance.OnGoBackFromControls;
-                @GoBackFromControls.performed += instance.OnGoBackFromControls;
-                @GoBackFromControls.canceled += instance.OnGoBackFromControls;
+                @SeeControls.started += instance.OnSeeControls;
+                @SeeControls.performed += instance.OnSeeControls;
+                @SeeControls.canceled += instance.OnSeeControls;
             }
 
             private void UnregisterCallbacks(IHoverActions instance)
@@ -545,12 +508,9 @@ namespace Generated
                 @ResetButton.started -= instance.OnResetButton;
                 @ResetButton.performed -= instance.OnResetButton;
                 @ResetButton.canceled -= instance.OnResetButton;
-                @GoToControls.started -= instance.OnGoToControls;
-                @GoToControls.performed -= instance.OnGoToControls;
-                @GoToControls.canceled -= instance.OnGoToControls;
-                @GoBackFromControls.started -= instance.OnGoBackFromControls;
-                @GoBackFromControls.performed -= instance.OnGoBackFromControls;
-                @GoBackFromControls.canceled -= instance.OnGoBackFromControls;
+                @SeeControls.started -= instance.OnSeeControls;
+                @SeeControls.performed -= instance.OnSeeControls;
+                @SeeControls.canceled -= instance.OnSeeControls;
             }
 
             public void RemoveCallbacks(IHoverActions instance)
@@ -593,8 +553,7 @@ namespace Generated
             void OnDashLeft(InputAction.CallbackContext context);
             void OnDashRight(InputAction.CallbackContext context);
             void OnResetButton(InputAction.CallbackContext context);
-            void OnGoToControls(InputAction.CallbackContext context);
-            void OnGoBackFromControls(InputAction.CallbackContext context);
+            void OnSeeControls(InputAction.CallbackContext context);
         }
     }
 }

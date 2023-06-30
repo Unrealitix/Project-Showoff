@@ -181,3 +181,7 @@ fmod_editor.log
 
 # Ignore exported FBX files
 /Blender/**/*.fbx
+
+### Krita
+# Ignore autosaves
+*.kra-autosave.kra
