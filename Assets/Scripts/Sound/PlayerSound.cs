@@ -9,16 +9,25 @@ namespace Sound
 		[SerializeField] private EventReference engine;
 		[SerializeField] private EventReference boost;
 		[SerializeField] private EventReference checkpoint;
+		[SerializeField] private EventReference splash;
+		[SerializeField] private EventReference dash;
+		[SerializeField] private EventReference dashrecharged;
 
 		private EventInstance _engine;
 		private EventInstance _boost;
 		private EventInstance _checkpoint;
+		private EventInstance _splash;
+		private EventInstance _dash;
+		private EventInstance _dashrecharged;
 
 		private void Start()
 		{
 			_engine = RuntimeManager.CreateInstance(engine);
 			_boost = RuntimeManager.CreateInstance(boost);
 			_checkpoint = RuntimeManager.CreateInstance(checkpoint);
+			_splash = RuntimeManager.CreateInstance(splash);
+			_dash = RuntimeManager.CreateInstance(dash);
+			_dashrecharged = RuntimeManager.CreateInstance(dashrecharged);
 			_engine.start();
 		}
 
@@ -40,12 +49,12 @@ namespace Sound
 
 		public void Dash()
 		{
-			Debug.Log("Dash sound effect"); //TODO
+			_dash.start();
 		}
 
 		public void DashRecharged()
 		{
-			Debug.Log("Dash has been recharged sound effect"); //TODO
+			_dashrecharged.start();
 		}
 
 		public void RespawnByKillPlane()
@@ -60,12 +69,12 @@ namespace Sound
 
 		public void EnterWater()
 		{
-			Debug.Log("TODO: Enter water sound effect"); //TODO
+			_splash.start();
 		}
 
 		public void ExitWater()
 		{
-			Debug.Log("TODO: Exit water sound effect"); //TODO
+			_splash.start();
 		}
 
 		public void Checkpoint()

@@ -9,7 +9,10 @@ namespace Sound
 		public static BackgroundMusic Instance;
 
 		[SerializeField] private EventReference music;
+		[SerializeField] private EventReference countdown;
 		private EventInstance _music;
+		private EventInstance _countdown;
+		
 		private bool _once = true;
 
 		private float _raceProgress;
@@ -29,6 +32,7 @@ namespace Sound
 		private void Start()
 		{
 			_music = RuntimeManager.CreateInstance(music);
+			_countdown = RuntimeManager.CreateInstance(countdown);
 		}
 
 		private void Update()
@@ -54,8 +58,8 @@ namespace Sound
 		public void Countdown()
 		{
 			Debug.Log("TODO: Music stops being calm menu music, becomes race music"); //TODO
-
-			Debug.Log("TODO: Start countdown sound effect"); //TODO
+			_countdown.start();
+			
 		}
 
 		public void ResetRaceProgress()

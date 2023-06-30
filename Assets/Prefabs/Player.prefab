@@ -2403,6 +2403,27 @@ MonoBehaviour:
       Data3: 1360259238
       Data4: 1759663938
     Path: event:/Checkpoint
+  splash:
+    Guid:
+      Data1: -809871250
+      Data2: 1119780947
+      Data3: -673177710
+      Data4: 1070388201
+    Path: event:/Splash
+  dash:
+    Guid:
+      Data1: -1555030244
+      Data2: 1206694004
+      Data3: 32598183
+      Data4: 303839040
+    Path: event:/Dash
+  dashrecharged:
+    Guid:
+      Data1: 1239041505
+      Data2: 1204744225
+      Data3: -418339174
+      Data4: -848870614
+    Path: event:/Dash recharged
 --- !u!114 &7584532505485591251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2443,7 +2464,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player2Mesh: {fileID: -1206599922346436940, guid: 7f1eb3d6977742f499ffa02706db2bc5,
     type: 3}
-  player2TurnSpeedMultiplier: 1.2
 --- !u!1001 &2358083238668783912
 PrefabInstance:
   m_ObjectHideFlags: 0
