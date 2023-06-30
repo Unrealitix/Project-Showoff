@@ -51,18 +51,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "GoToControls",
+                    "name": "SeeControls",
                     "type": "Button",
                     "id": "ec706bb8-71ad-4a5d-90f7-05801dc5e11e",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "GoBackFromControls",
-                    "type": "Button",
-                    "id": "a2fb04b0-fa1a-4a4f-91d7-1a7f6aa83bee",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -316,10 +307,10 @@
                     "name": "",
                     "id": "0509615a-f204-4622-9f0b-a14c0e3a7c43",
                     "path": "<Keyboard>/space",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "GoToControls",
+                    "action": "SeeControls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -327,32 +318,10 @@
                     "name": "",
                     "id": "ee51f091-8736-4016-b504-85359d2ad66f",
                     "path": "<Gamepad>/start",
-                    "interactions": "Press",
+                    "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "GoToControls",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "510b4ee6-166d-4d57-acaf-664e8615a300",
-                    "path": "<Keyboard>/space",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "Keyboard",
-                    "action": "GoBackFromControls",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "bfb7abe8-c515-45e6-bdd4-e47f7cbd5e40",
-                    "path": "<Gamepad>/start",
-                    "interactions": "Press(behavior=1)",
-                    "processors": "",
-                    "groups": "Gamepad",
-                    "action": "GoBackFromControls",
+                    "action": "SeeControls",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
