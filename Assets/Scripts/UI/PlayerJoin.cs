@@ -39,6 +39,8 @@ namespace UI
 			player1.text = string.Format(_player1Template, "Press the Join button to start");
 			player2.text = string.Format(_player2Template, "Press the Join button to join");
 			countdown.gameObject.SetActive(false);
+
+			Cursor.visible = false;
 		}
 
 		private void OnPlayerJoined(PlayerInput obj)
