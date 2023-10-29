@@ -1,4 +1,6 @@
-# Project-Showoff
+# DigiSwamp AG
+
+A super-sonic Anti-Gravity racing game set in a digital swamp!
 
 [![YouTube video showing off the game](.github/readme_assets/yt-thumb.png)](https://youtu.be/ard2x2rheg0 "Click to play")
 
